@@ -1,0 +1,333 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1327624980411156445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8553456847373102991}
+  - component: {fileID: 5371352345129516956}
+  m_Layer: 0
+  m_Name: Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8553456847373102991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327624980411156445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.81, y: 3.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4360081879886546202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5371352345129516956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327624980411156445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.66
+  m_Color: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
+  m_Intensity: 0.74
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 18
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &5450402321693738041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4360081879886546202}
+  - component: {fileID: 3239444526770924745}
+  - component: {fileID: 1375634735447855725}
+  - component: {fileID: 7601361968606882413}
+  - component: {fileID: 8567827508086762570}
+  - component: {fileID: 1786989870470043002}
+  m_Layer: 0
+  m_Name: BackLightSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4360081879886546202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.35, y: -0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8553456847373102991}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3239444526770924745
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 937575371, guid: a9bdf5288812038419c4d58770051dfc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.6666667, y: 0.6666667}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &1375634735447855725
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0055582523, y: 0.011116505}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6666667, y: 0.6666667}
+    newSize: {x: 0.6666667, y: 0.6666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3442893, y: 0.55550206}
+  m_EdgeRadius: 0
+--- !u!114 &7601361968606882413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fc29513b798f14fb14ee974f069279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _firstLookAtText: 
+  _firstTurnOnText: 
+  _firstTurnOffText: 
+  _firstPickupText: 
+  _firstSearchText: 
+  _firstReadText: 
+  _firstOpenText: 
+  _firstCloseText: 
+  _firstUseText: 
+  _firstHasObjectText: 
+  _firstHideText: 
+  _firstLookAtTextSpanish: 
+  _firstTurnOnTextSpanish: 
+  _firstTurnOffTextSpanish: 
+  _firstPickupTextSpanish: 
+  _firstSearchTextSpanish: 
+  _firstReadTextSpanish: 
+  _firstOpenTextSpanish: 
+  _firstCloseTextSpanish: 
+  _firstUseTextSpanish: 
+  _firstHasObjectTextSpanish: 
+  _firstHideTextSpanish: 
+  _hasObjectTextSpanish: 
+  _hideTextSpanish: 
+  _lookAtTextSpanish: 
+  _turnOnTextSpanish: 
+  _turnOffTextSpanish: 
+  _pickupTextSpanish: 
+  _searchTextSpanish: 
+  _readTextSpanish: 
+  _openTextSpanish: 
+  _closeTextSpanish: 
+  _useTextSpanish: 
+  _lookAtText: It's a light switch.
+  _turnOnText: It's already on.
+  _turnOffText: It's already off.
+  _pickupText: I can't. It's sticked to the wall.
+  _searchText: Nothing out of the ordinary.
+  _readText: Nothing to read here.
+  _openText: I don't want to mess it up.
+  _closeText: It's already closed.
+  _useText: How?
+  _hasObjectText: 
+  _hideText: 
+  _isLight: 1
+  _isInventoryObject: 0
+  _canBeUsed: 0
+  _canBeTurnedOnOff: 0
+  _canBeOpened: 0
+  _canBeSearched: 0
+  _canBePickedUp: 0
+  _canBeRead: 0
+  _hiddingSpot: 0
+  _hasObject: 0
+  _item: {fileID: 0}
+  _canBeSearchedInitialStatus: 0
+  _hasObjectInitialStatus: 0
+--- !u!114 &8567827508086762570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed5229c3550231448c8d9d688b0d90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _firstTimeStatus: 0
+  _lightSwitch: {fileID: 5450402321693738041}
+  _rooflight: {fileID: 0}
+  _rooflightOn: {fileID: -533760333, guid: 69d6f5add5fe756478775a0b4e10d8bf, type: 3}
+  _rooflightOff: {fileID: -1894686490, guid: 69d6f5add5fe756478775a0b4e10d8bf, type: 3}
+  _lightSwitchUp: {fileID: -1439407872, guid: fa2e6e45d2d656f4f8c82c1bd1f93d53, type: 3}
+  _lightSwitchDown: {fileID: -487808197, guid: fa2e6e45d2d656f4f8c82c1bd1f93d53, type: 3}
+  _lightSwitchBack: {fileID: 937575371, guid: a9bdf5288812038419c4d58770051dfc, type: 3}
+  _isOn: 1
+  _isRooflight: 1
+  _isFrontSwitch: 0
+  _volume: 0.7
+  _turnOnAudio: {fileID: 8300000, guid: e4b9c76611acaaa4293bfbc2dad82681, type: 3}
+  _turnOffAudio: {fileID: 8300000, guid: 1ff24f5c9fbfd704da9cb4452d7cc9f6, type: 3}
+  _isFan: 0
+--- !u!114 &1786989870470043002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5450402321693738041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55951a71624dc094bae31499012b97ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _waterFiller: 0
+  _canBeWatered: 0
+  _canBeWateredInitialStatus: 0
+  _playerMinClickableDistance: 3

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: f21533315106f75419d4c7b82fb661b6
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/PlayersRoom.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/Hallway2ndFloor.unity
+    guid: d2ed48eb0b5e37942b5debe9790b2739
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/Bathroom2ndFloor.unity
+    guid: 26415066d10dbdf498026fa015b592e2
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/SisterRoom.unity
+    guid: 53283b2a23bc2824dbcfcfd3ecf9600f
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/Stairs2ndFloor.unity
+    guid: 7d871f826ca9f134aa49f56cfc275067
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/EntranceAndStairs.unity
+    guid: cfaab65f16581444681c30e9578ad5d3
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/RoomBellowStairs.unity
+    guid: 0c11ae069c552d542b83ddbbb40ce649
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/ParentsRoom.unity
+    guid: 692bcb8991a240c4f898548071356c77
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/BathroomParents.unity
+    guid: 8d9408fcd1a4a774a9d5418af8441737
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/LivingRoom.unity
+    guid: 88e1bd74c1e23d64ab0ef924945eb9f3
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/SmallBathroom1stFloor.unity
+    guid: 0abbe6b12b488ef4f8bf1563f1db9049
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/DinningRoom.unity
+    guid: 651db11fccc70624a8c9b0ed6400668c
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/Kitchen.unity
+    guid: 8b6c6c83ce6d0e645ade0820f67de8d5
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: eea0bf13ee66a2442966bd0c0302d20c, type: 2}
