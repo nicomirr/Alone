@@ -25,6 +25,13 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] GameObject _tutorial;
 
+    [SerializeField] GameObject _initialInstructions;
+    [SerializeField] GameObject _initialInstructionsExplainEnglish;
+    [SerializeField] GameObject _initialInstructionsExploreEnglish;
+    [SerializeField] GameObject _initialInstructionsExplainSpanish;
+    [SerializeField] GameObject _initialInstructionsExploreSpanish;
+
+
 
     private void Start()
     {
@@ -122,6 +129,34 @@ public class MainMenu : MonoBehaviour
         _audioSource.Stop();
                 
         yield return new WaitForSeconds(2);
+
+        _initialInstructions.SetActive(true);
+
+        if(LanguageManager.Instance.Language == "en")
+        {
+            _initialInstructionsExplainEnglish.SetActive(true);
+            _initialInstructionsExploreEnglish.SetActive(true);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _initialInstructionsExplainSpanish.SetActive(true);
+            _initialInstructionsExploreSpanish.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(12);
+
+        _initialInstructions.SetActive(false);
+
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _initialInstructionsExplainEnglish.SetActive(false);
+            _initialInstructionsExploreEnglish.SetActive(false);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _initialInstructionsExplainSpanish.SetActive(false);
+            _initialInstructionsExploreSpanish.SetActive(false);
+        }
 
         _tutorial.SetActive(true);
 
