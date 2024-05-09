@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MouseBehaviour : MonoBehaviour, IDataPersistence
 {
@@ -48,8 +49,8 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
     public float PlayerMinClickableDistance { get => _playerMinClickableDistance; set => _playerMinClickableDistance = value; }
 
     private void Update()
-    {        
-        if(Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying()) 
+    {
+        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying()) 
         {
             UnityEngine.Cursor.SetCursor(_blackPointer, new Vector2(_blackPointer.width / 2, _blackPointer.height / 2), CursorMode.Auto);
             return;

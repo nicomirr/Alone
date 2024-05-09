@@ -79,6 +79,11 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
+    public void EraseGame()
+    {
+        this._gameData = null;
+    }
+
     public void SaveGame()
     {
         if (this._gameData == null) return;

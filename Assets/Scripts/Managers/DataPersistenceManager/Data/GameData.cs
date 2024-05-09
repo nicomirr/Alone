@@ -117,6 +117,12 @@ public class GameData
     //StartingScene
     public string sceneToLoad;
 
+    //AudioSource
+    public bool horrorSoundIsPlaying;
+    public bool horrorSoundIsStarted;
+    public bool horrorSoundIsStopped;
+
+
     public GameData() 
     {
         //LanguageManager

@@ -82,8 +82,15 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject _parentsBlackScreen;
     [SerializeField] GameObject _wardrobe;
     [SerializeField] Sprite _wardrobeOpen;
+    [SerializeField] AudioSource _horrorSoundAfterWardrobe;
+
 
     GameObject _generalTextBackground;
+
+    [SerializeField] AudioClip _endingScreenSound;
+    [SerializeField] GameObject _endingScreen;
+    [SerializeField] GameObject _thanksForPlayingText;
+        
 
     private void Awake()
     {
@@ -707,7 +714,23 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom7;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(4.3f); 
+        yield return new WaitForSeconds(4f); //2.3
+
+
+        //DEMO//
+
+        //AudioSource.PlayClipAtPoint(_endingScreenSound, PlayerController.Instance.transform.position, 0.5f);
+        //_endingScreen.SetActive(true);
+        //yield return new WaitForSeconds(6.5f);
+
+        //_thanksForPlayingText.SetActive(true);
+
+        //yield return new WaitForSeconds(9f);
+
+        //System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
+        //Application.Quit();
+
+        //DEMO
 
         _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom8;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
@@ -760,24 +783,25 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.SetIsHidding(false);
         PlayerController.Instance.SetMustHide(false);
         _wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
+        _horrorSoundAfterWardrobe.Play();
         yield return new WaitForSeconds(4f);
 
         if (LanguageManager.Instance.Language == "en")
             _playerText.text = "I must get out of the house as soon as possible.";
         else if (LanguageManager.Instance.Language == "es")
             _playerText.text = "Debo irme de la casa lo más pronto posible.";
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(3.5f);
 
         _playerText.text = "";
 
         PlayerController.Instance.SetMustEscape(true);
 
         _sceneIsPlaying = false;
-
     }
 
     IEnumerator FirstEntranceScene()
     {
+        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 40));
         yield return null;
     }
 }

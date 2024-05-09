@@ -9,7 +9,7 @@ public class KeySound : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(ButtonsGrid.Instance.GetCurrentAction() == "Pick Up" || ButtonsGrid.Instance.GetCurrentAction() == "Levantar")
+        if(ButtonsGrid.Instance.GetCurrentAction() == "Pick Up" || ButtonsGrid.Instance.GetCurrentAction() == "Agarrar")
             AudioSource.PlayClipAtPoint(keyGrabSound, Camera.main.transform.position, 0.9f);
     }
 }

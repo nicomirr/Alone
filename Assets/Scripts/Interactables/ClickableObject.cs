@@ -454,7 +454,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
                         TextBox.Instance.ShowText(_noLightTextSpanish, _isInventoryObject, GetComponent<ClickableObject>());
                 }
             }
-            else if(_currentAction == "Pick Up" || _currentAction == "Levantar")
+            else if(_currentAction == "Pick Up" || _currentAction == "Agarrar")
             {
                 if (_canBePickedUp && (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight))
                 {

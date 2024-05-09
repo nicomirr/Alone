@@ -50,6 +50,7 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         
     private void Update()
     {
+        Language();
         CanBeTurnedOnOffState();
         ShowerCurtainState();
         ShowerRunningState();        

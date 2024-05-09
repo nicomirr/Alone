@@ -119,7 +119,7 @@ public class ButtonsGrid : MonoBehaviour
             _buttons[0].GetComponentInChildren<TextMeshProUGUI>().text = "Mirar";
             _buttons[1].GetComponentInChildren<TextMeshProUGUI>().text = "Encender";
             _buttons[2].GetComponentInChildren<TextMeshProUGUI>().text = "Apagar";
-            _buttons[3].GetComponentInChildren<TextMeshProUGUI>().text = "Levantar";
+            _buttons[3].GetComponentInChildren<TextMeshProUGUI>().text = "Agarrar";
             _buttons[4].GetComponentInChildren<TextMeshProUGUI>().text = "Buscar";
             _buttons[5].GetComponentInChildren<TextMeshProUGUI>().text = "Leer";
             _buttons[6].GetComponentInChildren<TextMeshProUGUI>().text = "Abrir";

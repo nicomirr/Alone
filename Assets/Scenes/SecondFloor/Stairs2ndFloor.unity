@@ -1606,7 +1606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: _mustEscapeTexts.Array.data[0]
-      value: "La puerta principal no es por aqu\xED."
+      value: The main door is not this way.
       objectReference: {fileID: 0}
     - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: _spanishMustEscapeTexts.Array.size
@@ -1614,7 +1614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: _spanishMustEscapeTexts.Array.data[0]
-      value: The main door is not this way.
+      value: "La puerta principal no es por aqu\xED."
       objectReference: {fileID: 0}
     - target: {fileID: 9030144140502489506, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: m_LocalPosition.x

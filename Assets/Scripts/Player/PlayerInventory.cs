@@ -107,7 +107,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     }
 
     private void Update()
-    {        
+    {
         UpdateItems();
         ClampItems();
         Opacity();

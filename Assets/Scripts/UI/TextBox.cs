@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class TextBox : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class TextBox : MonoBehaviour
     }
 
     private void Update()
-    {
+    {       
         FollowPlayer();
 
         if (_textIsShowing)

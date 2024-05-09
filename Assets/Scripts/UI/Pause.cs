@@ -67,7 +67,9 @@ public class Pause : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe")); //new program 
+        Application.Quit(); //kill current process
+        //Application.Quit();
     }
 
     void Language()

@@ -123,31 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &240788802 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2522291665482081516, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
-  m_PrefabInstance: {fileID: 905341258}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &240788803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240788802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a37f2dd2ee558e4a82a160f80c93a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: bcc1239d-b476-43d1-aa59-c45b825bf2d9
-  _openSprite: {fileID: 614409510, guid: edafa30898456e94ab35d790ec484059, type: 3}
-  _closeSprite: {fileID: 602731911, guid: edafa30898456e94ab35d790ec484059, type: 3}
-  _openSound: {fileID: 8300000, guid: f065b5e257246694885c5cd705496915, type: 3}
-  _closeSound: {fileID: 8300000, guid: 9bb02bd8d4d44ce4a89b7b4cb7147951, type: 3}
-  _volume: 1
-  _isOpen: 0
-  _appearence: {fileID: 624382711}
 --- !u!1001 &269161280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -162,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.14
+      value: -6.66
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -568,11 +543,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 491946322421847108, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
   m_PrefabInstance: {fileID: 269161280}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &624382711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6870499368353684830, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
-  m_PrefabInstance: {fileID: 905341258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &648534664
 PrefabInstance:
@@ -1354,8 +1324,16 @@ PrefabInstance:
       value: What for?
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _openText
+      value: I will open it if I need to look for something.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _readText
       value: I don't want to read anything that is in there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _closeText
+      value: It's closed.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _lookAtText
@@ -1375,7 +1353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeOpened
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _turnOffText
@@ -1386,8 +1364,16 @@ PrefabInstance:
       value: What for?
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstOpenText
+      value: I will open it if I need to look for something.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadText
       value: I don't want to read anything that is in there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstCloseText
+      value: It's closed
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstLookAtText
@@ -1414,12 +1400,16 @@ PrefabInstance:
       value: "\xBFPara qu\xE9?"
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstOpenTextSpanish
+      value: "Lo abrir\xE9 si necesito buscar algo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadTextSpanish
       value: "No quiero leer nada de all\xED."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstCloseTextSpanish
-      value: 
+      value: "Est\xE1 cerrado."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstLookAtTextSpanish
@@ -1500,10 +1490,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2522291665482081516, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 240788803}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
 --- !u!4 &905341259 stripped
 Transform:
@@ -2004,14 +1991,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Intructions
       objectReference: {fileID: 0}
+    - target: {fileID: 1263957073920174500, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2391589851250586766, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 369822051}
-    - target: {fileID: 2391589851250586766, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InstructionsBack
-      objectReference: {fileID: 0}
     - target: {fileID: 4526580025373355039, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2096,10 +2083,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 369822051}
-    - target: {fileID: 5755693581456028412, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: InstructionsBack
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5221,8 +5204,8 @@ Transform:
   m_GameObject: {fileID: 1655544374}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9691299, y: -0.76901937, z: 0.12671228}
-  m_LocalScale: {x: 1.8915249, y: 1.2445418, z: 1}
+  m_LocalPosition: {x: -0.0181, y: -0.76901937, z: 0.12671228}
+  m_LocalScale: {x: 2.0971336, y: 1.2445418, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1940549107}
@@ -6879,7 +6862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.36
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6963,7 +6946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.054658
+      value: 2.0719419
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
