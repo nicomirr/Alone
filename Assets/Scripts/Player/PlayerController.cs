@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     Vector2 _rawInput;
 
     [Header("Movement")]
-    [SerializeField] float _walkSpeed = 5;
-    [SerializeField] float _walkSpeedMod = 2.7f;
+    float _walkSpeed = 3;
+    float _walkSpeedMod = 2.7f;
+    float _normalSpeed = 2.7f;
+    float _fastSpeed = 4f;
 
     [Header("Pause Position")]
     [SerializeField] float _pauseYPos;
@@ -112,12 +114,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         if (_isTalking) return;
         if (_isInteractingWithEnviroment) return;
-        if (_isReading) return; 
+        if (_isReading) return;
 
+        FastMovement();
         Move();
         MoveFrontBack();
         FlipSprite();
-
+        
     }
 
     public bool GetMustEscape() { return _mustEscape; }
@@ -141,14 +144,21 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void SetIsReading(bool value) { _isReading = value; }
     public bool GetIsInteractingWithEnviroment() { return _isInteractingWithEnviroment; }
     public bool GetIsSearching() { return _isInteractingWithEnviroment; }
-    public void SetPlayerHasSideMovement(bool value) { _playerHasSideMovement = value; }
-    
-        
+    public void SetPlayerHasSideMovement(bool value) { _playerHasSideMovement = value; }               
     public void SetIsTalking(bool value) { _isTalking = value; }
+    public void SetWalkingSpeedMod(float num) { _walkSpeedMod = num; }
 
     void OnMove(InputValue value)
     {
         _rawInput = value.Get<Vector2>();
+    }
+
+    void FastMovement()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+            _walkSpeedMod = _fastSpeed;
+        else
+            _walkSpeedMod = _normalSpeed;
     }
 
     void OnInteract(InputValue value)

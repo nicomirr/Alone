@@ -119,8 +119,8 @@ public class GameData
 
     //AudioSource
     public bool horrorSoundIsPlaying;
-    public bool horrorSoundIsStarted;
-    public bool horrorSoundIsStopped;
+    public bool horrorSoundStarted;
+    public bool horrorSoundStopped;
 
 
     public GameData() 

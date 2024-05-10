@@ -40,7 +40,7 @@ public class ButtonsGrid : MonoBehaviour
     {
         SetCurrentButton();
         DisableButtons();
-        MustHideStatus();
+        MustHideOrScapeStatus();
         Language();
     }
 
@@ -72,7 +72,7 @@ public class ButtonsGrid : MonoBehaviour
 
     void DisableButtons()
     {
-        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying() || PlayerController.Instance.GetMustHide())
+        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying() || PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetMustEscape())
         {
             for(int i = 0; i < _buttons.Count; ++i)
             {
@@ -88,9 +88,9 @@ public class ButtonsGrid : MonoBehaviour
         }
     }
 
-    void MustHideStatus()
+    void MustHideOrScapeStatus()
     {
-        if(PlayerController.Instance.GetMustHide())
+        if(PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetMustEscape())
         {            
             if (LanguageManager.Instance.Language == "en")
                 _currentAction = "Look At";

@@ -182,7 +182,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
             data.hideText.Remove(_id);
         }
         data.hideText.Add(_id, _hideText);
-
+               
         if (data.hasObject.ContainsKey(_id)) 
         { 
             data.hasObject.Remove(_id);
@@ -384,12 +384,42 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
         Action();
     }
 
+    void MustHideState()
+    {
+        if (PlayerController.Instance.GetMustHide())
+        {
+            if (_isInventoryObject) return;
+
+            if (_hiddingSpot) return;
+
+            TextBox.Instance.ShowText(_hideText);
+
+            return;
+        }
+    }
+
+    void MustEscapeState()
+    {
+        if (PlayerController.Instance.GetMustEscape())
+        {
+            if (_isInventoryObject) return;
+
+            if(LanguageManager.Instance.Language == "en")
+                TextBox.Instance.ShowText("There's no time for that.");
+            else if (LanguageManager.Instance.Language == "es")
+                TextBox.Instance.ShowText("No hay tiempo para eso.");
+
+            return;
+        }
+    }
+
     public void Action()
     {
         if (Pause.Instance.IsPaused) return;
         if (PlayerController.Instance.GetIsReading()) return;   
         if (PlayerController.Instance.GetOnLockedDoor()) return;
         if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
+       
 
         if (_isInventoryObject && PlayerInventory.Instance.GetItemListLenght() == 0) return;
               
@@ -399,16 +429,12 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
         if (_notClickable && !_isInventoryObject) return; 
 
         bool roomHasLight = _roomLightStatus.GetRoomHasLight();
-        
-        if(PlayerController.Instance.GetMustHide())
-        {
-            if (_isInventoryObject) return;
 
-            if (_hiddingSpot) return;
+        MustHideState();
+        MustEscapeState();
 
-            TextBox.Instance.ShowText(_hideText);
-            return;
-        }
+        if (PlayerController.Instance.GetMustHide()) return;
+        if (PlayerController.Instance.GetMustEscape()) return;
 
         if (!PlayerInventory.Instance.IsUsingItemMouse)
         {         

@@ -84,9 +84,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] Sprite _wardrobeOpen;
     [SerializeField] AudioSource _horrorSoundAfterWardrobe;
 
+    [Header("EntranceAndStairs")]
+    [SerializeField] AudioClip _tryingToOpenDoor;
+    [SerializeField] GameObject _frontDoor;
+
 
     GameObject _generalTextBackground;
 
+    [Header("Demo Ending")]
     [SerializeField] AudioClip _endingScreenSound;
     [SerializeField] GameObject _endingScreen;
     [SerializeField] GameObject _thanksForPlayingText;
@@ -784,6 +789,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.SetMustHide(false);
         _wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
         _horrorSoundAfterWardrobe.Play();
+        _horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
         yield return new WaitForSeconds(4f);
 
         if (LanguageManager.Instance.Language == "en")
@@ -801,7 +807,116 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstEntranceScene()
     {
-        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 40));
-        yield return null;
+        PlayerController.Instance.transform.position = new Vector2(-2.5f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.SetWalkingSpeedMod(4);
+
+        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 23));
+        yield return new WaitForSeconds(4.95f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpen", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        AudioSource.PlayClipAtPoint(_tryingToOpenDoor, PlayerController.Instance.transform.position, 0.25f);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.9f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
+        _frontDoor.transform.position = new Vector2(14.85f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", false);
+        _frontDoor.transform.position = new Vector2(14.92f, _frontDoor.transform.position.y);
+        yield return new WaitForSeconds(0.4f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpen", false);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "I can't open the door.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "No puedo abrir la puerta.";
+        yield return new WaitForSeconds(3f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 10));
+        yield return new WaitForSeconds(3.1f);
+
+        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 3));
+        yield return new WaitForSeconds(1.7f);
+
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 4));
+        yield return new WaitForSeconds(1.3f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "What should I do?";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "¿Que hago?";
+        yield return new WaitForSeconds(2.5f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1.5f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "I know.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "Ya sé.";
+        yield return new WaitForSeconds(2.0f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1.5f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "The phone";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "El teléfono.";
+        yield return new WaitForSeconds(2.0f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 17));
     }
 }
