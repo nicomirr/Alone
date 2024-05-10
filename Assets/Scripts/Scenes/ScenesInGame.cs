@@ -30,6 +30,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     bool _firstEntranceScenePlayed;
 
+    bool _firstLivingroomScenePlayed;
+
     bool _sceneIsPlaying;
 
     [SerializeField] Animator _fadeAnimator;
@@ -84,10 +86,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] Sprite _wardrobeOpen;
     [SerializeField] AudioSource _horrorSoundAfterWardrobe;
 
-    [Header("EntranceAndStairs")]
+    [Header("EntranceAndStairsFirstScene")]
     [SerializeField] AudioClip _tryingToOpenDoor;
     [SerializeField] GameObject _frontDoor;
 
+    [Header("LivingroomFirstScene")]
+    [SerializeField] AudioClip _phonePickup;
+    [SerializeField] AudioClip _phoneDial;
+    [SerializeField] AudioClip _phoneHangUp;
 
     GameObject _generalTextBackground;
 
@@ -229,6 +235,17 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
                 StartCoroutine(FirstEntranceScene());
                 _firstEntranceScenePlayed = true;
+            }
+        }
+
+        if (PlayerController.Instance.GetMustEscape() && !_firstLivingroomScenePlayed)
+        {
+            if (SceneManager.GetActiveScene().name == "LivingRoom")
+            {
+                _sceneIsPlaying = true;
+
+                StartCoroutine(FirstLivingroomScene());
+                _firstLivingroomScenePlayed = true;
             }
         }
 
@@ -807,7 +824,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstEntranceScene()
     {
-        PlayerController.Instance.transform.position = new Vector2(-2.5f, PlayerController.Instance.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.transform.position = new Vector2(-2f, PlayerController.Instance.transform.position.y);
         PlayerController.Instance.SetWalkingSpeedMod(4);
 
         StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 23));
@@ -918,5 +937,128 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 17));
+        yield return new WaitForSeconds(4.0f);
+
+        StartCoroutine(FirstEntranceSceneChangeToLivingRoom());
+    }
+
+    IEnumerator FirstEntranceSceneChangeToLivingRoom()
+    {
+        PlayerController.Instance.SetSceneToLoad("LivingRoom");
+        _fadeAnimator.SetTrigger("StartTransition");
+        AudioSource.PlayClipAtPoint(_doorOpenSound, PlayerController.Instance.transform.position, 0.7f);
+        yield return new WaitForSecondsRealtime(1.7f);
+        PlayerController.Instance.transform.position = new Vector3(15.05f, -1.27f);
+        AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
+        yield return new WaitForSecondsRealtime(0.3f);
+        SceneManager.LoadScene("LivingRoom");
+    }
+
+    IEnumerator FirstLivingroomScene()
+    {
+        PlayerController.Instance.transform.position = new Vector2(15.39f, PlayerController.Instance.transform.position.y);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.SetWalkingSpeedMod(4);
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 27));
+        yield return new WaitForSeconds(6f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingBack", true);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.transform.localScale = Vector3.one;
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephonePickedup", true);
+        AudioSource.PlayClipAtPoint(_phonePickup, PlayerController.Instance.transform.position, 0.7f);
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.7f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);        
+        yield return new WaitForSeconds(1f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.7f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        yield return new WaitForSeconds(1f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.7f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        yield return new WaitForSeconds(2.3f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("telephonePickedup", false);
+        AudioSource.PlayClipAtPoint(_phoneHangUp, PlayerController.Instance.transform.position);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "It's not working...";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "No funciona...";
+        yield return new WaitForSeconds(3.0f);
+
+        _playerText.text = "";
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(false);       
+        yield return new WaitForSeconds(0.4f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "What's happening?";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "¿Qué está pasando?";
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);       
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(true);
+        _playerText.text = "";
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
     }
 }

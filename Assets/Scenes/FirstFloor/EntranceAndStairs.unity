@@ -1433,6 +1433,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
+--- !u!95 &747891160 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4451385961923483830, guid: 567ef35a58e3f3b42baec5bb98e57b14, type: 3}
+  m_PrefabInstance: {fileID: 1276615589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &879072173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9161876313629403290, guid: 574f9702b5066b04bac98f52257c0deb, type: 3}
@@ -1800,6 +1805,14 @@ PrefabInstance:
       propertyPath: _frontDoor
       value: 
       objectReference: {fileID: 879072173}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _blackImage
+      value: 
+      objectReference: {fileID: 1851199329}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _fadeAnimator
+      value: 
+      objectReference: {fileID: 747891160}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _tryingToOpenDoor
       value: 
@@ -5448,6 +5461,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1974542596570511536, guid: feebdf92b283a9b4c93611d12f797954, type: 3}
   m_PrefabInstance: {fileID: 3184963823915428601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1851199329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 859793933527566595, guid: 567ef35a58e3f3b42baec5bb98e57b14, type: 3}
+  m_PrefabInstance: {fileID: 1276615589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050605101
 GameObject:
   m_ObjectHideFlags: 0

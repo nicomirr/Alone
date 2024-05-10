@@ -76,6 +76,7 @@ public class GameData
     public bool firstParentsRoomScene;
     public bool secondParentsRoomScenePlayed;
     public bool firstEntranceScenePlayed;
+    public bool firstLivingroomScenePlayed;
 
 
     //MouseAppearance

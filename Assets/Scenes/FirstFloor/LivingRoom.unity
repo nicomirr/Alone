@@ -232,6 +232,10 @@ PrefabInstance:
       value: I dont have use for it.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I can't hide here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: It's not a door.
       objectReference: {fileID: 0}
@@ -258,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
       value: I can't do that.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hideTextSpanish
+      value: "No puedo esconderme aqu\xED."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOffText
@@ -476,7 +484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2522291665482081516, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_Name
-      value: Coach
+      value: Couch
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _id
@@ -485,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseText
       value: I don't want to sit right now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: The couch is too low.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
@@ -513,6 +525,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
       value: It's not possible.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hideTextSpanish
+      value: "El sof\xE1 es demasiado bajo."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOffText
@@ -621,8 +637,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.36
+      value: 15.39
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -716,6 +736,10 @@ PrefabInstance:
       value: How?
       objectReference: {fileID: 0}
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+      propertyPath: _firstHideText
+      value: I must hide.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstOpenText
       value: I don't want to mess it up.
       objectReference: {fileID: 0}
@@ -742,6 +766,10 @@ PrefabInstance:
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstTurnOnText
       value: It's already on.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+      propertyPath: _hideTextSpanish
+      value: Debo esconderme.
       objectReference: {fileID: 0}
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstTurnOffText
@@ -2281,8 +2309,24 @@ PrefabInstance:
       value: DinningRoom
       objectReference: {fileID: 0}
     - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
+      propertyPath: _hideTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: _firstDinningRoomScene
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
+      propertyPath: _hideTexts.Array.data[0]
+      value: I must hide.
+      objectReference: {fileID: 0}
+    - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
+      propertyPath: _spanishHideTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 76689549804629852, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
+      propertyPath: _spanishHideTexts.Array.data[0]
+      value: Debo esconderme.
       objectReference: {fileID: 0}
     - target: {fileID: 9030144140502489506, guid: 4160f051552c6214bac3dc4541b7da9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2742,6 +2786,134 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
   m_PrefabInstance: {fileID: 850615053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &872865211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872865213}
+  - component: {fileID: 872865212}
+  m_Layer: 0
+  m_Name: AudioSourceSearching
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &872865212
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872865211}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dc85026dd55c09f4486c2ef6543527c8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &872865213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872865211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5474706, y: 2.8541005, z: -0.00480034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878089792
 GameObject:
   m_ObjectHideFlags: 0
@@ -7096,6 +7268,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582032542}
   m_CullTransparentMesh: 1
+--- !u!1 &1645848413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4513854951037942212, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+  m_PrefabInstance: {fileID: 287897609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1769380506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7137,6 +7314,10 @@ PrefabInstance:
       value: I don't need to call anyone.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I have to hide.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: No.
       objectReference: {fileID: 0}
@@ -7163,6 +7344,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
       value: It's already on.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hideTextSpanish
+      value: Debo esconderme.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOffText
@@ -8284,6 +8469,10 @@ PrefabInstance:
       value: It's turned off.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I must not waste time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: I won't.
       objectReference: {fileID: 0}
@@ -8310,6 +8499,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
       value: It's already on.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hideTextSpanish
+      value: No debo perder tiempo.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeTurnedOnOff
@@ -8526,13 +8719,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phoneDial
+      value: 
+      objectReference: {fileID: 8300000, guid: 17cfd6c5511505d47a562f07334b184b, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _blackImage
       value: 
       objectReference: {fileID: 113527322}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _sceneLight
+      value: 
+      objectReference: {fileID: 1645848413}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phoneHangUp
+      value: 
+      objectReference: {fileID: 8300000, guid: de4d256d77a8180409cd96ca6d7151ac, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phonePickup
+      value: 
+      objectReference: {fileID: 8300000, guid: 5584b72a04af48d418a21e239f1e5ef4, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _fadeAnimator
       value: 
       objectReference: {fileID: 1469701893}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _searchingSound
+      value: 
+      objectReference: {fileID: 872865212}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8937,7 +9150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.58
+      value: 10.17
       objectReference: {fileID: 0}
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9335,3 +9548,4 @@ SceneRoots:
   - {fileID: 1034043126}
   - {fileID: 288968656}
   - {fileID: 1903040769}
+  - {fileID: 872865213}
