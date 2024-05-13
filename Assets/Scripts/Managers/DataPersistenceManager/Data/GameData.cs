@@ -75,10 +75,10 @@ public class GameData
     public bool firstParentsRoomScenePlayed;
     public bool firstParentsRoomScene;
     public bool secondParentsRoomScenePlayed;
+    public bool secondParentsRoomSceneFix;
     public bool firstEntranceScenePlayed;
     public bool firstLivingroomScenePlayed;
-
-
+    
     //MouseAppearance
     public SerializableDictionary<string, bool> appearanceChanged;
     public SerializableDictionary<string, bool> cursorBlackened;
@@ -123,6 +123,11 @@ public class GameData
     public bool horrorSoundStarted;
     public bool horrorSoundStopped;
 
+    //FlashingLights
+    public bool flashingLightsCoroutineStarted;
+
+    //Respiration
+    public bool respirationTutorialShown;
 
     public GameData() 
     {

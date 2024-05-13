@@ -327,7 +327,7 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                 if (LanguageManager.Instance.Language == "en")
                 {
                     _lockedTexts.Add("I can hear something inside.");
-                    _lockedTexts.Add("The key must be somewhere around the house");
+                    _lockedTexts.Add("The key must be somewhere around the house.");
                     _lockedTexts.Add("Maybe I can find something on my dads desk or computer in the living room.");
                 }
                 if (LanguageManager.Instance.Language == "es")

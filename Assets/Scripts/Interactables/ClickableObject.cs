@@ -383,58 +383,52 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
     {        
         Action();
     }
+       
+    public void Action()
+    {       
+        if (Pause.Instance.IsPaused) return;      
+        if (PlayerController.Instance.GetIsReading()) return;       
+        if (PlayerController.Instance.GetOnLockedDoor()) return;
+        if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
+        if (PlayerController.Instance.GetIsHidding()) return;
+        if (_isInventoryObject && PlayerInventory.Instance.GetItemListLenght() == 0) return;
+        if (!_isInventoryObject)
+            _notClickable = MouseBehaviour.Instance.NotClickable;
+        if (_notClickable && !_isInventoryObject) return;
 
-    void MustHideState()
-    {
+        bool roomHasLight = _roomLightStatus.GetRoomHasLight();
+
+
         if (PlayerController.Instance.GetMustHide())
         {
+            Debug.Log("Entra");
+
             if (_isInventoryObject) return;
+            Debug.Log("Entra");
 
             if (_hiddingSpot) return;
 
+            Debug.Log("Entra");
+
+
             TextBox.Instance.ShowText(_hideText);
+
+            Debug.Log(_hideText);
 
             return;
         }
-    }
 
-    void MustEscapeState()
-    {
         if (PlayerController.Instance.GetMustEscape())
         {
             if (_isInventoryObject) return;
 
-            if(LanguageManager.Instance.Language == "en")
+            if (LanguageManager.Instance.Language == "en")
                 TextBox.Instance.ShowText("There's no time for that.");
             else if (LanguageManager.Instance.Language == "es")
                 TextBox.Instance.ShowText("No hay tiempo para eso.");
 
             return;
         }
-    }
-
-    public void Action()
-    {
-        if (Pause.Instance.IsPaused) return;
-        if (PlayerController.Instance.GetIsReading()) return;   
-        if (PlayerController.Instance.GetOnLockedDoor()) return;
-        if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
-       
-
-        if (_isInventoryObject && PlayerInventory.Instance.GetItemListLenght() == 0) return;
-              
-        if (!_isInventoryObject)
-            _notClickable = MouseBehaviour.Instance.NotClickable;
-
-        if (_notClickable && !_isInventoryObject) return; 
-
-        bool roomHasLight = _roomLightStatus.GetRoomHasLight();
-
-        MustHideState();
-        MustEscapeState();
-
-        if (PlayerController.Instance.GetMustHide()) return;
-        if (PlayerController.Instance.GetMustEscape()) return;
 
         if (!PlayerInventory.Instance.IsUsingItemMouse)
         {         

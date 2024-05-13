@@ -20,15 +20,8 @@ public class Pause : MonoBehaviour
     [SerializeField] GameObject _instructionsSpanishText;
 
     private void Awake()
-    {
-        if(Instance != null && Instance != this.gameObject)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
+    {           
         Instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public bool IsPaused { get => isPaused; set => isPaused = value; }
@@ -41,7 +34,7 @@ public class Pause : MonoBehaviour
     public void Continue()
     {
         isPaused = false;
-        GameObject.Find("Pause").transform.position = new Vector3(this.transform.position.x, _yPos);
+        GameObject.Find("PauseScreen").transform.position = new Vector3(this.transform.position.x, _yPos);
     }
     
     public void Instructions()

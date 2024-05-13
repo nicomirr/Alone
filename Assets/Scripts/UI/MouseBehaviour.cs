@@ -50,7 +50,7 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
-        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying()) 
+        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying() || PlayerController.Instance.GetIsHidding() || PlayerController.Instance.GetIsReading() || PlayerController.Instance.GetGameOver()) 
         {
             UnityEngine.Cursor.SetCursor(_blackPointer, new Vector2(_blackPointer.width / 2, _blackPointer.height / 2), CursorMode.Auto);
             return;
@@ -104,5 +104,5 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
         float objAndPlayerDistance = PlayerController.Instance.transform.position.x - objt.transform.position.x;
         _notClickable = objAndPlayerDistance > _playerMinClickableDistance || objAndPlayerDistance < -_playerMinClickableDistance;
     }
-     
+      
 }

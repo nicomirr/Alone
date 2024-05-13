@@ -47,7 +47,13 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         _audioSource = GetComponent<AudioSource>();
         _roomLightStatus = FindObjectOfType<RoomLightStatus>();
     }
-        
+
+    private void Start()
+    {
+        if(_canBeTurnedOnOff.IsTurnedOn)
+            StartCoroutine(ShowerRunning());
+    }
+
     private void Update()
     {
         Language();
@@ -147,7 +153,7 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         _showerZoom.SetActive(true);
         _backButton.SetActive(true);
                
-        _bathtub.SetActive(false);
+        _bathtub.GetComponent<BoxCollider2D>().enabled = false;
         _mirror.SetActive(false);
         _sink.SetActive(false);
         _toillete.SetActive(false);
@@ -165,8 +171,8 @@ public class Shower : MonoBehaviour, IPointerClickHandler
 
         _showerZoom.SetActive(false);
         _backButton.SetActive(false);
-              
-        _bathtub.SetActive(true);
+
+        _bathtub.GetComponent<BoxCollider2D>().enabled = true;
         _mirror.SetActive(true);
         _sink.SetActive(true);
         _toillete.SetActive(true);
@@ -191,6 +197,8 @@ public class Shower : MonoBehaviour, IPointerClickHandler
 
     void Language()
     {
+        if (_backButton == null) return;
+
         if (LanguageManager.Instance.Language == "en")
         {
             _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";

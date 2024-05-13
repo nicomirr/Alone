@@ -72,7 +72,7 @@ public class ButtonsGrid : MonoBehaviour
 
     void DisableButtons()
     {
-        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying() || PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetMustEscape())
+        if (Pause.Instance.IsPaused || ScenesInGame.Instance.GetSceneIsPlaying() || PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetMustEscape() || PlayerController.Instance.GetIsHidding())
         {
             for(int i = 0; i < _buttons.Count; ++i)
             {

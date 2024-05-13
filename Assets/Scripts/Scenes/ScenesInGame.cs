@@ -27,6 +27,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     
     bool _firstParentsRoomScenePlayed;
     bool _secondParentsRoomScenePlayed;
+    bool _secondParentsRoomSceneFix;
 
     bool _firstEntranceScenePlayed;
 
@@ -94,6 +95,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] AudioClip _phonePickup;
     [SerializeField] AudioClip _phoneDial;
     [SerializeField] AudioClip _phoneHangUp;
+    [SerializeField] GameObject _hideTutorialEnglish;
+    [SerializeField] GameObject _hideTutorialSpanish;
 
     GameObject _generalTextBackground;
 
@@ -129,7 +132,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         data.firstParentsRoomScenePlayed = _firstParentsRoomScenePlayed;
         data.firstParentsRoomScene = _firstParentsRoomScene;
         data.secondParentsRoomScenePlayed = _secondParentsRoomScenePlayed;
+        data.secondParentsRoomSceneFix = _secondParentsRoomSceneFix;
         data.firstEntranceScenePlayed = _firstEntranceScenePlayed;
+        data.firstLivingroomScenePlayed = _firstLivingroomScenePlayed;
 
     }
 
@@ -143,10 +148,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _firstParentsRoomScenePlayed = data.firstParentsRoomScenePlayed;
         _firstParentsRoomScene = data.firstParentsRoomScene;
         _secondParentsRoomScenePlayed = data.secondParentsRoomScenePlayed;
+        _secondParentsRoomSceneFix = data.secondParentsRoomSceneFix;
         _firstEntranceScenePlayed = data.firstEntranceScenePlayed;
+        _firstLivingroomScenePlayed = data.firstLivingroomScenePlayed;
     }
 
     public bool GetSceneIsPlaying() { return _sceneIsPlaying; }
+    public void SetSceneIsPlaying(bool value) { _sceneIsPlaying = value; }
     public bool GetFirstKitchenScenePlayed() { return _firstKitchenScenePlayed; }
     public bool GetFirstDinningRoomScene() { return _firstDinningRoomScene; }
     public void SetFirstDinningRoomScene(bool value) { _firstDinningRoomScene = value; }
@@ -154,7 +162,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     public void SetFirstKitchenScene(bool value) { _firstKitchenScene = value; }
     public bool GetFirstParentsRoomScene() { return _firstParentsRoomScene; }
     public void SetFirstParentsRoomScene(bool value) { _firstParentsRoomScene = value; }
-
+    public bool GetSecondParentsRoomScene() { return _secondParentsRoomScenePlayed; }
+    public void SetSecondParentsRoomScene(bool value) { _secondParentsRoomScenePlayed = value; }
 
 
     private void Update()
@@ -227,7 +236,18 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
             }
         }
 
-        if(PlayerController.Instance.GetMustEscape() && !_firstEntranceScenePlayed)
+        if (_secondParentsRoomSceneFix)
+        {
+            if (SceneManager.GetActiveScene().name == "ParentsRoom")
+            {
+                _sceneIsPlaying = true;
+
+                StartCoroutine(SecondParentsRoomSceneFix());               
+            }
+        }
+
+
+        if (PlayerController.Instance.GetMustEscape() && !_firstEntranceScenePlayed)
         {
             if(SceneManager.GetActiveScene().name == "EntranceAndStairs")
             {
@@ -378,8 +398,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _playerText.text = "";
 
-        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 34));
-        yield return new WaitForSeconds(6.7f);
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 33));
+        yield return new WaitForSeconds(6.6f);
 
         StartCoroutine(FirstDinningRoomSceneChangeToKitchen());
 
@@ -421,8 +441,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _playerText.text = "";
         yield return new WaitForSeconds(1.5f);
 
-        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 12));
-        yield return new WaitForSeconds(2.8f);
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 13));
+        yield return new WaitForSeconds(2.9f);
 
         PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingBack", true);
 
@@ -795,6 +815,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(2f);
 
         _parentsBlackScreen.SetActive(true);
+        PlayerController.Instance.SetSceneToLoad("ParentsRoom");
         yield return new WaitForSeconds(3f);
 
         _wardrobeZoomScene.SetActive(false);
@@ -807,8 +828,19 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
         _horrorSoundAfterWardrobe.Play();
         _horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
-        yield return new WaitForSeconds(4f);
+        _secondParentsRoomSceneFix = true;
+        PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator SecondParentsRoomSceneFix()
+    {
+        PlayerController.Instance.SetMustEscape(true);
+
+        yield return new WaitForSeconds(2f);
+
+        _secondParentsRoomSceneFix = false;
         if (LanguageManager.Instance.Language == "en")
             _playerText.text = "I must get out of the house as soon as possible.";
         else if (LanguageManager.Instance.Language == "es")
@@ -817,7 +849,6 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _playerText.text = "";
 
-        PlayerController.Instance.SetMustEscape(true);
 
         _sceneIsPlaying = false;
     }
@@ -826,11 +857,11 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     {
         yield return new WaitForSeconds(0.2f);
 
-        PlayerController.Instance.transform.position = new Vector2(-2f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.transform.position = new Vector2(-2.2f, PlayerController.Instance.transform.position.y);
         PlayerController.Instance.SetWalkingSpeedMod(4);
 
-        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 23));
-        yield return new WaitForSeconds(4.95f);
+        StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 24));
+        yield return new WaitForSeconds(5f);
 
         PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpen", true);
         PlayerController.Instance.GetComponent<Animator>().SetBool("doorOpenSecond", true);
@@ -928,7 +959,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1.5f);
 
         if (LanguageManager.Instance.Language == "en")
-            _playerText.text = "The phone";
+            _playerText.text = "The phone.";
         else if (LanguageManager.Instance.Language == "es")
             _playerText.text = "El teléfono.";
         yield return new WaitForSeconds(2.0f);
@@ -936,8 +967,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _playerText.text = "";
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 17));
-        yield return new WaitForSeconds(4.0f);
+        StartCoroutine(PlayerController.Instance.MoveOnScene(-1, -1, 18));
+        yield return new WaitForSeconds(3.75f);
 
         StartCoroutine(FirstEntranceSceneChangeToLivingRoom());
     }
@@ -948,7 +979,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _fadeAnimator.SetTrigger("StartTransition");
         AudioSource.PlayClipAtPoint(_doorOpenSound, PlayerController.Instance.transform.position, 0.7f);
         yield return new WaitForSecondsRealtime(1.7f);
-        PlayerController.Instance.transform.position = new Vector3(15.05f, -1.27f);
+        PlayerController.Instance.transform.position = new Vector3(15.1f, -1.27f);
         AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
         yield return new WaitForSecondsRealtime(0.3f);
         SceneManager.LoadScene("LivingRoom");
@@ -956,7 +987,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstLivingroomScene()
     {
-        PlayerController.Instance.transform.position = new Vector2(15.39f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.transform.position = new Vector3(15.1f, -1.27f);
         yield return new WaitForSeconds(0.2f);
 
         PlayerController.Instance.SetWalkingSpeedMod(4);
@@ -990,7 +1021,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.7f);
 
         PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(3.5f);
 
         PlayerController.Instance.GetComponent<Animator>().SetBool("telephonePickedup", false);
         AudioSource.PlayClipAtPoint(_phoneHangUp, PlayerController.Instance.transform.position);
@@ -1058,7 +1089,136 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.2f);
 
         _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        _searchingSound.Play();
+
+        _sceneLight.SetActive(true);
         yield return new WaitForSeconds(0.2f);
 
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "What's that sound?";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "¿Qué es ese sonido?";
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _playerText.text = "";
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "I think that \n something is coming.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "Creo que algo se acerca.";
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _playerText.text = "";
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "I must hide.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "Debo esconderme.";
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.6f);
+
+        _playerText.text = "";
+
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _hideTutorialEnglish.SetActive(true);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _hideTutorialSpanish.SetActive(true);
+        }
+
+        PlayerController.Instance.SetMustEscape(false);     
+        PlayerController.Instance.SetMustHide(true);
+                    
+    }
+
+    public void OnOkHideTutorialButtonPressed()
+    {        
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _hideTutorialEnglish.SetActive(false);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _hideTutorialSpanish.SetActive(false);
+        }
+
+        _sceneIsPlaying = false;
     }
 }

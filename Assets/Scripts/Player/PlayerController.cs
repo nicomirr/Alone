@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     bool _mustEscape;
 
+    bool _gameOver;
+
 
     public void Awake()
     {         
@@ -102,6 +104,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (Pause.Instance.IsPaused) return;
         if (_onLockedDoor) return;
         if (_isHidding) return;
+        if(_gameOver) return;
+        if (_door != null)
+        {
+           if (_door.GetIsOpeningDoor()) { return; }            
+        }           
 
         Flashlight();
 
@@ -123,6 +130,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         
     }
 
+    public bool GetGameOver() { return _gameOver; }
+    public void SetGameOver(bool value) {  _gameOver = value; }
     public bool GetMustEscape() { return _mustEscape; }
     public void SetMustEscape(bool value) { _mustEscape = value; }
     public bool GetIsHidding() { return _isHidding; }
@@ -177,6 +186,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
                 if (!ScenesInGame.Instance.GetSceneIsPlaying()) 
                 {
                     _sceneToLoad = _door.GetNewSceneName();
+                    _playerRb.velocity = new Vector2(0, 0);
                 }
 
             }
@@ -189,12 +199,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     void OnPause(InputValue value)
     {
         if (_onScene) return;
-        if (_isReading) return;        
+        if (_isReading) return;      
+        if(_gameOver) return;
 
         if (!Pause.Instance.IsPaused)
         {
             Pause.Instance.IsPaused = true;
-            GameObject.Find("Pause").transform.position = new Vector2(Pause.Instance.transform.position.x, Screen.height / 2);
+            GameObject.Find("PauseScreen").transform.position = new Vector2(Pause.Instance.transform.position.x, Screen.height / 2);
         }
     }
 
@@ -349,6 +360,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         _playerHasSideMovement = false;
         _playerAnimator.SetBool("isWalking", false);
+        _playerRb.velocity = new Vector2(0, 0);
 
     }
 }
