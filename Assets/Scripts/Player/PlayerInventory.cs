@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     [SerializeField] GameObject _glass;    
     [SerializeField] GameObject _keyParents; 
     [SerializeField] GameObject _dadsNote;
+    [SerializeField] GameObject _bathroomDrainStopper;
+    [SerializeField] GameObject _keyUnderStairs;
+    [SerializeField] GameObject _umbrella;
 
     int _itemSelected;
     ClickableObject _inventoryItem;
@@ -24,11 +28,17 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     bool _hasGlass;
     bool _hasKeyParents;
     bool _hasDadsNote;
+    bool _hasBathroomDrainStopper;
+    bool _hasKeyUnderStairs;
+    bool _hasUmbrella;
 
     bool _isUsingFlashlight;
     bool _isUsingGlass;
     bool _isUsingItemMouse;
     bool _isUsingParentsKey;
+    bool _isUsingBathroomDrainStopper;
+    bool _isUsingKeyUnderStairs;
+    bool _isUsingUmbrella;
 
     bool _glassFilled;
     [SerializeField] Sprite _glassEmpty;
@@ -57,6 +67,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         data.isUsingFlashlight = Instance._isUsingFlashlight;
         data.isUsingGlass = Instance._isUsingGlass;
         data.isUsingParentsKey = Instance._isUsingParentsKey;
+        data.isUsingBathroomDrainStopper = Instance._isUsingBathroomDrainStopper;
+        data.isUsingKeyUnderStairs = Instance._isUsingKeyUnderStairs;
+        data.isUsingUmbrella = Instance._isUsingUmbrella;
         data.glassFilled = Instance._glassFilled;
         data.fillSoundPlayed = Instance._fillSoundPlayed;       
         data.itemSelected = Instance._itemSelected;
@@ -66,12 +79,18 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         data.hasGlass = Instance._hasGlass;
         data.hasKeyParents = Instance._hasKeyParents;
         data.hasDadsNote = Instance._hasDadsNote;
+        data.hasBathroomDrainStopper = Instance._hasBathroomDrainStopper;
+        data.hasKeyUnderStairs = Instance._hasKeyUnderStairs;
+        data.hasUmbrella = Instance._hasUmbrella;
     }
     public void LoadData(GameData data)     
     {
         Instance._isUsingFlashlight = data.isUsingFlashlight;
         Instance._isUsingGlass = data.isUsingGlass;
         Instance._isUsingParentsKey = data.isUsingParentsKey;
+        Instance._isUsingBathroomDrainStopper = data.isUsingBathroomDrainStopper;
+        Instance._isUsingKeyUnderStairs = data.isUsingKeyUnderStairs;
+        Instance._isUsingUmbrella = data.isUsingUmbrella;
         Instance._glassFilled = data.glassFilled;
         Instance._fillSoundPlayed = data.fillSoundPlayed;       
         Instance._itemSelected = data.itemSelected;
@@ -81,11 +100,14 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         Instance._hasGlass = data.hasGlass;
         Instance._hasKeyParents = data.hasKeyParents;
         Instance._hasDadsNote = data.hasDadsNote;
+        Instance._hasBathroomDrainStopper = data.hasBathroomDrainStopper;
+        Instance._hasKeyUnderStairs = data.hasKeyUnderStairs;
+        Instance._hasUmbrella = data.hasUmbrella;
     }
 
     private void Start()
     {
-        if(_hasFlashlight)
+        if (_hasFlashlight)
         {
             _items.Add(_flashlight);
         }
@@ -104,12 +126,30 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         {
             _items.Add(_dadsNote);
         }
+
+        if(_hasBathroomDrainStopper)
+        {
+            _items.Add(_bathroomDrainStopper);
+        }
+
+        if(_hasKeyUnderStairs)
+        {
+            _items.Add(_keyUnderStairs);
+        }
+
+        if (_hasUmbrella)
+        {
+            _items.Add(_umbrella);
+        }
+
+        
+
     }
 
     private void Update()
-    {
-        UpdateItems();
+    {                
         ClampItems();
+        UpdateItems();
         Opacity();
         SetItem();
         ItemInMouseState();
@@ -120,9 +160,12 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     public bool IsUsingItemMouse { get => _isUsingItemMouse; set => _isUsingItemMouse = value; }
     public bool GlassFilled { get => _glassFilled; set => _glassFilled = value; }
     public bool IsUsingParentsKey { get => _isUsingParentsKey; set => _isUsingParentsKey = value; }
+    public bool IsUsingBathroomDrainStopper { get => _isUsingBathroomDrainStopper; set => _isUsingBathroomDrainStopper = value; }
     public int ItemSelected { get => _itemSelected; set => _itemSelected = value; }
+    public bool IsUsingKeyUnderStairs { get => _isUsingKeyUnderStairs; set => _isUsingKeyUnderStairs = value; }
+    public bool IsUsingUmbrella { get => _isUsingUmbrella; set => _isUsingUmbrella = value; }
 
-    public GameObject GetCurrentItem() { return _items[_itemSelected]; }
+    public GameObject GetCurrentItem() { return _items[_itemSelected];}
 
     public int GetItemListLenght() { return _items.Count; }
         
@@ -150,6 +193,18 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         {
             _hasDadsNote = true;
         }
+        else if (item.name == "DrainStopperInventory")
+        {
+            _hasBathroomDrainStopper = true;
+        }
+        else if (item.name == "KeyUnderStairsInventory")
+        {
+            _hasKeyUnderStairs = true;
+        }
+        else if (item.name == "UmbrellaInventory")
+        {
+            _hasUmbrella = true;
+        }
 
     }
 
@@ -171,6 +226,20 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         {
             _hasDadsNote = false;
         }
+        else if (_items[index].name == "DrainStopperInventory")
+        {
+            _hasBathroomDrainStopper = false;
+        }
+        else if (_items[index].name == "KeyUnderStairsInventory")
+        {
+            _hasKeyUnderStairs = false;
+            _isUsingKeyUnderStairs = false;
+            _isUsingItemMouse = false;
+        }
+        else if (_items[index].name == "UmbrellaInventory")
+        {
+            _hasUmbrella = false;
+        }
 
         _items.RemoveAt(index);
 
@@ -187,6 +256,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         _isUsingGlass = false;
         _isUsingItemMouse = false;
         _isUsingParentsKey = false;
+        _isUsingBathroomDrainStopper = false;
+        _isUsingKeyUnderStairs = false;
+        _isUsingUmbrella = false;
 
         if (_itemSelected < _items.Count - 1)
             _itemSelected++;
@@ -205,6 +277,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         _isUsingGlass = false;
         _isUsingItemMouse = false;
         _isUsingParentsKey = false;
+        _isUsingBathroomDrainStopper = false;
+        _isUsingKeyUnderStairs= false;
+        _isUsingUmbrella = false;
 
         if (_itemSelected > 0)
             _itemSelected--;
@@ -287,7 +362,11 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     {
         if (ButtonsGrid.Instance.GetCurrentAction() != "Use" && ButtonsGrid.Instance.GetCurrentAction() != "Usar")
         {
-            _isUsingGlass = false; 
+            _isUsingGlass = false;
+            _isUsingParentsKey = false;
+            _isUsingBathroomDrainStopper = false;
+            _isUsingKeyUnderStairs = false;
+            _isUsingUmbrella = false;
             _isUsingItemMouse = false;
         }
                
@@ -379,6 +458,36 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
                 GameObject.Find("DadsNote").transform.GetChild(0).gameObject.SetActive(true);                              
             }
                         
+        }
+        else if(CurrentItemName() == "DrainStopperInventory")
+        {
+            if (PlayerController.Instance.GetIsReading()) return;
+
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingBathroomDrainStopper = !_isUsingBathroomDrainStopper;
+                _isUsingItemMouse = _isUsingBathroomDrainStopper;
+            }
+        }
+        else if (CurrentItemName() == "KeyUnderStairsInventory")
+        {
+            if (PlayerController.Instance.GetIsReading()) return;
+
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingKeyUnderStairs = !_isUsingKeyUnderStairs;
+                _isUsingItemMouse = _isUsingKeyUnderStairs;
+            }
+        }
+        else if (CurrentItemName() == "UmbrellaInventory")
+        {
+            if (PlayerController.Instance.GetIsReading()) return;
+
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingUmbrella = !_isUsingUmbrella;
+                _isUsingItemMouse = _isUsingUmbrella;
+            }
         }
 
     }

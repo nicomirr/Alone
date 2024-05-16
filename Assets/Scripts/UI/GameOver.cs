@@ -18,6 +18,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] AudioClip _jumpScareSound;
     [SerializeField] GameObject _enemy;
     [SerializeField] AudioClip _breath;
+    [SerializeField] AudioClip _footstep;
 
     [SerializeField] Image _gameOverScreen;
     [SerializeField] GameObject _gameOverText;
@@ -50,9 +51,23 @@ public class GameOver : MonoBehaviour
         _gameOverScreen.color = color;
         _enemy.SetActive(false);
         GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
-        _rain.Stop();
-        //AudioSource.PlayClipAtPoint(_breath, PlayerController.Instance.transform.position);
+        _rain.Stop();       
         yield return new WaitForSeconds(0.2f);
+        
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.4f);
+
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.4f);
+
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.4f);
+
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(0.4f);
+
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        yield return new WaitForSeconds(1f);
 
         color.a = 1;
         _gameOverScreen.color = color;

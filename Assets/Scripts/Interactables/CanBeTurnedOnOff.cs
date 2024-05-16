@@ -21,6 +21,8 @@ public class CanBeTurnedOnOff : MonoBehaviour, IPointerClickHandler, IDataPersis
     RoomLightStatus _roomLightStatus;
 
     bool _notClickable;
+
+    bool _disable;
     
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class CanBeTurnedOnOff : MonoBehaviour, IPointerClickHandler, IDataPersis
 
     public bool IsTurnedOn { get => _isTurnedOn; set => _isTurnedOn = value; }
     public bool CanBeTurnedOnOrOff { get => _canBeTurnedOnOrOff; set => _canBeTurnedOnOrOff = value; }
+    public bool Disable { get => _disable; set => _disable = value; }
 
     private void Update()
     {
@@ -96,7 +99,9 @@ public class CanBeTurnedOnOff : MonoBehaviour, IPointerClickHandler, IDataPersis
             }
         }
         else
-        { 
+        {
+            if (_disable) return;
+
             if (ButtonsGrid.Instance.GetCurrentAction() == "Turn On" || ButtonsGrid.Instance.GetCurrentAction() == "Turn Off" || ButtonsGrid.Instance.GetCurrentAction() == "Encender" || ButtonsGrid.Instance.GetCurrentAction() == "Apagar")
             {
                 if(LanguageManager.Instance.Language == "en")

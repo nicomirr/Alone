@@ -60,10 +60,12 @@ public class ObjectsInMouseBehaviour : MonoBehaviour, IPointerClickHandler, IDat
         if (PlayerController.Instance.GetOnLockedDoor()) return;
         if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
 
+        GameObject obj = null;
+
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit.collider != null)
         {
-            GameObject obj = hit.collider.gameObject;
+            obj = hit.collider.gameObject;
             MouseDistanceMath(obj);                        
         }
 
@@ -121,6 +123,10 @@ public class ObjectsInMouseBehaviour : MonoBehaviour, IPointerClickHandler, IDat
                 PlayerInventory.Instance.IsUsingGlass = false;
                 PlayerInventory.Instance.IsUsingItemMouse = false;
                 _canBeWatered = false;
+            }
+            else if(PlayerInventory.Instance.IsUsingBathroomDrainStopper && obj.GetComponent<DrainStopper>())
+            {
+                return;
             }
             else
             {

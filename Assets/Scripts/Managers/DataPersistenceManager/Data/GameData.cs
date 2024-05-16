@@ -27,6 +27,9 @@ public class GameData
     public bool isUsingFlashlight;
     public bool isUsingGlass;
     public bool isUsingParentsKey;
+    public bool isUsingBathroomDrainStopper;
+    public bool isUsingKeyUnderStairs;
+    public bool isUsingUmbrella;
     public bool glassFilled;
     public bool fillSoundPlayed;    
     public int itemSelected;
@@ -35,6 +38,9 @@ public class GameData
     public bool hasGlass;
     public bool hasKeyParents;
     public bool hasDadsNote;
+    public bool hasBathroomDrainStopper;
+    public bool hasKeyUnderStairs;
+    public bool hasUmbrella;
 
     //ClickableObject
     public SerializableDictionary<string, bool> textFirstSetup;
@@ -128,6 +134,11 @@ public class GameData
 
     //Respiration
     public bool respirationTutorialShown;
+
+    //Shower
+    public bool hasDrainStopper;
+    public bool showerKeyPicked;
+    public bool waterFilled;
 
     public GameData() 
     {

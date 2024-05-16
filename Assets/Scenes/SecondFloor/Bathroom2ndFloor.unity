@@ -348,8 +348,24 @@ PrefabInstance:
       value: "\xBFQu\xE9?"
       objectReference: {fileID: 0}
     - target: {fileID: 5263788181492657471, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263788181492657471, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263788181492657471, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263788181492657471, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263788181492657471, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,7 +414,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1415443676}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2522291665482081516, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1518813073}
   m_SourcePrefab: {fileID: 100100000, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
 --- !u!1001 &236213242
 PrefabInstance:
@@ -445,8 +464,12 @@ PrefabInstance:
       value: 4a4b1c46-5ee8-4182-899f-7af31bf3cfe9
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 5752767226684771832, guid: cb22ebe18a1225748a3875490a465855, type: 3}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _useText
-      value: I don't want to have a bath right now.
+      value: I don't want to have                     a bath right now.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _openText
@@ -474,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _turnOnText
-      value: ...
+      value: I don't need to anymore.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeOpened
@@ -482,11 +505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _turnOffText
-      value: ...
+      value: It's off.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseText
-      value: I don't want to have a bath right now.
+      value: I don't want to have                        a bath right now.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeSearched
@@ -495,6 +518,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadText
       value: No words, no letters.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hasObjectText
+      value: A key was under the rug.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstLookAtText
@@ -506,23 +533,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstSearchText
-      value: Just a normal bathtub.
+      value: Nothing.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
-      value: 
+      value: I don't need to anymore.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeTurnedOnOff
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstTurnOffText
+      value: It's off.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHasObjectText
+      value: A key was under the rug.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
-      value: "No quiero ba\xF1arme ahora mismo."
+      value: "No quiero ba\xF1arme                         ahora mismo."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadTextSpanish
       value: No hay palabras ni letras.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hasObjectTextSpanish
+      value: "Hab\xEDa una llave                       debajo de la alformbra."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstLookAtTextSpanish
@@ -534,11 +573,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstSearchTextSpanish
-      value: "Solo una ba\xF1era normal."
+      value: Nada.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstTurnOnTextSpanish
+      value: No necesito encenderla denuevo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstTurnOffTextSpanish
+      value: "Est\xE1 apagada."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstHasObjectTextSpanish
-      value: 
+      value: "Hab\xEDa una llave debajo                        de la alformbra."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeSearchedInitialStatus
@@ -632,7 +679,7 @@ MonoBehaviour:
   _closeSprite: {fileID: 21300000, guid: cb3cb50cb6a2eca4aa8f591c231dda89, type: 3}
   _openSound: {fileID: 8300000, guid: fd29ed0b98805f54a93852d3a5085ab7, type: 3}
   _closeSound: {fileID: 8300000, guid: 01b50eeb44bbf6b42b9a7b3ac74f3704, type: 3}
-  _volume: 0.7
+  _volume: 1
   _isOpen: 0
   _appearence: {fileID: 810848661}
 --- !u!114 &236213251
@@ -2701,6 +2748,10 @@ PrefabInstance:
       propertyPath: _inventoryData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2978523240498733217, guid: 8892b617f8b65d0498e72bf0236f726b, type: 3}
+      propertyPath: _keyUnderStairs
+      value: 
+      objectReference: {fileID: 5752767226684771832, guid: cb22ebe18a1225748a3875490a465855, type: 3}
     - target: {fileID: 4847227446631321769, guid: 8892b617f8b65d0498e72bf0236f726b, type: 3}
       propertyPath: _instructions
       value: 
@@ -4785,7 +4836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952652817230242360, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_Size.x
-      value: 0.90340996
+      value: 0.8983681
       objectReference: {fileID: 0}
     - target: {fileID: 952652817230242360, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_Size.y
@@ -4793,7 +4844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952652817230242360, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_Offset.x
-      value: 0.10491896
+      value: -0.06902182
       objectReference: {fileID: 0}
     - target: {fileID: 952652817230242360, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_Offset.y
@@ -4968,6 +5019,25 @@ PrefabInstance:
       addedObject: {fileID: 2108623305}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+--- !u!1 &1518813072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2522291665482081516, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+  m_PrefabInstance: {fileID: 163659897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1518813073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518813072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5865aa0853a777a4d8958c656ba5e1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bathtub: {fileID: 236213243}
+  _drainStopperOnDrain: {fileID: 21300000, guid: 9c30673da766aa1409dd7174aeee05d0, type: 3}
 --- !u!114 &1536073625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6938934521977295475, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
@@ -5691,6 +5761,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1974542596570511536, guid: feebdf92b283a9b4c93611d12f797954, type: 3}
   m_PrefabInstance: {fileID: 3184963823915428601}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1860654603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.137398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.255845
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.07404327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452001039755429858, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286975598357391043, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
+      propertyPath: m_Name
+      value: AudioSourceHorror
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8d98d6bc13a5d94fbd9dc49c5509fb3, type: 3}
 --- !u!114 &1862401498 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5371352345129516956, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
@@ -6923,3 +7050,4 @@ SceneRoots:
   - {fileID: 331418327}
   - {fileID: 2394583598195325007}
   - {fileID: 763658590}
+  - {fileID: 1860654603}

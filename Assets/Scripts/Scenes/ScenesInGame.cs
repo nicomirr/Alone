@@ -85,7 +85,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject _parentsBlackScreen;
     [SerializeField] GameObject _wardrobe;
     [SerializeField] Sprite _wardrobeOpen;
-    [SerializeField] AudioSource _horrorSoundAfterWardrobe;
+    AudioSource _horrorSoundAfterWardrobe;
 
     [Header("EntranceAndStairsFirstScene")]
     [SerializeField] AudioClip _tryingToOpenDoor;
@@ -97,6 +97,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] AudioClip _phoneHangUp;
     [SerializeField] GameObject _hideTutorialEnglish;
     [SerializeField] GameObject _hideTutorialSpanish;
+    [SerializeField] GameObject _hideTutorialOkButton;
 
     GameObject _generalTextBackground;
 
@@ -114,7 +115,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _generalText = GameObject.Find("GeneralText").GetComponent<TextMeshPro>();
 
         _generalTextBackground = GameObject.Find("GeneralTextBackground");
-
+        _horrorSoundAfterWardrobe = GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -354,7 +355,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     }
 
     IEnumerator FirstDinningRoomScene()
-    {        
+    {
+        PlayerController.Instance.SetWalkingSpeedMod(2.7f);
+
         _kettleAudioSource.volume = 0.08f;
         _kettleAudioSource.Play();
         yield return new WaitForSeconds(2);
@@ -547,7 +550,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1.0f);
 
         if(LanguageManager.Instance.Language == "en")
-            _playerText.text = "Something's not wright.";
+            _playerText.text = "Something's not right.";
         else if(LanguageManager.Instance.Language == "es")
             _playerText.text = "Algo no anda bien.";
 
@@ -597,7 +600,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     }
 
     IEnumerator FirstParentsRoomScene()
-    {               
+    {
+        PlayerController.Instance.SetWalkingSpeedMod(2.7f);
+
         yield return new WaitForSeconds(1);
          
         StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 2));
@@ -1200,8 +1205,10 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         }
         else if (LanguageManager.Instance.Language == "es")
         {
-            _hideTutorialSpanish.SetActive(true);
+            _hideTutorialSpanish.SetActive(true);            
         }
+
+        _hideTutorialOkButton.SetActive(true);
 
         PlayerController.Instance.SetMustEscape(false);     
         PlayerController.Instance.SetMustHide(true);
@@ -1218,6 +1225,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         {
             _hideTutorialSpanish.SetActive(false);
         }
+
+        _hideTutorialOkButton.SetActive(false);
 
         _sceneIsPlaying = false;
     }

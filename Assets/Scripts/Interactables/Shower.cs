@@ -6,13 +6,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Shower : MonoBehaviour, IPointerClickHandler
+public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     Animator _animator;
     CanBeOpen _canBeOpen;
     CanBeTurnedOnOff _canBeTurnedOnOff;
-    AudioSource _audioSource;    
-    bool _coroutineRunning;
+    AudioSource _audioSource;
+    bool showerCoroutineRunning;
 
     RoomLightStatus _roomLightStatus;
 
@@ -37,8 +37,15 @@ public class Shower : MonoBehaviour, IPointerClickHandler
     [SerializeField] GameObject _toillete;
 
     [SerializeField] Texture2D _blackPointer;
-       
-    
+
+    bool _hasDrainStopper;
+    bool _waterFilled;
+    bool _keyPicked;
+
+    TextMeshPro _playerText;
+
+    public bool HasDrainStopper { get => _hasDrainStopper; set => _hasDrainStopper = value; }
+
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -46,10 +53,31 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         _canBeTurnedOnOff = GetComponent<CanBeTurnedOnOff>();
         _audioSource = GetComponent<AudioSource>();
         _roomLightStatus = FindObjectOfType<RoomLightStatus>();
+        _playerText = GameObject.Find("PlayerText").GetComponent<TextMeshPro>();
+    }
+
+    public void LoadData(GameData data)
+    {
+        _hasDrainStopper = data.hasDrainStopper;
+        _keyPicked = data.showerKeyPicked;
+        _waterFilled = data.waterFilled;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.hasDrainStopper = _hasDrainStopper;
+        data.showerKeyPicked = _keyPicked;
+        data.waterFilled = _waterFilled;
     }
 
     private void Start()
     {
+        if(_waterFilled) 
+        {
+            _animator.SetBool("bathtubFilled", true);
+            return; 
+        }
+
         if(_canBeTurnedOnOff.IsTurnedOn)
             StartCoroutine(ShowerRunning());
     }
@@ -59,7 +87,9 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         Language();
         CanBeTurnedOnOffState();
         ShowerCurtainState();
-        ShowerRunningState();        
+        ShowerRunningState();
+        KeyPickedStatus();
+        WaterFilled();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -67,7 +97,9 @@ public class Shower : MonoBehaviour, IPointerClickHandler
         if (Pause.Instance.IsPaused) return;
 
         if (ButtonsGrid.Instance.GetCurrentAction() == "Search" || ButtonsGrid.Instance.GetCurrentAction() == "Buscar")                    
-            ZoomInBath();                    
+            ZoomInBath();
+
+        KeyPickedStatus();
     }
 
     void CanBeTurnedOnOffState()
@@ -86,11 +118,18 @@ public class Shower : MonoBehaviour, IPointerClickHandler
 
     void ShowerRunningState()
     {
+        if(_waterFilled)
+        {
+            _canBeTurnedOnOff.CanBeTurnedOnOrOff = false;
+            _canBeTurnedOnOff.Disable = true;
+            return;
+        }
+
         if (_canBeTurnedOnOff.IsTurnedOn)
         {
             if (!_canBeOpen.IsOpen) return;
-
-            if (!_coroutineRunning)
+                      
+            if (!showerCoroutineRunning)
                 StartCoroutine(ShowerRunning());
         }
         else
@@ -100,13 +139,44 @@ public class Shower : MonoBehaviour, IPointerClickHandler
             _animator.SetBool("opened", false);
             _animator.SetBool("running", false);
             _audioSource.Stop();
-            _coroutineRunning = false;
+            showerCoroutineRunning = false;
         }
+    }
+
+    void WaterFilled()
+    {
+        if(_hasDrainStopper && !_waterFilled && showerCoroutineRunning)
+        {            
+            GetComponent<ClickableObject>().CanBeTurnedOnOff = false;
+
+            StartCoroutine(RugLoose());
+
+            
+        }
+        else if(_waterFilled && !_keyPicked)
+        {
+            _animator.SetBool("opened", false);
+            _animator.SetBool("running", false);
+            _audioSource.Stop();
+            showerCoroutineRunning = false;
+            _animator.SetBool("bathtubFilled", true);
+
+            GetComponent<ClickableObject>().CanBeSearched = false;
+            GetComponent<ClickableObject>().HasObject = true;
+
+        }
+    }
+
+    void KeyPickedStatus()
+    {
+        if (_waterFilled && ButtonsGrid.Instance.GetCurrentAction() == "Search" || ButtonsGrid.Instance.GetCurrentAction() == "Buscar")
+            _keyPicked = true;
     }
 
     void ZoomInBath()
     {
         if (!_roomLightStatus.GetRoomHasLight()) return;
+        if (_waterFilled) { return; }
 
         _notClickable = MouseBehaviour.Instance.NotClickable;
         if (_notClickable) return;
@@ -187,12 +257,35 @@ public class Shower : MonoBehaviour, IPointerClickHandler
 
     IEnumerator ShowerRunning()
     {
-        _coroutineRunning = true;
+        showerCoroutineRunning = true;
 
         _audioSource.Play();
         _animator.SetBool("opened", true);
         yield return new WaitForSeconds(0.07f);
         _animator.SetBool("running", true);
+    }
+
+    IEnumerator RugLoose()
+    {
+        ScenesInGame.Instance.SetSceneIsPlaying(true);
+        yield return new WaitForSeconds(2.3f);
+
+        _waterFilled = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "The rug got loose. \nI can get the item now.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "La alfombra se aflojó. \nAhora puedo agarrar el objeto.";
+
+        yield return new WaitForSeconds(4f);
+
+        _playerText.text = "";
+
+        ScenesInGame.Instance.SetSceneIsPlaying(false);
+
+
     }
 
     void Language()
@@ -208,4 +301,5 @@ public class Shower : MonoBehaviour, IPointerClickHandler
             _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
         }
     }
+       
 }

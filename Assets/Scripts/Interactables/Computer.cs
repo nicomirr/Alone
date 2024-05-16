@@ -44,7 +44,7 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
 
 
-    string _password = "6432";
+    string _password = "5947";
     string _typedPassword;
     bool _correctPasswordEntered;
 

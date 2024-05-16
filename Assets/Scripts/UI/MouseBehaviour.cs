@@ -13,6 +13,9 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] Texture2D _glassEmptyMouse;
     [SerializeField] Texture2D _glassFullMouse;
     [SerializeField] Texture2D _parentsRoomKey;
+    [SerializeField] Texture2D _bathroomDrainStopper;
+    [SerializeField] Texture2D _underStairsRoomKey;
+    [SerializeField] Texture2D _umbrella;
 
     [Header("Click Distance")]
     [SerializeField] float _playerMinClickableDistance = 3;
@@ -69,6 +72,24 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
         else if(PlayerInventory.Instance.IsUsingParentsKey)
         {
             UnityEngine.Cursor.SetCursor(_parentsRoomKey, new Vector2(_parentsRoomKey.width / 2, _parentsRoomKey.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if(PlayerInventory.Instance.IsUsingBathroomDrainStopper)
+        {
+            UnityEngine.Cursor.SetCursor(_bathroomDrainStopper, new Vector2(_bathroomDrainStopper.width / 2, _bathroomDrainStopper.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if (PlayerInventory.Instance.IsUsingKeyUnderStairs)
+        {
+            UnityEngine.Cursor.SetCursor(_underStairsRoomKey, new Vector2(_underStairsRoomKey.width / 2, _underStairsRoomKey.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if (PlayerInventory.Instance.IsUsingUmbrella)
+        {
+            UnityEngine.Cursor.SetCursor(_umbrella, new Vector2(_umbrella.width / 2, _umbrella.height / 2), CursorMode.Auto);
             _hasJustUsedObject = true;
             return;
         }

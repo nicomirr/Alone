@@ -250,6 +250,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
     public string OpenText { get => _openText; set => _openText = value; }
     public string CloseText { get => _closeText; set => _closeText = value; }
     public string UseText { get => _useText; set => _useText = value; }
+    public bool HasObject { get => _hasObject; set => _hasObject = value; }
     public string HasObjectText { get => _hasObjectText; set => _hasObjectText = value; }
     public bool Light { get => _isLight; set => _isLight = value; }
     public bool InventoryObject { get => _isInventoryObject; set => _isInventoryObject = value; }

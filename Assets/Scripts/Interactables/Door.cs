@@ -277,7 +277,9 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
     void UnlockDoor()
     {
+        Debug.Log("entra");
         if (PlayerInventory.Instance.GetItemListLenght() <= 0) return;
+
 
         if(_isLocked && PlayerInventory.Instance.CurrentItemName() == _doorKeyName && PlayerInventory.Instance.IsUsingItemMouse)
         {

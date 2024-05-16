@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RespiratorObjective : MonoBehaviour
-{   
+{
+    [SerializeField] bool _isTutorial;
+
     int _direction = -1;
     [SerializeField] float _speed;
     [SerializeField] Respiration _respiration;
@@ -16,6 +18,11 @@ public class RespiratorObjective : MonoBehaviour
 
     void Movement()
     {
+        if(_isTutorial )
+        {
+            this.transform.Translate(new Vector2(0, _speed * _direction * Time.deltaTime));
+        }
+
         if (_respiration.Start)
         {
             this.transform.Translate(new Vector2(0, _speed * _direction * Time.deltaTime));
@@ -34,10 +41,14 @@ public class RespiratorObjective : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == "Respirator")
-        {
-            _respiration.Start =false;
+        {            
+            _respiration.Start = false;
             Destroy(collision.gameObject);
             _gameOver.SetActive(true);
+        }
+        else if(collision.name == "RespiratorTutorial")
+        {
+            collision.gameObject.SetActive(false);
         }
 
     }

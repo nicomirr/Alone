@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator EnemyMovement()
     {
         _respiration.SetActive(true);
+        yield return new WaitUntil(() => _respiration.GetComponent<Respiration>().TutorialShown == true);
 
         yield return new WaitForSeconds(3f);
 
@@ -49,7 +50,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
                             
         ScenesInGame.Instance.SetSceneIsPlaying(true);      
-        yield return new WaitUntil(() => _respiration.GetComponent<Respiration>().TutorialShown == true);
 
         ScenesInGame.Instance.SetSceneIsPlaying(false);
 
@@ -96,10 +96,11 @@ public class Enemy : MonoBehaviour
         _blackScreen.SetActive(true);
         yield return new WaitForSeconds(2f);
 
-        //if(GameObject.Find("AudioSourceHorror"))
-        //{
-        //    GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
-        //}
+        if (GameObject.Find("AudioSourceHorror"))
+        {
+            GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
+            GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().GetComponent<AudioSourceHorror>().IsPlaying = false;
+        }
 
         Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
         color.a = 1;

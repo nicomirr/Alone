@@ -276,6 +276,9 @@ MonoBehaviour:
   _glass: {fileID: 5752767226684771832, guid: 3dc1fd5f6ebb4db4fbf63e38a9f57b56, type: 3}
   _keyParents: {fileID: 5752767226684771832, guid: 3be90ceebb71cd54db99d414d5583afc, type: 3}
   _dadsNote: {fileID: 5752767226684771832, guid: ef013c48e5173f84abd1dbaa960f3158, type: 3}
+  _bathroomDrainStopper: {fileID: 5752767226684771832, guid: 8cf48578d4aa3e2489326d1339ec5562, type: 3}
+  _keyUnderStairs: {fileID: 5752767226684771832, guid: cb22ebe18a1225748a3875490a465855, type: 3}
+  _umbrella: {fileID: 5752767226684771832, guid: 810682b2673505149b4770fe0f7756f8, type: 3}
   _glassEmpty: {fileID: 21300000, guid: 3c06b0582bfce464daef5926a01b53d6, type: 3}
   _glassWithWater: {fileID: 21300000, guid: 841242777815bfa4ab4f92897b2c9bb1, type: 3}
   _glassFill: {fileID: 8300000, guid: 9e49b7f33403cb8458a30eec5cc91aad, type: 3}
