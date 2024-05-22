@@ -817,7 +817,7 @@ PrefabInstance:
       objectReference: {fileID: -2048339610, guid: 432c63beb8b59164b94cda1167abf4d2, type: 3}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.58
+      value: 5.518
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1151,11 +1151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631192744147288821, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -694
+      value: -319
       objectReference: {fileID: 0}
     - target: {fileID: 7631192744147288821, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -258
+      value: -121
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_UiScaleMode
@@ -1163,11 +1163,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1920
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_ReferenceResolution.y
-      value: 1080
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1818,6 +1818,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaintingWedding
       objectReference: {fileID: 0}
+    - target: {fileID: 1677917641199367536, guid: 1504a001d561f6c45907e12164452b11, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091020027392254445, guid: 1504a001d561f6c45907e12164452b11, type: 3}
+      propertyPath: _firstLookAtText
+      value: 'My parents wedding day.                          A date is written:
+        "September 15. 1968."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091020027392254445, guid: 1504a001d561f6c45907e12164452b11, type: 3}
+      propertyPath: _firstLookAtTextSpanish
+      value: "El d\xEDa de bodas de mis padres.                          Hay una
+        fecha escrita: \"Septiembre 15. 1968.\""
+      objectReference: {fileID: 0}
     - target: {fileID: 4754852424265397753, guid: 1504a001d561f6c45907e12164452b11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.3287895
@@ -2284,6 +2298,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1099436235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1264317919
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 143976229390374848, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_Name
+      value: AspectRatioFix
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.727568
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.50692785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.068825334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
 --- !u!1001 &1266069041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6272,7 +6343,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.64
+      value: 9.518
       objectReference: {fileID: 0}
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6356,7 +6427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.64
+      value: 9.518
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6676,3 +6747,4 @@ SceneRoots:
   - {fileID: 79820157}
   - {fileID: 1149068231}
   - {fileID: 1020064741}
+  - {fileID: 1264317919}

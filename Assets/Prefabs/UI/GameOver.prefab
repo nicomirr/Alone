@@ -79,7 +79,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -124,6 +124,7 @@ MonoBehaviour:
   _jumpScareSound: {fileID: 8300000, guid: b20d99f9524feef4394fcd29ed628fb0, type: 3}
   _enemy: {fileID: 0}
   _breath: {fileID: 8300000, guid: 10b582b472a217f4fb1baf1f686e2ec1, type: 3}
+  _footstep: {fileID: 8300000, guid: e27c0fe2920f7d543a4933789b85ad0c, type: 3}
   _gameOverScreen: {fileID: 9111111834749362486}
   _gameOverText: {fileID: 8171119783789382432}
 --- !u!1 &8171119783789382432
@@ -144,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6248562267025379319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6232379461449132605
@@ -219,8 +220,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

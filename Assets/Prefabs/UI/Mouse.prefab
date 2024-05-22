@@ -52,4 +52,5 @@ MonoBehaviour:
   _bathroomDrainStopper: {fileID: 2800000, guid: 0ad8dc9a9fa651b4f998fe00bc21fd9c, type: 3}
   _underStairsRoomKey: {fileID: 2800000, guid: 3f001156feb464646ba239598b694429, type: 3}
   _umbrella: {fileID: 2800000, guid: cda34619f2f497a44a25dacbbb22362a, type: 3}
+  _umbrellaHandle: {fileID: 2800000, guid: 0df768b3ad487764bbaa28265d5358db, type: 3}
   _playerMinClickableDistance: 3

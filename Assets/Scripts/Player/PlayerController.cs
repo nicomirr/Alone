@@ -175,7 +175,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (_door != null)
             if (_door.GetIsOpeningDoor()) { return; }
 
-        if (_isTalking) return;               
+        if (_isTalking) return;
+        if (_onLockedDoor) return;
               
         if (_playerBodyCollider.IsTouchingLayers(LayerMask.GetMask("Doors")))
         {            

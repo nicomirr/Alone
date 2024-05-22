@@ -30,6 +30,7 @@ public class GameData
     public bool isUsingBathroomDrainStopper;
     public bool isUsingKeyUnderStairs;
     public bool isUsingUmbrella;
+    public bool isUsingUmbrellaHandle;
     public bool glassFilled;
     public bool fillSoundPlayed;    
     public int itemSelected;
@@ -41,6 +42,7 @@ public class GameData
     public bool hasBathroomDrainStopper;
     public bool hasKeyUnderStairs;
     public bool hasUmbrella;
+    public bool hasUmbrellaHandle;
 
     //ClickableObject
     public SerializableDictionary<string, bool> textFirstSetup;
@@ -110,9 +112,6 @@ public class GameData
     //Computer
     public bool correctPasswordEntered;    
 
-    //Notepad
-    public bool notepadOpened;
-
     //Mouse
     public bool notClickable;
     public bool hasJustusedObject;
@@ -140,6 +139,12 @@ public class GameData
     public bool showerKeyPicked;
     public bool waterFilled;
 
+    //PCZoomAnimation
+    public bool notepadOpened;
+
+    //Notepad
+    public bool notepadBeenOpened;
+
     public GameData() 
     {
         //LanguageManager
@@ -155,7 +160,27 @@ public class GameData
         //Lights
         lightsOn = new SerializableDictionary<string, bool>();
         firstLightsStatusCheck = new SerializableDictionary<string, bool>();
-                
+
+        //Inventory
+        isUsingFlashlight = false;
+        isUsingGlass = false;
+        isUsingParentsKey = false;
+        isUsingBathroomDrainStopper = false;
+        isUsingKeyUnderStairs = false;
+        isUsingUmbrella = false;
+        isUsingUmbrellaHandle = false;
+        glassFilled = false;
+        fillSoundPlayed = false;
+        itemSelected = 0;        
+        hasFlashlight = false;
+        hasGlass = false;
+        hasKeyParents = false;
+        hasDadsNote = false;
+        hasBathroomDrainStopper = false;
+        hasKeyUnderStairs = false;
+        hasUmbrella = false;
+        hasUmbrellaHandle = false;
+
         //ClickableObject
         hasObject = new SerializableDictionary<string, bool>();
         firstHasObjectStatusCheck = new SerializableDictionary<string, bool>();

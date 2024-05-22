@@ -291,12 +291,7 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
             else if (LanguageManager.Instance.Language == "es")
                 TextBox.Instance.ShowText("La desbloqueé.");
 
-            int itemToDestroy = PlayerInventory.Instance.ItemSelected;
-
-            PlayerInventory.Instance.ItemSelected = 0;
-            PlayerInventory.Instance.IsUsingItemMouse = false;
-            PlayerInventory.Instance.IsUsingParentsKey = false;
-            PlayerInventory.Instance.RemoveItem(itemToDestroy);
+            PlayerInventory.Instance.DestroyCurrentItem();
         }
     }
        
@@ -330,13 +325,13 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                 {
                     _lockedTexts.Add("I can hear something inside.");
                     _lockedTexts.Add("The key must be somewhere around the house.");
-                    _lockedTexts.Add("Maybe I can find something on my dads desk or computer in the living room.");
+                    _lockedTexts.Add("I must get inside.");
                 }
                 if (LanguageManager.Instance.Language == "es")
                 {
                     _spanishLockedTexts.Add("Puedo escuchar algo dentro.");
                     _spanishLockedTexts.Add("La llave debe estar en algún lugar de la casa.");
-                    _spanishLockedTexts.Add("Tal vez encuentre algo en el escritorio de mi papá o en el ordenador del living.");
+                    _spanishLockedTexts.Add("Debo lograr entrar.");
 
                 }
 

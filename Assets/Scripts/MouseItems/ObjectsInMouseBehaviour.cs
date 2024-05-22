@@ -128,6 +128,10 @@ public class ObjectsInMouseBehaviour : MonoBehaviour, IPointerClickHandler, IDat
             {
                 return;
             }
+            else if(PlayerInventory.Instance.IsUsingUmbrella && obj.GetComponent<AtticDoor>())
+            {
+                return;
+            }
             else
             {
                 if (roomHasLight)

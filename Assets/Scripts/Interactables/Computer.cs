@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     Animator _computerAnimator;
-    Animator _computerZoomAnimator;
     CanBeTurnedOnOff _canBeTurnedOnOff;
     bool _notClickable;
 
@@ -42,20 +41,16 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
     [SerializeField] GameObject loginButton;
     [SerializeField] GameObject forgotPasswordButton;
 
-
-
-    string _password = "5947";
+    string _password = "5947";   //5947
     string _typedPassword;
     bool _correctPasswordEntered;
 
+    bool _zoomIn;
 
     private void Awake()
     {
         _computerAnimator = GetComponentInChildren<Animator>();
-        _computerZoomAnimator = _computerZoom.GetComponent<Animator>();
-
         _canBeTurnedOnOff = GetComponent<CanBeTurnedOnOff>();
-
         _roomLightStatus = GetComponent<RoomLightStatus>();
     }
 
@@ -69,13 +64,18 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _correctPasswordEntered = data.correctPasswordEntered;
     }
 
+    public bool CorrectPasswordEntered { get => _correctPasswordEntered; set => _correctPasswordEntered = value; }
+    public bool ZoomIn { get => _zoomIn; set => _zoomIn = value; }
+
     private void Update()
     {
+        PauseStatus();
         Language();
         ChangeStatus();
 
         if (_inputField == null) return;
         _typedPassword = _inputField.GetComponent<TMP_InputField>().text;
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -92,14 +92,12 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
             if (_correctPasswordEntered)
             {
-                _computerZoomAnimator.SetBool("isUnlocked", true);
                 _computerAnimator.SetBool("unlocked", true);
                 _notepad.GetComponent<BoxCollider2D>().enabled = true;
 
-                if (_notepad.GetComponent<Notepad>().NotepadOpened)
+                if (_notepad.GetComponent<Notepad>().NotepadBeenOpened)
                 {
                     _computerAnimator.SetBool("notepadBeenOpened", true);
-                    _computerZoomAnimator.SetBool("notepadOpen", true);
                 }
             }
         }
@@ -133,6 +131,8 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         CinemachineTransposer transposer = FindObjectOfType<CinemachineTransposer>();
         transposer.m_XDamping = 0;
 
+        _zoomIn = true;
+
         PlayerController.Instance.SetLookingBack(false);
         PlayerController.Instance.SetLookingFront(false);
         PlayerController.Instance.SetIsInteractingWithEnviroment(true);
@@ -148,21 +148,24 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _sofa.SetActive(false);
         _tv.SetActive(false);
 
-        Color color = _computerZoom.GetComponent<SpriteRenderer>().color;
+        Color color = _computerZoom.GetComponent<Image>().color;
         color.a = 1;
 
-        _computerZoom.GetComponent<SpriteRenderer>().color = color;
-        _computerZoom.GetComponent<BoxCollider2D>().enabled = true;
+        _computerZoom.GetComponent<Image>().color = color;
+        //_computerZoom.GetComponent<BoxCollider2D>().enabled = true;
 
         if (!_correctPasswordEntered)
+        {
             _computerLockedInterface.SetActive(true);
+
+        }
         else
         {
             _computerLockedInterface.SetActive(false);
             _computerUnlockedInterface.SetActive(true);
             _notepad.GetComponent<BoxCollider2D>().enabled = true;
 
-            if (_notepad.GetComponent<Notepad>().NotepadOpened)
+            if (_notepad.GetComponent<Notepad>().NotepadBeenOpened)
             {
                 _notepad.GetComponent<BoxCollider2D>().enabled = false;
                 _notepadText.SetActive(true);
@@ -175,6 +178,7 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
     public void ForgotPasswordButton()
     {
         GameObject.Find("ComputerZoomInterfaceLocked").transform.GetChild(4).gameObject.SetActive(true);
+
     }
 
     public void LogInButton()
@@ -188,12 +192,15 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         else
         {
             _inputField.GetComponent<TMP_InputField>().text = "";
+            
         }
 
     }
 
     public void BackButton()
     {
+        _zoomIn = false;
+
         PlayerController.Instance.transform.position = _characterPosNearComputer;
         PlayerController.Instance.SetIsInteractingWithEnviroment(false);
 
@@ -206,11 +213,11 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _sofa.SetActive(true);
         _tv.SetActive(true);
 
-        Color color = _computerZoom.GetComponent<SpriteRenderer>().color;
+        Color color = _computerZoom.GetComponent<Image>().color;
         color.a = 0;
 
-        _computerZoom.GetComponent<SpriteRenderer>().color = color;
-        _computerZoom.GetComponent<BoxCollider2D>().enabled = false;
+        _computerZoom.GetComponent<Image>().color = color;
+        //_computerZoom.GetComponent<BoxCollider2D>().enabled = false;
         _computerLockedInterface.SetActive(false);
         _computerUnlockedInterface.SetActive(false);
         _notepad.GetComponent<BoxCollider2D>().enabled = false;
@@ -219,7 +226,7 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         CinemachineTransposer transposer = FindObjectOfType<CinemachineTransposer>();
         transposer.m_XDamping = 5;
 
-        _computerZoom.GetComponent<SpriteRenderer>().color = color;
+        _computerZoom.GetComponent<Image>().color = color;
     }
     
     void Language()
@@ -247,7 +254,19 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
         }
 
     }
- 
 
-   
+    void PauseStatus()
+    {
+        if (_inputField == null) return;
+
+        if(Pause.Instance.IsPaused)
+        {
+            _inputField.SetActive(false);
+        }
+        else
+        {
+            _inputField.SetActive(true);
+        }
+    }
+
 }

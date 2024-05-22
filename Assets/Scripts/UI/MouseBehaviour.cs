@@ -16,6 +16,7 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] Texture2D _bathroomDrainStopper;
     [SerializeField] Texture2D _underStairsRoomKey;
     [SerializeField] Texture2D _umbrella;
+    [SerializeField] Texture2D _umbrellaHandle;
 
     [Header("Click Distance")]
     [SerializeField] float _playerMinClickableDistance = 3;
@@ -93,6 +94,12 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
             _hasJustUsedObject = true;
             return;
         }
+        else if (PlayerInventory.Instance.IsUsingUmbrellaHandle)
+        {
+            UnityEngine.Cursor.SetCursor(_umbrellaHandle, new Vector2(_umbrellaHandle.width / 2, _umbrellaHandle.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
 
         if (!PlayerInventory.Instance.IsUsingItemMouse && _hasJustUsedObject || ButtonsGrid.Instance.GetCurrentAction() != "Use" && _hasJustUsedObject)
         {
@@ -111,7 +118,6 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
                 UnityEngine.Cursor.SetCursor(null, new Vector2(0,0), CursorMode.Auto);
                 return;
             }
-
 
             if (obj.GetComponent<ClickableObject>() != null && !_notClickable)
                 UnityEngine.Cursor.SetCursor(_redPointer, new Vector2(_redPointer.width / 2, _redPointer.height / 2), CursorMode.Auto);           

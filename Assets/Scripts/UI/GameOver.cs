@@ -53,7 +53,10 @@ public class GameOver : MonoBehaviour
         GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
         _rain.Stop();       
         yield return new WaitForSeconds(0.2f);
-        
+
+        color.a = 1;
+        _gameOverScreen.color = color;
+
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.4f);
 
@@ -69,8 +72,7 @@ public class GameOver : MonoBehaviour
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(1f);
 
-        color.a = 1;
-        _gameOverScreen.color = color;
+       
         AudioSource.PlayClipAtPoint(_jumpScareSound, PlayerController.Instance.transform.position, 0.4f);        
         _scaryImage.SetActive(true);
         yield return new WaitForSeconds(0.4f);

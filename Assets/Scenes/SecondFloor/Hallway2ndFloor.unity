@@ -1021,6 +1021,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaintingBeach
       objectReference: {fileID: 0}
+    - target: {fileID: 4225947919190665331, guid: 2c1c8489ce0051b43a5a1889cd2d1c80, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214793665444779471, guid: 2c1c8489ce0051b43a5a1889cd2d1c80, type: 3}
+      propertyPath: _firstLookAtText
+      value: 'I remember that trip. After we came back Emma just kept getting worse.                         
+        A date is written: "July 23. 1979."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214793665444779471, guid: 2c1c8489ce0051b43a5a1889cd2d1c80, type: 3}
+      propertyPath: _firstLookAtTextSpanish
+      value: "Recuerdo ese viaje. Al poco tiempo de volver Emma comenz\xF3 a empeorar.                         
+        Hay una fecha escrita: \"Julio 23. 1979.\""
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5166,7 +5180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.545
+      value: -1.549
       objectReference: {fileID: 0}
     - target: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5587,6 +5601,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f06bc6da3fc8cb41a2084bde9a7564f, type: 3}
+--- !u!1001 &1718297329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 143976229390374848, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_Name
+      value: AspectRatioFix
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.727568
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.50692785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.068825334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877406249223981318, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8c2f77ef7fac3041b07ae76713a5127, type: 3}
 --- !u!1001 &1786298375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6600,11 +6671,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631192744147288821, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -694
+      value: -319
       objectReference: {fileID: 0}
     - target: {fileID: 7631192744147288821, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -258
+      value: -119
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_UiScaleMode
@@ -6612,11 +6683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 1920
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7860185156176331689, guid: d50b96a331f9a0c4e9db2aab639a2ac0, type: 3}
       propertyPath: m_ReferenceResolution.y
-      value: 1080
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6650,6 +6721,10 @@ PrefabInstance:
     - target: {fileID: 1319972296630898383, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
       propertyPath: m_Name
       value: PaintingEthanHorse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319972296630898383, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4327328612454534896, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6706,6 +6781,16 @@ PrefabInstance:
     - target: {fileID: 5953977622230472880, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
       propertyPath: m_Offset.y
       value: -0.11224964
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214043849378190703, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
+      propertyPath: _firstLookAtText
+      value: 'I really liked riding on a horse.                          A date is
+        written: "May 3. 1977."'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9214043849378190703, guid: 2bb38cb2377ed1646838c8c92d9b025a, type: 3}
+      propertyPath: _firstLookAtTextSpanish
+      value: "Disfrut\xE9 bastante de andar a caballo.                          Hay
+        una fecha escrita: \"Mayo 3. 1977.\""
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7219,7 +7304,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.56
+      value: -2.6599998
       objectReference: {fileID: 0}
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7303,7 +7388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0719419
+      value: -0.72528076
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7695,3 +7780,4 @@ SceneRoots:
   - {fileID: 1932869859}
   - {fileID: 785289347}
   - {fileID: 469081381}
+  - {fileID: 1718297329}

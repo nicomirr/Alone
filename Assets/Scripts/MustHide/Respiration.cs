@@ -25,6 +25,7 @@ public class Respiration : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject _resetSpanishButton;
         
     bool _tutorialShown;
+    bool _screenSet;
         
     public void LoadData(GameData data)
     {
@@ -67,8 +68,41 @@ public class Respiration : MonoBehaviour, IDataPersistence
 
             }
 
+            if (_screenSet) return;
+            // 7.43
+            //105
+            if (Screen.width <= 1280)
+            {
+                _tutorialEnglish.transform.position = _tutorialEnglish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialEnglish.transform.position.z);
+                _tutorialSpanish.transform.position = _tutorialSpanish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialSpanish.transform.position.z);
+                _respiratorTutorial.transform.position = _respiratorTutorial.transform.parent.TransformPoint(7.8f, -1.676414f, _respiratorTutorial.transform.position.z);
+                _tutorialOkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(103.8f, -28.8f);
+            }
+            else if (Screen.width == 1600 && Screen.height == 1200)
+            {
+                _tutorialEnglish.transform.position = _tutorialEnglish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialEnglish.transform.position.z);
+                _tutorialSpanish.transform.position = _tutorialSpanish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialSpanish.transform.position.z);
+                _respiratorTutorial.transform.position = _respiratorTutorial.transform.parent.TransformPoint(7.8f, -1.676414f, _respiratorTutorial.transform.position.z);
+                _tutorialOkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(150f, -28.8f);
+            }
+            else if (Screen.width == 1680 && Screen.height == 1050)
+            {
+                _tutorialEnglish.transform.position = _tutorialEnglish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialEnglish.transform.position.z);
+                _tutorialSpanish.transform.position = _tutorialSpanish.transform.parent.TransformPoint(10.99f, -0.3221f, _tutorialSpanish.transform.position.z);
+                _respiratorTutorial.transform.position = _respiratorTutorial.transform.parent.TransformPoint(7.43f, -1.676414f, _respiratorTutorial.transform.position.z);
+                _tutorialOkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(105f, -28.8f);
+            }
+            else if (Screen.width == 1920 && Screen.height == 1200)
+            {
+                _tutorialEnglish.transform.position = _tutorialEnglish.transform.parent.TransformPoint(11.27f, -0.3221f, _tutorialEnglish.transform.position.z);
+                _tutorialSpanish.transform.position = _tutorialSpanish.transform.parent.TransformPoint(11.27f, -0.3221f, _tutorialSpanish.transform.position.z);
+                _respiratorTutorial.transform.position = _respiratorTutorial.transform.parent.TransformPoint(7.8f, _respiratorTutorial.transform.position.y, _respiratorTutorial.transform.position.z);
+                _tutorialOkButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(150f, -28.8f);
+            }
+
             _respiratorTutorial.SetActive(true);
             _tutorialOkButton.SetActive(true);
+            _screenSet = true;
         }
     }
 

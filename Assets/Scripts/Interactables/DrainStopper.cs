@@ -27,16 +27,7 @@ public class DrainStopper : MonoBehaviour, IPointerClickHandler
         if(PlayerInventory.Instance.IsUsingBathroomDrainStopper)
         {
             _bathtub.GetComponent<Shower>().HasDrainStopper = true;
-            
-
-            int itemToDestroy = PlayerInventory.Instance.ItemSelected;
-
-            PlayerInventory.Instance.ItemSelected = 0;
-            PlayerInventory.Instance.IsUsingItemMouse = false;
-            PlayerInventory.Instance.IsUsingBathroomDrainStopper = false;
-            PlayerInventory.Instance.RemoveItem(itemToDestroy);
+            PlayerInventory.Instance.DestroyCurrentItem();
         }
-    }
-
-    
+    }    
 }

@@ -121,9 +121,7 @@ public class FlashingLights : MonoBehaviour, IDataPersistence
         _playerHiddingLight.SetActive(true);
         _enemy.SetActive(true);
         StartCoroutine(_enemy.GetComponent<Enemy>().EnemyMovement());
-
-        //Hacer para getIsHidding otra corutina que tenga luces parpadeantes, luego se apaga luz, luego aparece luz para jugador.
-        //Aparecen allí pasos y respirador (y tutorial de primera vez en living).        
+    
     }
 
 }

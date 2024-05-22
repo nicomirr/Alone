@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,8 +36,14 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator EnemyMovement()
     {
+        CinemachineTransposer transposer = FindObjectOfType<CinemachineTransposer>();
+        transposer.m_XDamping = 0;
+        PlayerController.Instance.transform.position = new Vector2(7.065f, PlayerController.Instance.transform.position.y);
+
         _respiration.SetActive(true);
         yield return new WaitUntil(() => _respiration.GetComponent<Respiration>().TutorialShown == true);
+
+        transposer.m_XDamping = 5;
 
         yield return new WaitForSeconds(3f);
 

@@ -35,6 +35,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     bool _sceneIsPlaying;
 
+    AudioSource _playerFootsteps;
+
     [SerializeField] Animator _fadeAnimator;
     [SerializeField] UnityEngine.UI.Image _blackImage;
 
@@ -116,6 +118,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _generalTextBackground = GameObject.Find("GeneralTextBackground");
         _horrorSoundAfterWardrobe = GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>();
+                
     }
 
     private void Start()
@@ -345,17 +348,41 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(2);
 
         _fadeAnimator.SetTrigger("EndTransition");
-        GameObject.Find("LookAtPos").transform.position = new Vector3(6.72f, GameObject.Find("LookAtPos").transform.position.y);
+
+        if (Screen.width <= 1280)
+            GameObject.Find("LookAtPos").transform.position = new Vector3(4.4f, GameObject.Find("LookAtPos").transform.position.y);
+
+        else if (Screen.width == 1600 && Screen.height == 1200)
+            GameObject.Find("LookAtPos").transform.position = new Vector3(4.4f, GameObject.Find("LookAtPos").transform.position.y);
+
+        else if (Screen.width == 1680 && Screen.height == 1050)
+            GameObject.Find("LookAtPos").transform.position = new Vector3(4.4f, GameObject.Find("LookAtPos").transform.position.y);
+
+        else if (Screen.width == 1920 && Screen.height == 1200)
+            GameObject.Find("LookAtPos").transform.position = new Vector3(4.4f, GameObject.Find("LookAtPos").transform.position.y);
+
+        else if (Screen.width == 1440 && Screen.height == 900)
+            GameObject.Find("LookAtPos").transform.position = new Vector3(4.4f, GameObject.Find("LookAtPos").transform.position.y);
+
+        else
+            GameObject.Find("LookAtPos").transform.position = new Vector3(8.6f, GameObject.Find("LookAtPos").transform.position.y);
+        
         Color color = new Color(0, 0, 0, 0);
         _blackImage.color = color;
         PlayerController.Instance.GetComponent<Animator>().SetBool("isPlaying", false);
         _sceneIsPlaying = false;
 
         GameObject.Find("TV").GetComponentInChildren<Animator>().SetBool("playing", false);
+        
     }
 
     IEnumerator FirstDinningRoomScene()
     {
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
         PlayerController.Instance.SetWalkingSpeedMod(2.7f);
 
         _kettleAudioSource.volume = 0.08f;
@@ -601,6 +628,10 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstParentsRoomScene()
     {
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
         PlayerController.Instance.SetWalkingSpeedMod(2.7f);
 
         yield return new WaitForSeconds(1);
@@ -724,119 +755,119 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(0.5f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom1;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom1;
         yield return new WaitForSeconds(0.8f);
 
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(0.3f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom0;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom0;
         yield return new WaitForSeconds(0.5f);
 
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(0.5f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom1;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom1;
         yield return new WaitForSeconds(1f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom2;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom2;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(1.7f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom3;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom3;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(1.3f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom4;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom4;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(2f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom5;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom5;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(1.5f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom6;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom6;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(2f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom7;
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom7;
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
         yield return new WaitForSeconds(4f); //2.3
 
 
         //DEMO//
 
-        //AudioSource.PlayClipAtPoint(_endingScreenSound, PlayerController.Instance.transform.position, 0.5f);
-        //_endingScreen.SetActive(true);
-        //yield return new WaitForSeconds(6.5f);
+        AudioSource.PlayClipAtPoint(_endingScreenSound, PlayerController.Instance.transform.position, 0.5f);
+        _endingScreen.SetActive(true);
+        yield return new WaitForSeconds(6.5f);
 
-        //_thanksForPlayingText.SetActive(true);
+        _thanksForPlayingText.SetActive(true);
 
-        //yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(9f);
 
-        //System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
-        //Application.Quit();
+        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
+        Application.Quit();
 
         //DEMO
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom8;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(2.0f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom8;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(2.0f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom9;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(0.6f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom9;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(0.6f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom10;
-        yield return new WaitForSeconds(1.1f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom10;
+        //yield return new WaitForSeconds(1.1f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom11;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(1.4f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom11;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(1.4f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom12;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(1.6f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom12;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(1.6f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom13;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(1.4f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom13;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(1.4f);
 
-        _wardrobeZoomScene.GetComponent<SpriteRenderer>().sprite = _zoom1;
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        yield return new WaitForSeconds(3f);
+        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom1;
+        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        //yield return new WaitForSeconds(3f);
 
-        AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
-        yield return new WaitForSeconds(2.3f);
+        //AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
+        //yield return new WaitForSeconds(2.3f);
 
-        if (LanguageManager.Instance.Language == "en")
-            _goneText.GetComponent<TextMeshPro>().text = "I think it's gone.";
-        else if (LanguageManager.Instance.Language == "es")
-            _goneText.GetComponent<TextMeshPro>().text = "Creo que se fue.";
-        _goneText.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        //if (LanguageManager.Instance.Language == "en")
+        //    _goneText.GetComponent<TextMeshPro>().text = "I think it's gone.";
+        //else if (LanguageManager.Instance.Language == "es")
+        //    _goneText.GetComponent<TextMeshPro>().text = "Creo que se fue.";
+        //_goneText.SetActive(true);
+        //yield return new WaitForSeconds(2f);
 
-        _goneText.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        //_goneText.SetActive(false);
+        //yield return new WaitForSeconds(2f);
 
-        _parentsBlackScreen.SetActive(true);
-        PlayerController.Instance.SetSceneToLoad("ParentsRoom");
-        yield return new WaitForSeconds(3f);
+        //_parentsBlackScreen.SetActive(true);
+        //PlayerController.Instance.SetSceneToLoad("ParentsRoom");
+        //yield return new WaitForSeconds(3f);
 
-        _wardrobeZoomScene.SetActive(false);
+        //_wardrobeZoomScene.SetActive(false);
 
-        Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
-        color.a = 1;
-        PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
-        PlayerController.Instance.SetIsHidding(false);
-        PlayerController.Instance.SetMustHide(false);
-        _wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
-        _horrorSoundAfterWardrobe.Play();
-        _horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
-        _secondParentsRoomSceneFix = true;
-        PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
+        //Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
+        //color.a = 1;
+        //PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
+        //PlayerController.Instance.SetIsHidding(false);
+        //PlayerController.Instance.SetMustHide(false);
+        //_wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
+        //_horrorSoundAfterWardrobe.Play();
+        //_horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
+        //_secondParentsRoomSceneFix = true;
+        //PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator SecondParentsRoomSceneFix()
@@ -860,6 +891,11 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstEntranceScene()
     {
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
         yield return new WaitForSeconds(0.2f);
 
         PlayerController.Instance.transform.position = new Vector2(-2.2f, PlayerController.Instance.transform.position.y);
@@ -1198,6 +1234,28 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.6f);
 
         _playerText.text = "";
+        
+
+        if (Screen.width <= 1280)
+        {
+            _hideTutorialEnglish.transform.position = _hideTutorialEnglish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialEnglish.transform.position.z);
+            _hideTutorialSpanish.transform.position = _hideTutorialSpanish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialSpanish.transform.position.z);
+        }           
+        else if (Screen.width == 1600 && Screen.height == 1200)
+        {
+            _hideTutorialEnglish.transform.position = _hideTutorialEnglish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialEnglish.transform.position.z);
+            _hideTutorialSpanish.transform.position = _hideTutorialSpanish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialSpanish.transform.position.z);
+        }
+        else if (Screen.width == 1680 && Screen.height == 1050)
+        {
+            _hideTutorialEnglish.transform.position = _hideTutorialEnglish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialEnglish.transform.position.z);
+            _hideTutorialSpanish.transform.position = _hideTutorialSpanish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialSpanish.transform.position.z);
+        }
+        else if (Screen.width == 1920 && Screen.height == 1200)
+        {
+            _hideTutorialEnglish.transform.position = _hideTutorialEnglish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialEnglish.transform.position.z);
+            _hideTutorialSpanish.transform.position = _hideTutorialSpanish.transform.parent.TransformPoint(1.56f, -0.62f, _hideTutorialSpanish.transform.position.z);
+        }
 
         if (LanguageManager.Instance.Language == "en")
         {
@@ -1207,6 +1265,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         {
             _hideTutorialSpanish.SetActive(true);            
         }
+
+
 
         _hideTutorialOkButton.SetActive(true);
 

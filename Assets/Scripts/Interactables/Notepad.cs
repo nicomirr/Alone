@@ -9,7 +9,7 @@ public class Notepad : MonoBehaviour, IPointerClickHandler, IDataPersistence
     [SerializeField] GameObject _computerZoom;
     [SerializeField] GameObject _notepadText;
     Animator _animator;
-    bool _notepadOpened;
+    bool _notepadBeenOpened;
 
 
     private void Awake()
@@ -19,15 +19,15 @@ public class Notepad : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        data.notepadOpened = _notepadOpened;
+        data.notepadBeenOpened = _notepadBeenOpened;
     }
 
     public void LoadData(GameData data)
     {
-        _notepadOpened = data.notepadOpened;
+        _notepadBeenOpened = data.notepadBeenOpened;
     }
 
-    public bool NotepadOpened { get => _notepadOpened; set => _notepadOpened = value; }
+    public bool NotepadBeenOpened { get => _notepadBeenOpened; set => _notepadBeenOpened = value; }
 
     private void Update()
     {
@@ -37,7 +37,7 @@ public class Notepad : MonoBehaviour, IPointerClickHandler, IDataPersistence
     public void OnPointerClick(PointerEventData eventData)
     {
         _animator.SetBool("notepadOpen", true);
-        _notepadOpened = true;
+        _notepadBeenOpened = true;
         _notepadText.SetActive(true);
         this.GetComponent<BoxCollider2D>().enabled = false;
     }

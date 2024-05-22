@@ -282,8 +282,6 @@ MonoBehaviour:
   _frontBackLight: {fileID: 6618040536879511829}
   _flashlightOn: {fileID: 8300000, guid: c7ca371f646d99e43ae18525e9e7b03d, type: 3}
   _flashlightOff: {fileID: 8300000, guid: 80f139dded826b943a73b28fb76e13a0, type: 3}
-  _walkSpeed: 3
-  _walkSpeedMod: 2.7
   _pauseYPos: 600
 --- !u!212 &1644709855135022009
 SpriteRenderer:
@@ -1040,7 +1038,7 @@ Transform:
   m_GameObject: {fileID: 8960347492526605651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.72, y: 1.13, z: 0}
+  m_LocalPosition: {x: 2.5, y: 1.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
