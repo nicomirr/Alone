@@ -75,6 +75,7 @@ public class GameData
     public SerializableDictionary<string, bool> hasBeenPickedUp;
 
     //ScenesInGame
+    public bool isFlashback;
     public bool firstPlayerRoomScenePlayed;
     public bool firstDinningRoomScenePlayed;
     public bool firstDinningRoomScene;
@@ -86,6 +87,8 @@ public class GameData
     public bool secondParentsRoomSceneFix;
     public bool firstEntranceScenePlayed;
     public bool firstLivingroomScenePlayed;
+    public bool firstPlayersRoomFlashbackScene;
+    public bool firstPlayersRoomFlashbackScenePlayed;
     
     //MouseAppearance
     public SerializableDictionary<string, bool> appearanceChanged;
@@ -198,6 +201,7 @@ public class GameData
         hasBeenPickedUp = new SerializableDictionary<string, bool> ();
 
         //ScenesInGame
+        isFlashback = false;
         firstPlayerRoomScenePlayed = false;
         firstDinningRoomScene = false;
         firstDinningRoomScenePlayed = false;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 595e03e1179fdf643879862171e3bfb8
+guid: dfff49d657db87c4a88d9016babb6344
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Falling_0
+      name: IdleSideDizzy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 35
-        height: 64
+        y: 3
+        width: 32
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf9f062837c28c34f852e0712980d129
-      internalID: -1824086491
+      spriteID: 652e34b8c027f7c48bd9750196b318e7
+      internalID: -76896253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Falling_1
+      name: IdleSideDizzy_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 0
-        width: 93
-        height: 64
+        x: 32
+        y: 3
+        width: 32
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75a51ee4cf9b954c86c3f414cd9f3f8
-      internalID: -1937613616
+      spriteID: 71c92aff1e54c7b48b54bfe4bf444fb5
+      internalID: 456376009
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Falling_0: -1824086491
-      Falling_1: -1937613616
+      IdleSideDizzy_0: -76896253
+      IdleSideDizzy_1: 456376009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

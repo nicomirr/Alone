@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class AtticDoor : MonoBehaviour, IPointerClickHandler
 {
@@ -14,6 +15,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
     [SerializeField] AudioClip _umbrellaBroken;
     [SerializeField] GameObject _umbrellaHandle;
     [SerializeField] AudioSource _kettleSound;
+    [SerializeField] GameObject _screenBlur;
 
     private void Awake()
     {
@@ -34,6 +36,10 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
 
     IEnumerator UsingUmbrella()
     {
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
         _umbrellaBlackScreen.SetActive(true);
         yield return new WaitForSeconds(1f);
 
@@ -59,7 +65,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
         _playerText.text = "";
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_umbrellaBroken, PlayerController.Instance.transform.position, 0.7f);
+        AudioSource.PlayClipAtPoint(_umbrellaBroken, PlayerController.Instance.transform.position, 0.4f);
         PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingUmbrella", false);
         PlayerInventory.Instance.DestroyCurrentItem();
         PlayerInventory.Instance.AddItem(_umbrellaHandle);
@@ -106,12 +112,15 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(1.3f);
 
         if (LanguageManager.Instance.Language == "en")
-            _playerText.text = "Is that sound again...";
+            _playerText.text = "It's that sound again...";
         else if (LanguageManager.Instance.Language == "es")
             _playerText.text = "Es ese sonido otra vez...";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.4f);
 
         _playerText.text = "";
+        _screenBlur.GetComponent<SpriteRenderer>().material.SetFloat("_BlurAmount", 0.002f);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isDizzy", true);
+
         yield return new WaitForSeconds(1.3f);
 
         if (LanguageManager.Instance.Language == "en")
@@ -120,10 +129,24 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
             _playerText.text = "Me estoy sintiendo mareado...";
         yield return new WaitForSeconds(3f);
 
+        _screenBlur.GetComponent<SpriteRenderer>().material.SetFloat("_BlurAmount", 0.003f);
         _playerText.text = "";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.0f);
 
-        //se desmaya
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isFalling", true);
+        yield return new WaitForSeconds(7.0f);
+
+        PlayerController.Instance.SetSceneToLoad("PlayersRoom");
+
+        Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
+        color.a = 0;
+        PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
+        PlayerController.Instance.transform.position = new Vector2(-3.51f, PlayerController.Instance.transform.position.y);
+
+        _kettleSound.Stop();
+        ScenesInGame.Instance.SetIsFlashback(true);
+        ScenesInGame.Instance.SetFirstPlayersRoomFlashbackScene(true);        
+        SceneManager.LoadScene("PlayersRoom");
 
     }
 

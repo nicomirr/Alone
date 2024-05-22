@@ -13,6 +13,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 {
     public static ScenesInGame Instance;
 
+    bool _isFlashback;
+
     bool _firstPlayerRoomScene;
     bool _firstPlayerRoomScenePlayed;
     [SerializeField] GameObject _sceneLight;
@@ -32,6 +34,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     bool _firstEntranceScenePlayed;
 
     bool _firstLivingroomScenePlayed;
+
+    bool _firstPlayersRoomFlashbackScene;
+    bool _firstPlayersRoomFlashbackScenePlayed;
 
     bool _sceneIsPlaying;
 
@@ -101,13 +106,18 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject _hideTutorialSpanish;
     [SerializeField] GameObject _hideTutorialOkButton;
 
+    [Header("PlayersRoomFirstFlashbackScene")]
+    [SerializeField] SpriteRenderer _bed;
+    [SerializeField] Sprite _playerSleeping;
+    [SerializeField] Sprite _playerAwake;
+
     GameObject _generalTextBackground;
 
     [Header("Demo Ending")]
     [SerializeField] AudioClip _endingScreenSound;
     [SerializeField] GameObject _endingScreen;
     [SerializeField] GameObject _thanksForPlayingText;
-        
+
 
     private void Awake()
     {
@@ -128,6 +138,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
+        data.isFlashback = _isFlashback;
         data.firstPlayerRoomScenePlayed = _firstPlayerRoomScenePlayed;
         data.firstDinningRoomScenePlayed = _firstDinningRoomScenePlayed;
         data.firstDinningRoomScene = _firstDinningRoomScene;
@@ -139,11 +150,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         data.secondParentsRoomSceneFix = _secondParentsRoomSceneFix;
         data.firstEntranceScenePlayed = _firstEntranceScenePlayed;
         data.firstLivingroomScenePlayed = _firstLivingroomScenePlayed;
+        data.firstPlayersRoomFlashbackScene = _firstPlayersRoomFlashbackScene;
+        data.firstPlayersRoomFlashbackScenePlayed = _firstPlayersRoomFlashbackScenePlayed;
 
     }
 
     public void LoadData(GameData data)
     {
+        _isFlashback = data.isFlashback;
         _firstPlayerRoomScenePlayed = data.firstPlayerRoomScenePlayed;
         _firstDinningRoomScenePlayed = data.firstDinningRoomScenePlayed;
         _firstDinningRoomScene = data.firstDinningRoomScene;
@@ -155,8 +169,12 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _secondParentsRoomSceneFix = data.secondParentsRoomSceneFix;
         _firstEntranceScenePlayed = data.firstEntranceScenePlayed;
         _firstLivingroomScenePlayed = data.firstLivingroomScenePlayed;
+        _firstPlayersRoomFlashbackScene = data.firstPlayersRoomFlashbackScene;
+        _firstPlayersRoomFlashbackScenePlayed = data.firstPlayersRoomFlashbackScenePlayed;
     }
 
+    public bool GetIsFlashback() { return _isFlashback; }
+    public void SetIsFlashback(bool value) { _isFlashback = value; }
     public bool GetSceneIsPlaying() { return _sceneIsPlaying; }
     public void SetSceneIsPlaying(bool value) { _sceneIsPlaying = value; }
     public bool GetFirstKitchenScenePlayed() { return _firstKitchenScenePlayed; }
@@ -168,6 +186,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     public void SetFirstParentsRoomScene(bool value) { _firstParentsRoomScene = value; }
     public bool GetSecondParentsRoomScene() { return _secondParentsRoomScenePlayed; }
     public void SetSecondParentsRoomScene(bool value) { _secondParentsRoomScenePlayed = value; }
+    public bool GetFirstPlayersRoomFlashbackScene() { return _firstPlayersRoomFlashbackScene; }
+    public void SetFirstPlayersRoomFlashbackScene(bool value) { _firstPlayersRoomFlashbackScene = value; }
 
 
     private void Update()
@@ -272,6 +292,30 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
                 _firstLivingroomScenePlayed = true;
             }
         }
+
+        if (_firstPlayersRoomFlashbackScene && !_firstPlayersRoomFlashbackScenePlayed && _isFlashback)
+        {
+            //TESTING
+
+            Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
+            color.a = 0;
+            PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
+            PlayerController.Instance.transform.position = new Vector2(-3.51f, PlayerController.Instance.transform.position.y);
+
+            //TESTING
+
+
+            if (SceneManager.GetActiveScene().name == "PlayersRoom")
+            {
+                _sceneIsPlaying = true;
+
+                StartCoroutine(FirstPlayersRoomFlashbackScene());
+                _firstPlayersRoomFlashbackScenePlayed = true;
+            }
+        }
+
+
+
 
     }
 
@@ -797,77 +841,80 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         //DEMO//
 
-        AudioSource.PlayClipAtPoint(_endingScreenSound, PlayerController.Instance.transform.position, 0.5f);
-        _endingScreen.SetActive(true);
-        yield return new WaitForSeconds(6.5f);
+        //AudioSource.PlayClipAtPoint(_endingScreenSound, PlayerController.Instance.transform.position, 0.5f);
+        //_endingScreen.SetActive(true);
+        //yield return new WaitForSeconds(6.5f);
 
-        _thanksForPlayingText.SetActive(true);
+        //_thanksForPlayingText.SetActive(true);
 
-        yield return new WaitForSeconds(9f);
+        //yield return new WaitForSeconds(9f);
 
-        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
-        Application.Quit();
+        //System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
+        //Application.Quit();
 
         //DEMO
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom8;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(2.0f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom8;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(2.0f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom9;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(0.6f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom9;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(0.6f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom10;
-        //yield return new WaitForSeconds(1.1f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom10;
+        yield return new WaitForSeconds(1.1f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom11;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(1.4f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom11;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(1.4f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom12;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(1.6f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom12;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(1.6f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom13;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(1.4f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom13;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(1.4f);
 
-        //_wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom1;
-        //AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
-        //yield return new WaitForSeconds(3f);
+        _wardrobeZoomScene.GetComponent<UnityEngine.UI.Image>().sprite = _zoom1;
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 0.6f);
+        yield return new WaitForSeconds(3f);
 
-        //AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
-        //yield return new WaitForSeconds(2.3f);
+        AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
+        yield return new WaitForSeconds(2.3f);
+                
 
-        //if (LanguageManager.Instance.Language == "en")
-        //    _goneText.GetComponent<TextMeshPro>().text = "I think it's gone.";
-        //else if (LanguageManager.Instance.Language == "es")
-        //    _goneText.GetComponent<TextMeshPro>().text = "Creo que se fue.";
-        //_goneText.SetActive(true);
-        //yield return new WaitForSeconds(2f);
+        if (LanguageManager.Instance.Language == "en")
+            _goneText.GetComponentInChildren<TextMeshProUGUI>().text = "I think it's gone.";
+        else if (LanguageManager.Instance.Language == "es")
+            _goneText.GetComponentInChildren<TextMeshProUGUI>().text = "Creo que se fue.";
 
-        //_goneText.SetActive(false);
-        //yield return new WaitForSeconds(2f);
+        _goneText.SetActive(true);
 
-        //_parentsBlackScreen.SetActive(true);
-        //PlayerController.Instance.SetSceneToLoad("ParentsRoom");
-        //yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
 
-        //_wardrobeZoomScene.SetActive(false);
+        _goneText.SetActive(false);
+        yield return new WaitForSeconds(2f);
 
-        //Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
-        //color.a = 1;
-        //PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
-        //PlayerController.Instance.SetIsHidding(false);
-        //PlayerController.Instance.SetMustHide(false);
-        //_wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
-        //_horrorSoundAfterWardrobe.Play();
-        //_horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
-        //_secondParentsRoomSceneFix = true;
-        //PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
+        _parentsBlackScreen.SetActive(true);
+        PlayerController.Instance.SetSceneToLoad("ParentsRoom");
+        yield return new WaitForSeconds(3f);
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _wardrobeZoomScene.SetActive(false);
+
+        Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
+        color.a = 1;
+        PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
+        PlayerController.Instance.SetIsHidding(false);
+        PlayerController.Instance.SetMustHide(false);
+        _wardrobe.GetComponent<SpriteRenderer>().sprite = _wardrobeOpen;
+        _horrorSoundAfterWardrobe.Play();
+        _horrorSoundAfterWardrobe.GetComponent<AudioSourceHorror>().IsPlaying = true;
+        _secondParentsRoomSceneFix = true;
+        PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator SecondParentsRoomSceneFix()
@@ -1273,6 +1320,15 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.SetMustEscape(false);     
         PlayerController.Instance.SetMustHide(true);
                     
+    }
+
+    IEnumerator FirstPlayersRoomFlashbackScene()
+    {
+        _bed.sprite = _playerSleeping;
+        yield return new WaitForSeconds(3f);
+
+        _bed.sprite = _playerAwake;
+        yield return new WaitForSeconds(3f);
     }
 
     public void OnOkHideTutorialButtonPressed()

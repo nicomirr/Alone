@@ -158,7 +158,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
     private void Update()
     {
-        
+        FlashbackStatus();
         ClampItems();
         UpdateItems();
         Opacity();
@@ -283,6 +283,17 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
             _isUsingUmbrellaHandle = false;
         }
     }
+
+    void FlashbackStatus()
+    {
+        if(ScenesInGame.Instance.GetIsFlashback())
+        {      
+            _items.Remove(_glass);
+            _items.Remove(_dadsNote);      
+            _items.Remove(_umbrellaHandle);            
+        }
+    }
+    
 
     public void DestroyCurrentItem()
     {
