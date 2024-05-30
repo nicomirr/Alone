@@ -47,5 +47,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FirstFloor/Kitchen.unity
     guid: 8b6c6c83ce6d0e645ade0820f67de8d5
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/ParentsRoomFlashback.unity
+    guid: ffac603945955cf4c9f6aba017e85c30
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/SisterRoomFlashback.unity
+    guid: e35e6366952bc414595dee6cadd23ebc
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: eea0bf13ee66a2442966bd0c0302d20c, type: 2}

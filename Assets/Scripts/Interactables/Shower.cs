@@ -83,7 +83,8 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
     }
 
     private void Update()
-    {
+    {               
+        Flashback();
         Language();
         CanBeTurnedOnOffState();
         ShowerCurtainState();
@@ -100,6 +101,25 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
             ZoomInBath();
 
         KeyPickedStatus();
+
+        if (!ScenesInGame.Instance.GetIsFlashback()) return;
+        _notClickable = MouseBehaviour.Instance.NotClickable;
+        if (_notClickable) return;
+
+        if (ButtonsGrid.Instance.GetCurrentAction() == "Turn On" || ButtonsGrid.Instance.GetCurrentAction() == "Encender")
+        {
+            if (LanguageManager.Instance.Language == "en")
+                TextBox.Instance.ShowText("I don't need to.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+            else if (LanguageManager.Instance.Language == "es")
+                TextBox.Instance.ShowText("No necesito hacer eso.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+        }
+        else if (ButtonsGrid.Instance.GetCurrentAction() == "Turn Off" || ButtonsGrid.Instance.GetCurrentAction() == "Apagar")
+        {
+            if (LanguageManager.Instance.Language == "en")
+                TextBox.Instance.ShowText("It's off.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+            else if (LanguageManager.Instance.Language == "es")
+                TextBox.Instance.ShowText("Está apagada.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+        }
     }
 
     void CanBeTurnedOnOffState()
@@ -230,6 +250,14 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
         MouseBehaviour.Instance.PlayerMinClickableDistance = 100;
         Cursor.SetCursor(_blackPointer, new Vector2(_blackPointer.width / 2, _blackPointer.height / 2), CursorMode.Auto);
+    }
+
+    void Flashback()
+    {
+        if(ScenesInGame.Instance.GetIsFlashback())
+            _animator.SetBool("bathtubFilled", false);
+
+        
     }
 
     public void BackButton()

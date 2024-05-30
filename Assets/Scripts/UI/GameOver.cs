@@ -46,12 +46,17 @@ public class GameOver : MonoBehaviour
 
     IEnumerator IsHiddingGameOver()
     {
+        PlayerController.Instance.SetGameOver(true);
+
         Color color = Color.black;
         color.a = 0;
         _gameOverScreen.color = color;
         _enemy.SetActive(false);
         GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
-        _rain.Stop();       
+        
+        if(_rain != null)
+            _rain.Stop();     
+
         yield return new WaitForSeconds(0.2f);
 
         color.a = 1;
@@ -71,8 +76,7 @@ public class GameOver : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(1f);
-
-       
+               
         AudioSource.PlayClipAtPoint(_jumpScareSound, PlayerController.Instance.transform.position, 0.4f);        
         _scaryImage.SetActive(true);
         yield return new WaitForSeconds(0.4f);
@@ -89,10 +93,15 @@ public class GameOver : MonoBehaviour
     }
   
     IEnumerator MustHideGameOver()
-    {   
+    {
+        PlayerController.Instance.SetGameOver(true);
+
         _searchingSound.Stop();
         GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
-        _rain.Stop();
+
+        if(_rain != null)
+            _rain.Stop();
+
         yield return new WaitForSeconds(1.8f);
 
         AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 0.65f);

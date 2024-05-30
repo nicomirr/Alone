@@ -7,6 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] Vector2 initialPos;
     [SerializeField] TextMeshPro _playerText;
 
     [SerializeField] int _direction;
@@ -36,9 +37,13 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator EnemyMovement()
     {
+        Color colorEnemy = this.gameObject.GetComponent<SpriteRenderer>().color;
+        colorEnemy.a = 1f;
+        this.gameObject.GetComponent<SpriteRenderer>().color = colorEnemy;
+
         CinemachineTransposer transposer = FindObjectOfType<CinemachineTransposer>();
         transposer.m_XDamping = 0;
-        PlayerController.Instance.transform.position = new Vector2(7.065f, PlayerController.Instance.transform.position.y);
+        //PlayerController.Instance.transform.position = new Vector2(7.065f, PlayerController.Instance.transform.position.y);
 
         _respiration.SetActive(true);
         yield return new WaitUntil(() => _respiration.GetComponent<Respiration>().TutorialShown == true);
@@ -82,6 +87,10 @@ public class Enemy : MonoBehaviour
         AudioSource.PlayClipAtPoint(_doorClosed, PlayerController.Instance.transform.position, 0.7f);
         yield return new WaitForSeconds(2);
 
+        colorEnemy = this.gameObject.GetComponent<SpriteRenderer>().color;
+        colorEnemy.a = 0f;
+        this.gameObject.GetComponent<SpriteRenderer>().color = colorEnemy;
+
         _globalLight.GetComponent<Light2D>().color = _lightsOn;
         _playerHiddingLight.SetActive(false);
         yield return new WaitForSeconds(2);
@@ -113,11 +122,10 @@ public class Enemy : MonoBehaviour
         color.a = 1;
         PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
         _playerHidding.SetActive(false);
+        ScenesInGame.Instance.SetSceneIsPlaying(false);
         yield return new WaitForSeconds(2f);
 
-        ScenesInGame.Instance.SetSceneIsPlaying(false);
-
-
+        this.transform.position = initialPos;
         this.gameObject.SetActive(false);
 
     }
@@ -129,5 +137,12 @@ public class Enemy : MonoBehaviour
             ScenesInGame.Instance.SetSceneIsPlaying(true);
             PlayerController.Instance.SetIsHidding(false);
         }
+
+        if (collision.name == "EnemyRotate")
+        {
+            _direction *= -1;
+        }
     }
+
+    
 }

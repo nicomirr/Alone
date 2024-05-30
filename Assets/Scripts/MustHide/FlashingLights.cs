@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class FlashingLights : MonoBehaviour, IDataPersistence
+public class FlashingLights : MonoBehaviour
 {
     bool _corroutineStarted;
     [SerializeField] GameObject _sceneLight;
@@ -18,18 +18,7 @@ public class FlashingLights : MonoBehaviour, IDataPersistence
     [SerializeField] float _deathTimer;
     [SerializeField] GameObject _gameOver;
 
-
-    public void SaveData(ref GameData data)
-    {
-        data.flashingLightsCoroutineStarted = _corroutineStarted;
-    }
-
-    public void LoadData(GameData data)
-    {
-        _corroutineStarted = data.flashingLightsCoroutineStarted;
-    }
-
-
+        
     void Update()
     {
         MustHideState();
@@ -39,7 +28,6 @@ public class FlashingLights : MonoBehaviour, IDataPersistence
     {
         if (!ScenesInGame.Instance.GetSecondParentsRoomScene()) return;
 
-
         if (PlayerController.Instance.GetMustHide() && !ScenesInGame.Instance.GetSceneIsPlaying())
         {
             if (!Pause.Instance.IsPaused)
@@ -47,6 +35,7 @@ public class FlashingLights : MonoBehaviour, IDataPersistence
 
             if (_deathTimer >= _deathTime)
             {
+                PlayerController.Instance.SetGameOver(true);
                 _gameOver.SetActive(true);
             }
         }
@@ -116,6 +105,7 @@ public class FlashingLights : MonoBehaviour, IDataPersistence
         _searchingSound.Stop();
 
         PlayerController.Instance.SetMustHide(false);
+        _deathTimer = 0;
         _corroutineStarted = false;
 
         _playerHiddingLight.SetActive(true);

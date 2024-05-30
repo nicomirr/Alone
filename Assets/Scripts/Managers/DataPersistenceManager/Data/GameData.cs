@@ -88,8 +88,12 @@ public class GameData
     public bool firstEntranceScenePlayed;
     public bool firstLivingroomScenePlayed;
     public bool firstPlayersRoomFlashbackScene;
-    public bool firstPlayersRoomFlashbackScenePlayed;
-    
+    public bool firstPlayersRoomFlashbackScenePlayed;    
+    public bool firstDinningRoomFlashbackScenePlayed;
+    public bool firstKitchenFlashbackScenePlayed;
+    public bool firstLivingRoomFlashbackScenePlayed;
+    public bool firstEntranceFlashbackScenePlayed;
+
     //MouseAppearance
     public SerializableDictionary<string, bool> appearanceChanged;
     public SerializableDictionary<string, bool> cursorBlackened;
@@ -131,9 +135,6 @@ public class GameData
     public bool horrorSoundStarted;
     public bool horrorSoundStopped;
 
-    //FlashingLights
-    public bool flashingLightsCoroutineStarted;
-
     //Respiration
     public bool respirationTutorialShown;
 
@@ -147,6 +148,10 @@ public class GameData
 
     //Notepad
     public bool notepadBeenOpened;
+
+    //MustHideCounter
+    public float timer;
+    public bool horrorAudioEnabledMustHideCounter;
 
     public GameData() 
     {

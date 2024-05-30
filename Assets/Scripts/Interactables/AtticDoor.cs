@@ -141,7 +141,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
         Color color = PlayerController.Instance.GetComponent<SpriteRenderer>().color;
         color.a = 0;
         PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
-        PlayerController.Instance.transform.position = new Vector2(-3.51f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.transform.position = new Vector2(-3.4f, PlayerController.Instance.transform.position.y);
 
         _kettleSound.Stop();
         ScenesInGame.Instance.SetIsFlashback(true);

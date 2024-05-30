@@ -54,11 +54,13 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
     [SerializeField] List<string> _lockedTexts;
     [SerializeField] List<string> _hideTexts;
     [SerializeField] List<string> _mustEscapeTexts;
+    [SerializeField] List<string> _flashbackTexts;
 
     [Header("Spanish")]
     [SerializeField] List<string> _spanishLockedTexts;
     [SerializeField] List<string> _spanishHideTexts;
     [SerializeField] List<string> _spanishMustEscapeTexts;
+    [SerializeField] List<string> _spanishFlashbackTexts;
 
 
     Animator _fadeAnimator;
@@ -109,6 +111,10 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
     private void Update()
     {
+        if (ScenesInGame.Instance.GetIsFlashback() && this.name == "HallwayToParents") _newSceneName = "ParentsRoomFlashback";
+        if (ScenesInGame.Instance.GetIsFlashback() && this.name == "ParentsBathToParents") _newSceneName = "ParentsRoomFlashback";
+        if (ScenesInGame.Instance.GetIsFlashback() && this.name == "HallwayToSister") _newSceneName = "SisterRoomFlashback";
+
         FirstIsLockedStatus();
         Cinematics();                
     }
@@ -146,7 +152,7 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                     }
                 }
 
-                if (PlayerController.Instance.GetMustHide())
+                if (PlayerController.Instance.GetMustHide() && HideSpotCount.Instance.HasHideSpot)
                 {
                     if (LanguageManager.Instance.Language == "en")
                         StartCoroutine(CheckDoor(_hideTexts));
@@ -188,7 +194,7 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                     }                                       
                 }
 
-                if(PlayerController.Instance.GetMustHide())
+                if(PlayerController.Instance.GetMustHide() && HideSpotCount.Instance.HasHideSpot)
                 {
                     if (LanguageManager.Instance.Language == "en")
                         StartCoroutine(CheckDoor(_hideTexts));
@@ -198,7 +204,27 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                     return;
                 }                               
 
-                if(!_isLocked)
+                if(this.name == "HallwayToSister" && ScenesInGame.Instance.GetIsFlashback())
+                {
+                    if (!ScenesInGame.Instance.GetFirstEntranceFlashbackScenePlayed())
+                    {
+                        if (LanguageManager.Instance.Language == "en")
+                            StartCoroutine(CheckDoor(_flashbackTexts));
+                        else if (LanguageManager.Instance.Language == "es")
+                            StartCoroutine(CheckDoor(_spanishFlashbackTexts));
+
+                        return;
+                    }                  
+                    else
+                    {
+                        _isOpeningDoor = true;
+                        StartCoroutine(ChangeRoom());
+
+                        return;
+                    }
+                }
+
+                if (!_isLocked)
                 {
                     _isOpeningDoor = true;
                     StartCoroutine(ChangeRoom());
@@ -230,12 +256,35 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
                     }
                 }
 
-                if (PlayerController.Instance.GetMustHide())
+                if (PlayerController.Instance.GetMustHide() && HideSpotCount.Instance.HasHideSpot)
                 {
                     if (LanguageManager.Instance.Language == "en")
                         StartCoroutine(CheckDoor(_hideTexts));
                     else if (LanguageManager.Instance.Language == "es")
                         StartCoroutine(CheckDoor(_spanishHideTexts));
+
+                    return;
+                }
+
+                if (this.name == "HallwayToParents" && ScenesInGame.Instance.GetIsFlashback())
+                {
+                    if(!ScenesInGame.Instance.GetFirstEntranceFlashbackScenePlayed())
+                    {
+                        if (LanguageManager.Instance.Language == "en")
+                            StartCoroutine(CheckDoor(_flashbackTexts));
+                        else if (LanguageManager.Instance.Language == "es")
+                            StartCoroutine(CheckDoor(_spanishFlashbackTexts));
+
+                        return;
+                    }
+
+                }
+                else if (this.name == "DinnerToBasement" && ScenesInGame.Instance.GetIsFlashback())
+                {
+                    if (LanguageManager.Instance.Language == "en")
+                        StartCoroutine(CheckDoor(_flashbackTexts));
+                    else if (LanguageManager.Instance.Language == "es")
+                        StartCoroutine(CheckDoor(_spanishFlashbackTexts));
 
                     return;
                 }
@@ -277,7 +326,6 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
     void UnlockDoor()
     {
-        Debug.Log("entra");
         if (PlayerInventory.Instance.GetItemListLenght() <= 0) return;
 
 

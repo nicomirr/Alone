@@ -69,6 +69,15 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     private void Update()
     {
+        if (ScenesInGame.Instance.GetIsFlashback())
+        {
+            _computerAnimator.SetBool("computerIsOn", false);
+            _canBeTurnedOnOff.IsTurnedOn = false;
+            _canBeTurnedOnOff.Disable = true;
+        }
+        else
+            _canBeTurnedOnOff.Disable = false;
+
         PauseStatus();
         Language();
         ChangeStatus();
@@ -81,6 +90,16 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
     public void OnPointerClick(PointerEventData eventData)
     {
         ZoomInComputer();
+
+        if (!ScenesInGame.Instance.GetIsFlashback()) return;
+
+        if (ButtonsGrid.Instance.GetCurrentAction() == "Turn On" || ButtonsGrid.Instance.GetCurrentAction() == "Encender")
+        {
+            if (LanguageManager.Instance.Language == "en")
+                TextBox.Instance.ShowText("I don't need to.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+            else if (LanguageManager.Instance.Language == "es")
+                TextBox.Instance.ShowText("No necesito hacer eso.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+        }
     }
 
     void ChangeStatus()

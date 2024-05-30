@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Respiration : MonoBehaviour, IDataPersistence
 {
-
     [SerializeField] bool _isTutorial;
     bool _tryPressed;
     bool _start;
+
+    [SerializeField] GameObject _respirationBar;   
+    [SerializeField] GameObject _respirator;
+    [SerializeField] GameObject _respiratorImage;
+    [SerializeField] GameObject _respiratorObjective;
+
+    UnityEngine.Color _respirationBarColor;
+    UnityEngine.Color _respiratorColor;
+    UnityEngine.Color _respiratorImageColor;
+    UnityEngine.Color _respiratorObjectiveColor;
 
     int _direction = -1;
     [SerializeField] float _speed;
@@ -27,6 +37,14 @@ public class Respiration : MonoBehaviour, IDataPersistence
     bool _tutorialShown;
     bool _screenSet;
         
+    public void Awake()
+    {
+        _respirationBarColor = _respirationBar.GetComponent<SpriteRenderer>().color;
+        _respiratorColor = _respirator.GetComponent<SpriteRenderer>().color;
+        _respiratorImageColor = _respiratorImage.GetComponent<SpriteRenderer>().color;
+        _respiratorObjectiveColor = _respiratorObjective.GetComponent<SpriteRenderer>().color;
+    }
+
     public void LoadData(GameData data)
     {
         _tutorialShown = data.respirationTutorialShown;
@@ -42,8 +60,41 @@ public class Respiration : MonoBehaviour, IDataPersistence
     public bool IsTutorial { get => _isTutorial; set => _isTutorial = value; }
 
     void Update()
-    {       
+    {        
+        _respirationBarColor.a = 0;       
+        _respiratorColor.a = 0;       
+        _respiratorImageColor.a = 0;       
+        _respiratorObjectiveColor.a = 0;
+
+        _respirationBar.GetComponent<SpriteRenderer>().color = _respirationBarColor;
+        
+        if(_respirator != null)
+        {
+            _respirator.GetComponent<SpriteRenderer>().color = _respiratorColor;
+            _respiratorImage.GetComponent<SpriteRenderer>().color = _respiratorImageColor;
+        }       
+        _respiratorObjective.GetComponent<SpriteRenderer>().color = _respiratorObjectiveColor;
+
+        if (!ScenesInGame.Instance.GetFirstLivingroomScenePlayed()) return;
+        if (!PlayerController.Instance.GetIsHidding()) return;
+
+        _respirationBarColor.a = 1;
+        _respiratorColor.a = 1;
+        _respiratorImageColor.a = 1;
+        _respiratorObjectiveColor.a = 1;
+
+        _respirationBar.GetComponent<SpriteRenderer>().color = _respirationBarColor;
+
+        if(_respirator != null)
+        {
+            _respirator.GetComponent<SpriteRenderer>().color = _respiratorColor;
+            _respiratorImage.GetComponent<SpriteRenderer>().color = _respiratorColor;
+        }        
+        _respiratorObjective.GetComponent<SpriteRenderer>().color = _respiratorObjectiveColor;
+
         RespirationState();
+        if (_tutorialShown) return;
+
         RespirationTutorial();
     }
 
@@ -69,7 +120,7 @@ public class Respiration : MonoBehaviour, IDataPersistence
             }
 
             if (_screenSet) return;
-            // 7.43
+            // 7.43            
             //105
             if (Screen.width <= 1280)
             {
@@ -175,3 +226,4 @@ public class Respiration : MonoBehaviour, IDataPersistence
 
    
 }
+//no se guarda porque esta inactivo ARREGLAR EN TODOS. USAR EJEMPLO EL DEL COMEDOR!!!

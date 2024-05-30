@@ -189,7 +189,6 @@ public class PlayerController : MonoBehaviour, IDataPersistence
                     _sceneToLoad = _door.GetNewSceneName();
                     _playerRb.velocity = new Vector2(0, 0);
                 }
-
             }
 
             _door.OpenDoor();
@@ -199,6 +198,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void OnPause(InputValue value)
     {
+        if(_isHidding) return;  
         if (_onScene) return;
         if (_isReading) return;      
         if(_gameOver) return;

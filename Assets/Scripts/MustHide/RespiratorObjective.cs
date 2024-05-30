@@ -41,10 +41,15 @@ public class RespiratorObjective : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == "Respirator")
-        {            
+        {
+
             _respiration.Start = false;
             Destroy(collision.gameObject);
-            _gameOver.SetActive(true);
+            if(_gameOver != null)
+            {
+                Debug.Log("Entra");
+                _gameOver.SetActive(true);
+            }
         }
         else if(collision.name == "RespiratorTutorial")
         {

@@ -9,6 +9,13 @@ public class HiddingSpot : MonoBehaviour, IPointerClickHandler
     [SerializeField] GameObject _imageToChange;
     bool _notClickable;
 
+    private void Update()
+    {
+        if (this.gameObject.name == "Wardrobe") return;
+        if (PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetIsHidding() || ScenesInGame.Instance.GetSceneIsPlaying()) return;
+        _imageToChange.GetComponent<SpriteRenderer>().sprite = null;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (PlayerController.Instance.GetMustHide())
