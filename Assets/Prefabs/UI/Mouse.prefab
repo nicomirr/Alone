@@ -53,4 +53,7 @@ MonoBehaviour:
   _underStairsRoomKey: {fileID: 2800000, guid: 3f001156feb464646ba239598b694429, type: 3}
   _umbrella: {fileID: 2800000, guid: cda34619f2f497a44a25dacbbb22362a, type: 3}
   _umbrellaHandle: {fileID: 2800000, guid: 0df768b3ad487764bbaa28265d5358db, type: 3}
+  _keySister: {fileID: 2800000, guid: d8b4035769f0c044896f746a7fe9c8db, type: 3}
+  _firePoker: {fileID: 2800000, guid: c9d0187b9a5d5244f947a2e197e1cfde, type: 3}
+  _keyEntrance: {fileID: 2800000, guid: 343f0438c716d654bb4cdb7bc144db8f, type: 3}
   _playerMinClickableDistance: 3

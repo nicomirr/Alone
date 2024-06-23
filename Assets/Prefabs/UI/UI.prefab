@@ -280,6 +280,10 @@ MonoBehaviour:
   _keyUnderStairs: {fileID: 5752767226684771832, guid: cb22ebe18a1225748a3875490a465855, type: 3}
   _umbrella: {fileID: 5752767226684771832, guid: 810682b2673505149b4770fe0f7756f8, type: 3}
   _umbrellaHandle: {fileID: 5752767226684771832, guid: 870d6933d25f7a140a5d2f71599af586, type: 3}
+  _keySister: {fileID: 5752767226684771832, guid: 75861ab0187e4bb42984cc72335caefb, type: 3}
+  _firePoker: {fileID: 5752767226684771832, guid: afc9f30005fc4e24ba096d0910991749, type: 3}
+  _keyEntrance: {fileID: 5752767226684771832, guid: 7bd7a56ea5772164992796d6b86b3f8a, type: 3}
+  _musicSheet: {fileID: 5752767226684771832, guid: 7175305ed7d3e9a4fa5820b31912dac8, type: 3}
   _glassEmpty: {fileID: 21300000, guid: 3c06b0582bfce464daef5926a01b53d6, type: 3}
   _glassWithWater: {fileID: 21300000, guid: 841242777815bfa4ab4f92897b2c9bb1, type: 3}
   _glassFill: {fileID: 8300000, guid: 9e49b7f33403cb8458a30eec5cc91aad, type: 3}
@@ -2514,6 +2518,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!1 &7150790311292573983

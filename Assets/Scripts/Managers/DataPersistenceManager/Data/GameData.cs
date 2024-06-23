@@ -22,6 +22,7 @@ public class GameData
     //Lights
     public SerializableDictionary<string, bool> lightsOn;
     public SerializableDictionary<string, bool> firstLightsStatusCheck;
+    public bool lightsOut;
 
     //Inventory
     public bool isUsingFlashlight;
@@ -31,10 +32,17 @@ public class GameData
     public bool isUsingKeyUnderStairs;
     public bool isUsingUmbrella;
     public bool isUsingUmbrellaHandle;
+    public bool isUsingKeySister;
+    public bool isUsingFirePoker;
+    public bool isUsingKeyEntrance;
     public bool glassFilled;
     public bool fillSoundPlayed;    
     public int itemSelected;
     public ClickableObject inventoryItem;
+    public bool hasPickedUpFlashlight;
+    public bool hasPickedUpFirePoker;
+    public bool hasPickedUpSistersKey;
+    public bool hasUsedSistersKey;
     public bool hasFlashlight;
     public bool hasGlass;
     public bool hasKeyParents;
@@ -43,6 +51,10 @@ public class GameData
     public bool hasKeyUnderStairs;
     public bool hasUmbrella;
     public bool hasUmbrellaHandle;
+    public bool hasKeySister;
+    public bool hasFirePoker;
+    public bool hasKeyEntrance;
+    public bool hasMusicSheet;
 
     //ClickableObject
     public SerializableDictionary<string, bool> textFirstSetup;
@@ -93,6 +105,9 @@ public class GameData
     public bool firstKitchenFlashbackScenePlayed;
     public bool firstLivingRoomFlashbackScenePlayed;
     public bool firstEntranceFlashbackScenePlayed;
+    public bool firstStairs2ndFloorScene;
+    public bool firstStairs2ndFloorScenePlayed;
+    public bool secondDinningRoomScenePlayed;
 
     //MouseAppearance
     public SerializableDictionary<string, bool> appearanceChanged;
@@ -152,6 +167,21 @@ public class GameData
     //MustHideCounter
     public float timer;
     public bool horrorAudioEnabledMustHideCounter;
+
+    //PlayerRoomTV
+    public int timesToStatic;
+
+    //AtticDoor
+    public bool atticDoorOpen;
+
+    //RadioButton
+    public Vector3 dial1Rotation;
+    public Vector3 dial2Rotation;
+    public Vector3 dial3Rotation;
+
+    //Piano
+    public bool songPlayed;
+    
 
     public GameData() 
     {
@@ -238,6 +268,5 @@ public class GameData
         sceneToLoad = "PlayersRoom";
 
     }
-
 
 }

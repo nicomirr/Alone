@@ -14,7 +14,7 @@ public class FlashingLights : MonoBehaviour
     [SerializeField] GameObject _respiration;
     [SerializeField] GameObject _playerHiddingLight;
     [SerializeField] AudioSource _searchingSound;
-    [SerializeField] float _deathTime;
+    float _deathTime = 30;
     [SerializeField] float _deathTimer;
     [SerializeField] GameObject _gameOver;
 
@@ -26,7 +26,7 @@ public class FlashingLights : MonoBehaviour
 
     void MustHideState()
     {
-        if (!ScenesInGame.Instance.GetSecondParentsRoomScene()) return;
+        if (!ScenesInGame.Instance.GetSecondParentsRoomScenePlayed()) return;
 
         if (PlayerController.Instance.GetMustHide() && !ScenesInGame.Instance.GetSceneIsPlaying())
         {
@@ -53,16 +53,33 @@ public class FlashingLights : MonoBehaviour
 
         while (PlayerController.Instance.GetMustHide())
         {
+            if (ScenesInGame.Instance.GetSceneIsPlaying() && PlayerController.Instance.GetMustHide() && !ScenesInGame.Instance.GetFirstLivingRoomSceneIsPlaying())
+            {
+                if(_sceneLight != null)
+                    _sceneLight.SetActive(true);
+
+                StopCoroutine(LightFlashing());
+                MustHideCounter.timer = 0;
+                PlayerController.Instance.SetMustHide(false);
+            }           
+            
             time = Random.Range(0.0f, 0.65f);
 
-            _sceneLight.SetActive(false);
+            if (_sceneLight != null)
+                _sceneLight.SetActive(false);
+
             yield return new WaitForSeconds(time);
 
             time = Random.Range(0.0f, 0.65f);
 
-            _sceneLight.SetActive(true);
+            if (_sceneLight != null)
+                _sceneLight.SetActive(true);
+
             yield return new WaitForSeconds(time);
+                      
         }
+
+        PlayerInventory.Instance.IsUsingFlashlight = false;
 
         time = Random.Range(0.0f, 0.65f);
 

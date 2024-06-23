@@ -503,6 +503,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d29e60e3e012e2445b5a5258bdd2e317, type: 3}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _turnOffText
       value: It's off.
       objectReference: {fileID: 0}
@@ -513,6 +517,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _canBeSearched
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: It's full of water
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadText
@@ -553,6 +561,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: "No quiero ba\xF1arme                         ahora mismo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: "Est\xE1 lleno de agua."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstReadTextSpanish
@@ -988,8 +1000,16 @@ PrefabInstance:
       value: Sure.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHasObjectText
+      value: I can't hide in a mirror.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: Me veo muy cansado.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: No puedo esconderme en un espejo.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -1380,6 +1400,10 @@ PrefabInstance:
       value: I don' have to right now.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: Not now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: I don't think so.
       objectReference: {fileID: 0}
@@ -1414,6 +1438,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: No necesito ir ahora mismo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Ahora no.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -1570,6 +1598,10 @@ PrefabInstance:
       value: How?
       objectReference: {fileID: 0}
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
+      propertyPath: _firstHideText
+      value: Not now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstOpenText
       value: I don't want to mess it up.
       objectReference: {fileID: 0}
@@ -1608,6 +1640,10 @@ PrefabInstance:
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstUseTextSpanish
       value: "\xBFC\xF3mo?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Ahora no.
       objectReference: {fileID: 0}
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -1890,6 +1926,10 @@ PrefabInstance:
       value: I don't need to wash my hands right now.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I shouldn't waste time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: It has no doors.
       objectReference: {fileID: 0}
@@ -1924,6 +1964,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: No necesito lavarme las manos ahora mismo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: "No deber\xEDa perder tiempo."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -2478,6 +2522,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab3ea5186cb0b34fa059691c9d053e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &789784300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754903394516451007, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Name
+      value: MusicSheet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
 --- !u!1 &810848661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7571,3 +7712,4 @@ SceneRoots:
   - {fileID: 1509789120}
   - {fileID: 629539100}
   - {fileID: 859016430}
+  - {fileID: 789784300}

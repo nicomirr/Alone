@@ -71,6 +71,7 @@ public class CanBeTurnedOnOff : MonoBehaviour, IPointerClickHandler, IDataPersis
     public void OnPointerClick(PointerEventData eventData)
     {
         if (Pause.Instance.IsPaused) return;
+        if (LightControl.LightsOut && gameObject.name == "Computer") return;
 
         bool RoomHasLight = _roomLightStatus.GetRoomHasLight();
 

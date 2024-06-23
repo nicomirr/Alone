@@ -7,6 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
+    static bool _lightsOut;
 
     [SerializeField] string _id;
 
@@ -48,6 +49,11 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
     [SerializeField] bool _isFan;
 
+    [SerializeField] bool _notWorking;
+
+    public static bool LightsOut { get => _lightsOut; set => _lightsOut = value; }
+    public bool IsOn { get => _isOn; set => _isOn = value; }
+
     private void Awake()
     {
         _light = GetComponentInChildren<Light2D>();              
@@ -58,15 +64,20 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
     {
         SetUpSwitch();  
         FirstTimeStatus();
+
+        if(_lightsOut && _light != null)
+            _light.enabled = false;
     }
     public void LoadData(GameData data)
     {        
         data.lightsOn.TryGetValue(_id, out _isOn);
 
-        _light.enabled = _isOn;
+        if(_light != null)
+            _light.enabled = IsOn;
 
         data.firstLightsStatusCheck.TryGetValue(_id, out _firstLightStatusCheck); //trata de conseguir el valor en la id indicada y lo vuelca en la variable indicada en out.
-                    
+
+        LightsOut = data.lightsOut;
     }
 
     public void SaveData(ref GameData data)
@@ -75,19 +86,33 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
         {
             data.lightsOn.Remove(_id);
         }
-        data.lightsOn.Add(_id, _isOn);
+        data.lightsOn.Add(_id, IsOn);
 
         if(data.firstLightsStatusCheck.ContainsKey(_id))
         {
             data.firstLightsStatusCheck.Remove(_id);
         }
         data.firstLightsStatusCheck.Add(_id, _firstLightStatusCheck);
-    }    
-    
+
+        data.lightsOut = LightsOut;
+    }
+
+    private void Update()
+    {
+        if(LightsOut)
+        {
+            _notWorking = true;
+            IsOn = false;
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (Pause.Instance.IsPaused) return;
 
+        CheckIfLightsAreWorking();
+        if (_notWorking) return;
+            
         ChangeLightStatus();
         RoofLightAndLightSwitchStatus();
         SwitchSound();
@@ -99,7 +124,7 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
         {
             if (_isFrontSwitch)
             {
-                if (_isOn) { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchUp; }
+                if (IsOn) { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchUp; }
                 else { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchDown; }
             }
             else
@@ -111,9 +136,31 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
     {
         if (!_firstLightStatusCheck)
         {
-            _isOn = _firstTimeStatus;
-            _light.enabled = _firstTimeStatus;
+            IsOn = _firstTimeStatus;
+
+            if(_light != null)
+                _light.enabled = _firstTimeStatus;
+
             _firstLightStatusCheck = true;
+        }
+    }
+
+    void CheckIfLightsAreWorking()
+    {
+        if (_notWorking)
+        {
+            _currentAction = ButtonsGrid.Instance.GetCurrentAction();
+
+            if (_currentAction == "Turn On" || _currentAction == "Encender" || _currentAction == "Turn Off" || _currentAction == "Apagar")
+            {
+                Debug.Log("Entra");
+
+                if (LanguageManager.Instance.Language == "en")
+                    TextBox.Instance.ShowText("It's not working.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+                else if (LanguageManager.Instance.Language == "es")
+                    TextBox.Instance.ShowText("No funciona.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+
+            }            
         }
     }
 
@@ -123,7 +170,7 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
         if (_currentAction == "Turn On" || _currentAction == "Encender")
         {
-            if (_isOn)
+            if (IsOn)
             {
                 if (LanguageManager.Instance.Language == "en")
                     TextBox.Instance.ShowText("It's already on.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
@@ -132,13 +179,13 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
             }
             else
             {
-                _isOn = true;
+                IsOn = true;
                 _soundPlayed = false;
             }
         }
         else if(_currentAction == "Turn Off" || _currentAction == "Apagar")
         {
-            if(!_isOn)
+            if(!IsOn)
             {
                 if (LanguageManager.Instance.Language == "en")
                     TextBox.Instance.ShowText("It's already off.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
@@ -147,24 +194,24 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
             }
             else
             {
-                _isOn = false;
+                IsOn = false;
                 _soundPlayed = false;
             }
         }
 
-        _light.enabled = _isOn;
+        _light.enabled = IsOn;
     }
 
     void SwitchSound()
     {
         if (_soundPlayed) return;
 
-        if (_isOn)
+        if (IsOn)
         {
             _audioSource.PlayOneShot(_turnOnAudio, _volume);
             _soundPlayed = true;
         }
-        else if (!_isOn)
+        else if (!IsOn)
         {
             _audioSource.PlayOneShot(_turnOffAudio, _volume);
             _soundPlayed = true;
@@ -173,17 +220,19 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
     void RoofLightAndLightSwitchStatus()
     {
+        if (_rooflight == null) return;
+
         if (_isRooflight)
         {
             if (_isFrontSwitch)
             {
-                if (_isOn) { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchUp; }
+                if (IsOn) { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchUp; }
                 else { _lightSwitch.GetComponent<SpriteRenderer>().sprite = _lightSwitchDown; }
             }
 
             if(!_isFan)
             {
-                if (_isOn) { _rooflight.GetComponent<SpriteRenderer>().sprite = _rooflightOn; }
+                if (IsOn) { _rooflight.GetComponent<SpriteRenderer>().sprite = _rooflightOn; }
                 else { _rooflight.GetComponent<SpriteRenderer>().sprite = _rooflightOff; }
             }
            

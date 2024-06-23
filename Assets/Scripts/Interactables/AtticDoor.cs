@@ -5,9 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class AtticDoor : MonoBehaviour, IPointerClickHandler
+public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     TextMeshPro _playerText;
+
+    RoomLightStatus _roomLightStatus;
 
     bool _notClickable;
     float _playerMinClickableDistance = 3;
@@ -17,9 +19,33 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
     [SerializeField] AudioSource _kettleSound;
     [SerializeField] GameObject _screenBlur;
 
+    [SerializeField] SpriteRenderer _imageToChange;
+    [SerializeField] Sprite _atticOpen;
+    [SerializeField] GameObject _pokerBlackScreen;
+    [SerializeField] AudioClip _atticOpened;
+    [SerializeField] GameObject _atticAccess;
+
+    bool _atticDoorOpen;
+
     private void Awake()
     {
         _playerText = GameObject.Find("PlayerText").GetComponent<TextMeshPro>();
+        _roomLightStatus = FindObjectOfType<RoomLightStatus>();
+    }
+
+    public void LoadData(GameData data)
+    {
+        _atticDoorOpen = data.atticDoorOpen;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.atticDoorOpen = _atticDoorOpen;
+    }
+
+    private void Update()
+    {
+        ChangeAtticDoorAppearance();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -27,15 +53,80 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
         MouseDistanceMath();
         if (_notClickable) return;
 
+        bool roomHasLight = _roomLightStatus.GetRoomHasLight();
+        if (!roomHasLight && !PlayerInventory.Instance.IsUsingFlashlight) return;
+
         if (PlayerInventory.Instance.IsUsingUmbrella)
         {
             ScenesInGame.Instance.SetSceneIsPlaying(true);
             StartCoroutine(UsingUmbrella());
         }
+        else if(PlayerInventory.Instance.IsUsingFirePoker)
+        {
+            ScenesInGame.Instance.SetSceneIsPlaying(true);
+            StartCoroutine(UsingFirePoker());
+        }
     }
+
+    void ChangeAtticDoorAppearance()
+    {
+        if(_atticDoorOpen)
+        {           
+            _imageToChange.sprite = _atticOpen;
+            _atticAccess.SetActive(true);
+            ChangeText();           
+        }
+    }
+
+    void ChangeText()
+    {
+        ClickableObject clickableObject = GetComponent<ClickableObject>();
+
+        if (LanguageManager.Instance.Language == "en")
+        {
+            clickableObject.OpenText = "It's already open.";
+            clickableObject.CloseText = "No.";
+            clickableObject.UseText = "What for?";
+        }
+        else if(LanguageManager.Instance.Language == "es")
+        {
+            clickableObject.OpenText = "Ya está abierta.";
+            clickableObject.CloseText = "No.";
+            clickableObject.UseText = "¿Para qué?";
+        }
+    }
+
+    IEnumerator UsingFirePoker()
+    {
+        AudioSourceHorror.Instance.GetComponent<AudioSource>().Stop();
+        AudioSourceHorror.Instance.IsPlaying = false;
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
+        PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+
+        _pokerBlackScreen.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        PlayerController.Instance.transform.position = new Vector2(12.779f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingFirePoker", true);
+        yield return new WaitForSeconds(3f);
+
+        AudioSource.PlayClipAtPoint(_atticOpened, PlayerController.Instance.transform.position, 0.4f);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingFirePoker", false);
+        PlayerInventory.Instance.DestroyCurrentItem();
+        _atticDoorOpen = true;
+        yield return new WaitForSeconds(2f);
+
+        _atticAccess.SetActive(true);
+        _pokerBlackScreen.SetActive(false);
+        ScenesInGame.Instance.SetSceneIsPlaying(false);
+    }
+
 
     IEnumerator UsingUmbrella()
     {
+        AudioSourceHorror.Instance.GetComponent<AudioSource>().Stop();
+        AudioSourceHorror.Instance.IsPlaying = false;
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         PlayerController.Instance.GetComponent<Animator>().SetBool("isWalking", false);
         PlayerController.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -145,7 +236,9 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
 
         _kettleSound.Stop();
         ScenesInGame.Instance.SetIsFlashback(true);
-        ScenesInGame.Instance.SetFirstPlayersRoomFlashbackScene(true);        
+        ScenesInGame.Instance.SetFirstPlayersRoomFlashbackScene(true);    
+        yield return new WaitForSeconds(5.0f);
+
         SceneManager.LoadScene("PlayersRoom");
 
     }
@@ -155,4 +248,6 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler
         float objAndPlayerDistance = PlayerController.Instance.transform.position.x - this.transform.position.x;
         _notClickable = objAndPlayerDistance > _playerMinClickableDistance || objAndPlayerDistance < -_playerMinClickableDistance;
     }
+
+    
 }

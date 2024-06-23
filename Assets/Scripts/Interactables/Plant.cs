@@ -183,7 +183,7 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     void ZoomInPlant()
     {
-        if (!_roomLightStatus.GetRoomHasLight()) return;
+        if (!_roomLightStatus.GetRoomHasLight() && !PlayerInventory.Instance.IsUsingFlashlight) return;
 
         _notClickable = MouseBehaviour.Instance.NotClickable;
         if (_notClickable) return;

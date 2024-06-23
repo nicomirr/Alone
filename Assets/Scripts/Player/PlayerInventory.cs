@@ -21,9 +21,19 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     [SerializeField] GameObject _keyUnderStairs;
     [SerializeField] GameObject _umbrella;
     [SerializeField] GameObject _umbrellaHandle;
+    [SerializeField] GameObject _keySister;
+    [SerializeField] GameObject _firePoker;
+    [SerializeField] GameObject _keyEntrance;
+    [SerializeField] GameObject _musicSheet;
 
     int _itemSelected;
     ClickableObject _inventoryItem;
+
+    bool _hasPickedUpFlashlight;
+
+    bool _hasPickedUpSistersKey;
+    bool _hasUsedSistersKey;
+    bool _hasPickedUpFirePoker;
 
     bool _hasFlashlight;
     bool _hasGlass;
@@ -33,6 +43,10 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     bool _hasKeyUnderStairs;
     bool _hasUmbrella;
     bool _hasUmbrellaHandle;
+    bool _hasKeySister;
+    bool _hasFirePoker;
+    bool _hasKeyEntrance;
+    bool _hasMusicSheet;
 
     bool _isUsingFlashlight;
     bool _isUsingGlass;
@@ -42,6 +56,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     bool _isUsingKeyUnderStairs;
     bool _isUsingUmbrella;
     bool _isUsingUmbrellaHandle;
+    bool _isUsingKeySister;
+    bool _isUsingFirePoker;
+    bool _isUsingKeyEntrance;
 
     bool _glassFilled;
     [SerializeField] Sprite _glassEmpty;
@@ -74,10 +91,21 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         data.isUsingKeyUnderStairs = Instance._isUsingKeyUnderStairs;
         data.isUsingUmbrella = Instance._isUsingUmbrella;
         data.isUsingUmbrellaHandle = Instance._isUsingUmbrellaHandle;
+        data.isUsingKeySister = Instance._isUsingKeySister;
+        data.isUsingFirePoker = Instance._isUsingFirePoker;
+        data.isUsingKeyEntrance = Instance._isUsingKeyEntrance;
+
         data.glassFilled = Instance._glassFilled;
         data.fillSoundPlayed = Instance._fillSoundPlayed;       
         data.itemSelected = Instance._itemSelected;
         data.inventoryItem = Instance._inventoryItem;
+
+        data.hasPickedUpFlashlight = Instance._hasPickedUpFlashlight;
+
+        data.hasPickedUpFirePoker = Instance._hasPickedUpFirePoker;
+
+        data.hasPickedUpSistersKey = Instance._hasPickedUpSistersKey;
+        data.hasUsedSistersKey = Instance._hasUsedSistersKey;
 
         data.hasFlashlight = Instance._hasFlashlight;
         data.hasGlass = Instance._hasGlass;
@@ -87,6 +115,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         data.hasKeyUnderStairs = Instance._hasKeyUnderStairs;
         data.hasUmbrella = Instance._hasUmbrella;
         data.hasUmbrellaHandle = Instance._hasUmbrellaHandle;
+        data.hasKeySister = Instance._hasKeySister;
+        data.hasFirePoker = Instance._hasFirePoker;
+        data.hasMusicSheet = Instance.HasMusicSheet;
     }
     public void LoadData(GameData data)     
     {
@@ -97,10 +128,21 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         Instance._isUsingKeyUnderStairs = data.isUsingKeyUnderStairs;
         Instance._isUsingUmbrella = data.isUsingUmbrella;
         Instance._isUsingUmbrellaHandle = data.isUsingUmbrellaHandle;
+        Instance._isUsingKeySister = data.isUsingKeySister;
+        Instance._isUsingFirePoker = data.isUsingFirePoker;
+        Instance._isUsingKeyEntrance = data.isUsingKeyEntrance;
+
         Instance._glassFilled = data.glassFilled;
         Instance._fillSoundPlayed = data.fillSoundPlayed;       
         Instance._itemSelected = data.itemSelected;
         Instance._inventoryItem = data.inventoryItem;
+
+        Instance._hasPickedUpFlashlight = data.hasPickedUpFlashlight;
+
+        Instance._hasPickedUpFirePoker = data.hasPickedUpFirePoker;
+
+        Instance._hasPickedUpSistersKey = data.hasPickedUpSistersKey;
+        Instance._hasUsedSistersKey = data.hasUsedSistersKey;
 
         Instance._hasFlashlight = data.hasFlashlight;
         Instance._hasGlass = data.hasGlass;
@@ -110,6 +152,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         Instance._hasKeyUnderStairs = data.hasKeyUnderStairs;
         Instance._hasUmbrella = data.hasUmbrella;
         Instance._hasUmbrellaHandle = data.hasUmbrellaHandle;
+        Instance._hasKeySister = data.hasKeySister;
+        Instance._hasFirePoker = data.hasFirePoker;
+        Instance.HasMusicSheet = data.hasMusicSheet;
     }
 
     private void Start()
@@ -154,10 +199,31 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
             _items.Add(_umbrellaHandle);
         }
 
+        if(_hasKeySister)
+        {
+            _items.Add(_keySister);
+        }
+
+        if(_hasFirePoker)
+        {
+            _items.Add(_firePoker);
+            _hasPickedUpFirePoker = true;
+        }
+
+        if(_hasKeyEntrance)
+        {
+            _items.Add(_keyEntrance);
+        }
+
+        if(HasMusicSheet)
+        {
+            _items.Add(_musicSheet);
+        }
     }
 
     private void Update()
     {
+        CurrentItemFix();
         FlashbackStatus();
         ClampItems();
         UpdateItems();
@@ -177,6 +243,13 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     public bool IsUsingKeyUnderStairs { get => _isUsingKeyUnderStairs; set => _isUsingKeyUnderStairs = value; }
     public bool IsUsingUmbrella { get => _isUsingUmbrella; set => _isUsingUmbrella = value; }
     public bool IsUsingUmbrellaHandle { get => _isUsingUmbrellaHandle; set => _isUsingUmbrellaHandle = value; }
+    public bool IsUsingKeySister { get => _isUsingKeySister; set => _isUsingKeySister = value; }
+    public bool IsUsingFirePoker { get => _isUsingFirePoker; set => _isUsingFirePoker = value; }
+    public bool IsUsingKeyEntrance { get => _isUsingKeyEntrance; set => _isUsingKeyEntrance = value; }
+    public bool HasUsedSistersKey { get => _hasUsedSistersKey; set => _hasUsedSistersKey = value; }
+    public bool HasPickedUpFirePoker { get => _hasPickedUpFirePoker; set => _hasPickedUpFirePoker = value; }
+    public bool HasKeyEntrance { get => _hasKeyEntrance; set => _hasKeyEntrance = value; }
+    public bool HasMusicSheet { get => _hasMusicSheet; set => _hasMusicSheet = value; }
 
     public GameObject GetCurrentItem() { return _items[_itemSelected];}
 
@@ -193,6 +266,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         if (item.name == "FlashlightInventory")
         {
             _hasFlashlight = true;
+            _hasPickedUpFlashlight = true;
         }
         else if (item.name == "GlassInventory")
         {
@@ -221,6 +295,24 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         else if (item.name == "UmbrellaHandleInventory")
         {
             _hasUmbrellaHandle = true;
+        }
+        else if(item.name == "KeySisterInventory")
+        {
+            _hasKeySister = true;
+            _hasPickedUpSistersKey = true;
+        }
+        else if(item.name == "PokerInventory")
+        {
+            _hasFirePoker = true;
+            _hasPickedUpFirePoker = true;
+        }
+        else if(item.name == "KeyEntranceInventory")
+        {
+            _hasKeyEntrance = true;
+        }
+        else if(item.name == "MusicSheetInventory")
+        {
+            _hasMusicSheet = true;
         }
     }
 
@@ -263,17 +355,46 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         else if (_items[index].name == "UmbrellaHandleInventory")
         {
             _hasUmbrellaHandle = false;
+            _isUsingUmbrellaHandle = false;
+            _isUsingItemMouse = false;
+        }
+        else if (_items[index].name == "KeySisterInventory")
+        {
+            _hasKeySister = false;
+            _isUsingKeySister = false;
+            _isUsingItemMouse = false;
+        }
+        else if (_items[index].name == "PokerInventory")
+        {
+            _hasFirePoker = false;
+            _isUsingFirePoker = false;
+            _isUsingItemMouse = false;
+        }
+        else if (_items[index].name == "KeyEntranceInventory")
+        {
+            _hasKeyEntrance = false;
+            _isUsingKeyEntrance = false;
+            _isUsingItemMouse = false;
+        }
+        else if (_items[index].name == "MusicSheetInventory")
+        {
+            _hasMusicSheet = false;            
         }
 
         _items.RemoveAt(index);
        
     }
 
+    void CurrentItemFix()
+    {
+        if(ItemSelected < 0 || ItemSelected >= _items.Count)
+            ItemSelected = 0;
+    }
+
     void StopUsingItem()
     {
         if(Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            _isUsingFlashlight = false;
+        {            
             _isUsingGlass = false;
             _isUsingItemMouse = false;
             _isUsingParentsKey = false;
@@ -281,6 +402,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
             _isUsingKeyUnderStairs = false;
             _isUsingUmbrella = false;
             _isUsingUmbrellaHandle = false;
+            _isUsingKeySister = false;
+            _isUsingFirePoker = false;
+            _isUsingKeyEntrance = false;
         }
     }
 
@@ -290,10 +414,28 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         {      
             _items.Remove(_glass);
             _items.Remove(_dadsNote);      
-            _items.Remove(_umbrellaHandle);            
+            _items.Remove(_umbrellaHandle);
+
+            if (_hasPickedUpFlashlight)
+                _items.Remove(_flashlight);
+
+            if (_hasPickedUpSistersKey && !_hasUsedSistersKey)
+                _items.Remove(_keySister);
         }
     }
     
+    public void AfterFlashbackStatus()
+    {
+        _items.Add(_umbrellaHandle);
+        _items.Add(_glass);
+        _items.Add(_dadsNote);
+
+        if (_hasPickedUpFlashlight)
+            _items.Add(_flashlight);
+
+        if (_hasPickedUpSistersKey && !_hasUsedSistersKey)
+            _items.Add(_keySister);
+    }
 
     public void DestroyCurrentItem()
     {
@@ -311,7 +453,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
         if (PlayerController.Instance.GetIsReading()) return;
         if (PlayerController.Instance.GetMustHide()) return;
-
+                
         _isUsingGlass = false;
         _isUsingItemMouse = false;
         _isUsingParentsKey = false;
@@ -319,6 +461,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         _isUsingKeyUnderStairs = false;
         _isUsingUmbrella = false;
         _isUsingUmbrellaHandle = false;
+        _isUsingKeySister = false;
+        _isUsingFirePoker = false;
+        _isUsingKeyEntrance = false;
 
         if (_itemSelected < _items.Count - 1)
             _itemSelected++;
@@ -341,6 +486,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         _isUsingKeyUnderStairs= false;
         _isUsingUmbrella = false;
         _isUsingUmbrellaHandle = false;
+        _isUsingKeySister = false;
+        _isUsingFirePoker = false;
+        _isUsingKeyEntrance = false;
 
         if (_itemSelected > 0)
             _itemSelected--;
@@ -429,6 +577,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
             _isUsingKeyUnderStairs = false;
             _isUsingUmbrella = false;
             _isUsingUmbrellaHandle = false;
+            _isUsingKeySister = false;
+            _isUsingKeyEntrance = false;
             _isUsingItemMouse = false;
         }
                
@@ -561,7 +711,41 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
                 _isUsingItemMouse = _isUsingUmbrellaHandle;
             }
         }
+        else if(CurrentItemName() == "KeySisterInventory")
+        {
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingKeySister = !_isUsingKeySister;
+                _isUsingItemMouse = _isUsingKeySister;
+            }
+        }
+        else if (CurrentItemName() == "PokerInventory")
+        {
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingFirePoker = !_isUsingFirePoker;
+                _isUsingItemMouse = _isUsingFirePoker;
+            }
+        }
+        else if (CurrentItemName() == "KeyEntranceInventory")
+        {
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
+            {
+                _isUsingKeyEntrance = !_isUsingKeyEntrance;
+                _isUsingItemMouse = _isUsingKeyEntrance;
+            }
+        }
+        else if (CurrentItemName() == "MusicSheetInventory")
+        {
+            if (PlayerController.Instance.GetIsInteractingWithEnviroment()) return;
 
+            if (ButtonsGrid.Instance.GetCurrentAction() == "Read" || ButtonsGrid.Instance.GetCurrentAction() == "Leer")
+            {
+                PlayerController.Instance.SetIsReading(true);
+                GameObject.Find("MusicSheet").transform.GetChild(0).gameObject.SetActive(true);
+            }
+
+        }
     }
    
 }
@@ -569,3 +753,6 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
 //CAMBIAR TODO EL SISTEMA DE INVENTARIO. QUE CADA OBJETO TENGA SU SCRIPT, Y EJECUTAR SUS ACCIONES DESDE ESTOS.
 //NO NECESARIAMENTE TIENE QUE SER UN BOTON EL OBJETO DEL INVENTARIO.
+
+
+//CHEQUEAR SI AGARRO LA LLAVE DE LA HERMANA. SI LA USO. Y SI NO LA USO SACARLA Y AGREGARLA EN FLASHBACK.

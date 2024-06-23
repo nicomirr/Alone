@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class HiddingSpot : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] Sprite _imageOpen;
     [SerializeField] Sprite _imageHidding;
     [SerializeField] GameObject _imageToChange;
     bool _notClickable;
@@ -14,6 +15,12 @@ public class HiddingSpot : MonoBehaviour, IPointerClickHandler
         if (this.gameObject.name == "Wardrobe") return;
         if (PlayerController.Instance.GetMustHide() || PlayerController.Instance.GetIsHidding() || ScenesInGame.Instance.GetSceneIsPlaying()) return;
         _imageToChange.GetComponent<SpriteRenderer>().sprite = null;
+
+        if(!PlayerController.Instance.GetIsHidding() && ScenesInGame.Instance.GetSecondParentsRoomScenePlayed())
+        {
+            _imageToChange.GetComponent<SpriteRenderer>().sprite = _imageOpen;
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData)

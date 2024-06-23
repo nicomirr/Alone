@@ -854,6 +854,7 @@ MonoBehaviour:
   _hiddingSpot: 1
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!61 &286439791
@@ -1000,6 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5c44636a50ff48b19fb91498fd05b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _imageOpen: {fileID: 0}
   _imageHidding: {fileID: 21300000, guid: 844226129e351bb46b3e1ca080475073, type: 3}
   _imageToChange: {fileID: 399033823}
 --- !u!1001 &332431653
@@ -2302,6 +2304,8 @@ GameObject:
   - component: {fileID: 1007852327}
   - component: {fileID: 1007852330}
   - component: {fileID: 1007852331}
+  - component: {fileID: 1007852333}
+  - component: {fileID: 1007852332}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -2445,7 +2449,7 @@ MonoBehaviour:
   _firstCloseText: It's already closed.
   _firstUseText: What for?
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: Not now.
   _firstLookAtTextSpanish: Es mi televisor.
   _firstTurnOnTextSpanish: Ahora no.
   _firstTurnOffTextSpanish: Ya se encuentra apagado.
@@ -2456,7 +2460,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: "Ya est\xE1 cerrado."
   _firstUseTextSpanish: "\xBFPara qu\xE9?"
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: Ahora no.
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -2490,6 +2494,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1007852331
@@ -2509,6 +2514,114 @@ MonoBehaviour:
   _canBeWatered: 0
   _canBeWateredInitialStatus: 0
   _playerMinClickableDistance: 3
+--- !u!82 &1007852332
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007852325}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 16c6827a3ecf80f4081765f1fe9b958c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1007852333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007852325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7995bb7e71d4a43b57faba7a440676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1033033763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,6 +3043,103 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 7742749632145773986, guid: 6ff23ff7289881d47b21c44de1b1b8dd, type: 3}
   m_PrefabInstance: {fileID: 1114249207}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1138505957
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754903394516451007, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Name
+      value: MusicSheet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
 --- !u!1 &1159452895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,7 +3746,7 @@ MonoBehaviour:
   _firstCloseText: It's closed.
   _firstUseText: I don't need to get changed right now.
   _firstHasObjectText: Look. It's my old flashlight.
-  _firstHideText: 
+  _firstHideText: I can't hide in a dresser.
   _firstLookAtTextSpanish: "Es mi c\xF3moda. Guardo mi ropa all\xED."
   _firstTurnOnTextSpanish: "\xBFQu\xE9?"
   _firstTurnOffTextSpanish: "No creo que funcione as\xED."
@@ -3547,7 +3757,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: "Est\xE1 cerrada."
   _firstUseTextSpanish: No necesito cambiarme de ropa.
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: "No puedo esconderme en una c\xF3moda."
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -3581,6 +3791,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1309742601
@@ -5817,7 +6028,7 @@ MonoBehaviour:
   _firstCloseText: Sure.
   _firstUseText: I don't have use for it right now.
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: I shouldn't waste time.
   _firstLookAtTextSpanish: "Es mi estanter\xEDa. Guardo todo tipo de cosas en ella."
   _firstTurnOnTextSpanish: No es posible.
   _firstTurnOffTextSpanish: "No sabr\xEDa como hacer eso."
@@ -5829,7 +6040,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: Claro.
   _firstUseTextSpanish: "No tengo uso para nada de lo que all\xED."
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: "No deber\xEDa perder tiempo."
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -5863,6 +6074,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1431827012
@@ -6039,7 +6251,7 @@ MonoBehaviour:
   _firstCloseText: It's already closed.
   _firstUseText: What for?
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: I can't hide here.
   _firstLookAtTextSpanish: "Est\xE1 lloviendo afuera."
   _firstTurnOnTextSpanish: No creo que sea posible.
   _firstTurnOffTextSpanish: "\xBFC\xF3mo?"
@@ -6050,7 +6262,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: "Ya est\xE1 cerrada."
   _firstUseTextSpanish: "\xBFPara qu\xE9?"
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: "No puedo esconderme aqu\xED."
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -6084,6 +6296,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1475681445
@@ -6361,6 +6574,7 @@ MonoBehaviour:
   _turnOnAudio: {fileID: 8300000, guid: 7258cce136d54f4419b5317ae6ccc156, type: 3}
   _turnOffAudio: {fileID: 8300000, guid: df9cba3a1cb14a845a1e052d3696ed2a, type: 3}
   _isFan: 0
+  _notWorking: 0
 --- !u!114 &1516035192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6384,7 +6598,7 @@ MonoBehaviour:
   _firstCloseText: No.
   _firstUseText: What for?
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: I shouldn't waste time.
   _firstLookAtTextSpanish: "Es mi l\xE1mpara."
   _firstTurnOnTextSpanish: "Ya est\xE1 encendida."
   _firstTurnOffTextSpanish: "Ya est\xE1 apagada."
@@ -6395,7 +6609,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: No.
   _firstUseTextSpanish: "\xBFPara qu\xE9?"
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: "No deber\xEDa perder tiempo."
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -6429,6 +6643,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1516035193
@@ -6785,12 +7000,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1644709855135022009, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2048339610, guid: 432c63beb8b59164b94cda1167abf4d2, type: 3}
+    - target: {fileID: 1644709855135022009, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14
+      value: -1.68
       objectReference: {fileID: 0}
     - target: {fileID: 7458403258080350798, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7705,7 +7924,7 @@ MonoBehaviour:
   _firstCloseText: It's closed, and it will stay that way.
   _firstUseText: Not now.
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: I must hide.
   _firstLookAtTextSpanish: Es mi consola de videojuegos.
   _firstTurnOnTextSpanish: No quiero usarla ahora mismo.
   _firstTurnOffTextSpanish: "Est\xE1 apagada."
@@ -7716,7 +7935,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: "Est\xE1 cerrada, y permanecer\xE1 as\xED."
   _firstUseTextSpanish: Ahora no.
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: Debo esconderme.
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -7750,6 +7969,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1887455639
@@ -8078,7 +8298,7 @@ MonoBehaviour:
   _firstCloseText: No.
   _firstUseText: How?
   _firstHasObjectText: 
-  _firstHideText: 
+  _firstHideText: Not now.
   _firstLookAtTextSpanish: Es un poster de Ninja Man.
   _firstTurnOnTextSpanish: No puedo.
   _firstTurnOffTextSpanish: No funciona de esa manera.
@@ -8089,7 +8309,7 @@ MonoBehaviour:
   _firstCloseTextSpanish: No.
   _firstUseTextSpanish: "\xBFC\xF3mo?"
   _firstHasObjectTextSpanish: 
-  _firstHideTextSpanish: 
+  _firstHideTextSpanish: Ahora no.
   _hasObjectTextSpanish: 
   _hideTextSpanish: 
   _lookAtTextSpanish: 
@@ -8123,6 +8343,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
 --- !u!114 &1967631978
@@ -8475,6 +8696,10 @@ PrefabInstance:
       value: How?
       objectReference: {fileID: 0}
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
+      propertyPath: _firstHideText
+      value: Not now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstOpenText
       value: I don't want to mess it up.
       objectReference: {fileID: 0}
@@ -8509,6 +8734,10 @@ PrefabInstance:
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstUseTextSpanish
       value: "\xBFC\xF3mo?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Ahora no.
       objectReference: {fileID: 0}
     - target: {fileID: 7601361968606882413, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -8574,6 +8803,11 @@ PrefabInstance:
 --- !u!1 &117326806150916253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1327624980411156445, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
+  m_PrefabInstance: {fileID: 117326806150916252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &117326806150916254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5450402321693738041, guid: aeabf407bf5ddea458a41b58493f83ea, type: 3}
   m_PrefabInstance: {fileID: 117326806150916252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2462527088513078613
@@ -8740,7 +8974,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.1400003
+      value: 2.3200002
       objectReference: {fileID: 0}
     - target: {fileID: 110716085530415954, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8808,7 +9042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.1400003
+      value: 2.3200002
       objectReference: {fileID: 0}
     - target: {fileID: 3746443294817195658, guid: 712e125985cb9f14a8816e94356c758e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9082,6 +9316,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6559405390358307946, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.248539
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559405390358307946, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.93
+      objectReference: {fileID: 0}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _bed
       value: 
@@ -9095,9 +9337,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2462527088513078615}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _sceneLight
+      value: 
+      objectReference: {fileID: 117326806150916253}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _playerAwake
       value: 
       objectReference: {fileID: 21300000, guid: 5157b39609ec6a64c92247f8727886e6, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _bedroomLight
+      value: 
+      objectReference: {fileID: 117326806150916254}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _fadeAnimator
       value: 
@@ -9537,3 +9787,4 @@ SceneRoots:
   - {fileID: 1685473189}
   - {fileID: 801284944}
   - {fileID: 1868808180}
+  - {fileID: 1138505957}

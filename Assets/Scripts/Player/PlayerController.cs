@@ -208,6 +208,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             Pause.Instance.IsPaused = true;
             GameObject.Find("PauseScreen").transform.position = new Vector2(Pause.Instance.transform.position.x, Screen.height / 2);
         }
+        else
+        {
+            Pause.Instance.Continue();
+        }
     }
 
     void Move()

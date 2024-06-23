@@ -17,6 +17,9 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] Texture2D _underStairsRoomKey;
     [SerializeField] Texture2D _umbrella;
     [SerializeField] Texture2D _umbrellaHandle;
+    [SerializeField] Texture2D _keySister;
+    [SerializeField] Texture2D _firePoker;
+    [SerializeField] Texture2D _keyEntrance;
 
     [Header("Click Distance")]
     [SerializeField] float _playerMinClickableDistance = 3;
@@ -97,6 +100,24 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
         else if (PlayerInventory.Instance.IsUsingUmbrellaHandle)
         {
             UnityEngine.Cursor.SetCursor(_umbrellaHandle, new Vector2(_umbrellaHandle.width / 2, _umbrellaHandle.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if (PlayerInventory.Instance.IsUsingKeySister)
+        {
+            UnityEngine.Cursor.SetCursor(_keySister, new Vector2(_keySister.width / 2, _keySister.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if (PlayerInventory.Instance.IsUsingFirePoker)
+        {
+            UnityEngine.Cursor.SetCursor(_firePoker, new Vector2(_firePoker.width / 2, _firePoker.height / 2), CursorMode.Auto);
+            _hasJustUsedObject = true;
+            return;
+        }
+        else if (PlayerInventory.Instance.IsUsingKeyEntrance)
+        {
+            UnityEngine.Cursor.SetCursor(_keyEntrance, new Vector2(_keyEntrance.width / 2, _keyEntrance.height / 2), CursorMode.Auto);
             _hasJustUsedObject = true;
             return;
         }

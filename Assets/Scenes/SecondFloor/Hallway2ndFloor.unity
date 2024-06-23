@@ -356,6 +356,10 @@ PrefabInstance:
       value: I don't have a use for it right now.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I shouldn't waste time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: I don't think so.
       objectReference: {fileID: 0}
@@ -391,6 +395,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: No tengo uso para ella por ahora.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: "No deber\xEDa perder tiempo."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -1182,6 +1190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2166713805340612466, guid: 5c11f886ae898e941b156da47ee78ddf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2625245046104376589, guid: 5c11f886ae898e941b156da47ee78ddf, type: 3}
       propertyPath: _id
       value: 31d6fdfb-17b6-4d22-9ab9-7c0b157527dd
@@ -1190,6 +1202,14 @@ PrefabInstance:
       propertyPath: _isLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2625245046104376589, guid: 5c11f886ae898e941b156da47ee78ddf, type: 3}
+      propertyPath: _doorKeyName
+      value: KeySisterInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625245046104376589, guid: 5c11f886ae898e941b156da47ee78ddf, type: 3}
+      propertyPath: _doorUnlocked
+      value: 
+      objectReference: {fileID: 8300000, guid: 65e2ff44624be2347bec74e1d7106079, type: 3}
     - target: {fileID: 2625245046104376589, guid: 5c11f886ae898e941b156da47ee78ddf, type: 3}
       propertyPath: _newSceneName
       value: SisterRoom
@@ -1444,6 +1464,10 @@ PrefabInstance:
       value: My reflection is here.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I must hide.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: It has no door.
       objectReference: {fileID: 0}
@@ -1478,6 +1502,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: Puedo ver mi reflejo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Debo esconderme.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -1728,6 +1756,10 @@ PrefabInstance:
       value: What for?
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: I can't hide here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: I will open it if I need to look for something.
       objectReference: {fileID: 0}
@@ -1756,12 +1788,20 @@ PrefabInstance:
       value: I can't turn it on.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _hideTextSpanish
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOffText
       value: It's not possible.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: "\xBFPara qu\xE9?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: "No puedo esconderme aqu\xED."
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -5135,6 +5175,103 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1502900234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396325191702546755, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754903394516451007, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
+      propertyPath: m_Name
+      value: MusicSheet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cebc5253851053b4ea46ce7f413cd52f, type: 3}
 --- !u!1001 &1547365125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5379,6 +5516,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideText
+      value: Not now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenText
       value: I dont think so.
       objectReference: {fileID: 0}
@@ -5400,7 +5541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstSearchText
-      value: Nothing.
+      value: Nothing. Ground looks hard and dry
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnText
@@ -5413,6 +5554,10 @@ PrefabInstance:
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstUseTextSpanish
       value: No tengo uso para ella.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Ahora no.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -5436,7 +5581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstSearchTextSpanish
-      value: Nada.
+      value: Nada. La tierra se ve dura y seca-
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnTextSpanish
@@ -5758,6 +5903,7 @@ MonoBehaviour:
   _hiddingSpot: 0
   _hasObject: 0
   _item: {fileID: 0}
+  _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 1
   _hasObjectInitialStatus: 0
 --- !u!114 &1655544380
@@ -6262,6 +6408,10 @@ PrefabInstance:
       value: How?
       objectReference: {fileID: 0}
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+      propertyPath: _firstHideText
+      value: Not now
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstOpenText
       value: I don't want to mess it up.
       objectReference: {fileID: 0}
@@ -6296,6 +6446,10 @@ PrefabInstance:
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstUseTextSpanish
       value: "\xBFC\xF3mo?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+      propertyPath: _firstHideTextSpanish
+      value: Ahora no.
       objectReference: {fileID: 0}
     - target: {fileID: 4845077492168061868, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
       propertyPath: _firstOpenTextSpanish
@@ -8243,3 +8397,4 @@ SceneRoots:
   - {fileID: 1794618095}
   - {fileID: 681278693}
   - {fileID: 850591470}
+  - {fileID: 1502900234}

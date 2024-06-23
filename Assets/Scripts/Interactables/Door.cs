@@ -339,12 +339,15 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
             else if (LanguageManager.Instance.Language == "es")
                 TextBox.Instance.ShowText("La desbloqueé.");
 
+            if (_doorKeyName == "KeySisterInventory")
+                PlayerInventory.Instance.HasUsedSistersKey = true;
+
             PlayerInventory.Instance.DestroyCurrentItem();
         }
     }
        
     IEnumerator ChangeRoom()
-    {
+    {      
         PlayerController.Instance.SetPlayerHasSideMovement(false);
         _fadeAnimator.SetTrigger("StartTransition");
         if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 0.9f); }
@@ -356,6 +359,17 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
         PlayerController.Instance.transform.localScale = new Vector3(_playerScale, PlayerController.Instance.transform.localScale.y);
         PlayerController.Instance.SetLookingFront(_playerIsFront);
         PlayerController.Instance.SetLookingBack(_playerIsBack);
+
+        if (gameObject.name == "HallwayToPlayer" && ScenesInGame.Instance.GetFirstEntranceFlashbackScenePlayed() && ScenesInGame.Instance.GetIsFlashback())
+        {
+            ScenesInGame.Instance.SetIsFlashback(false);
+            ScenesInGame.Instance.SetSceneIsPlaying(true);
+            _newSceneName = "Stairs2ndFloor";
+            ScenesInGame.Instance.SetFirstStairs2ndFloorScene(true);
+            yield return new WaitForSecondsRealtime(2f);
+            PlayerInventory.Instance.AfterFlashbackStatus();
+            PlayerController.Instance.SetSceneToLoad(_newSceneName);
+        }
 
         yield return new WaitForSecondsRealtime(0.3f);                
         SceneManager.LoadScene(_newSceneName);

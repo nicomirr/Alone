@@ -55,9 +55,9 @@ public class CanBeOpen : MonoBehaviour, IPointerClickHandler, IDataPersistence
     {
         if (Pause.Instance.IsPaused) return;
 
-        bool RoomHasLight = _roomLightStatus.GetRoomHasLight();
+        bool roomHasLight = _roomLightStatus.GetRoomHasLight();
 
-        if (!RoomHasLight && !PlayerInventory.Instance.IsUsingFlashlight) return;
+        if (!roomHasLight && !PlayerInventory.Instance.IsUsingFlashlight) return;
 
         _notClickable = MouseBehaviour.Instance.NotClickable;
 

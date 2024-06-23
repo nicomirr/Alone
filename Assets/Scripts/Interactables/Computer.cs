@@ -69,6 +69,13 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     private void Update()
     {
+        if (LightControl.LightsOut)
+        {
+            _computerAnimator.SetBool("computerIsOn", false);
+            _canBeTurnedOnOff.IsTurnedOn = false;
+            _canBeTurnedOnOff.Disable = true;
+        }
+
         if (ScenesInGame.Instance.GetIsFlashback())
         {
             _computerAnimator.SetBool("computerIsOn", false);
@@ -84,12 +91,16 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
         if (_inputField == null) return;
         _typedPassword = _inputField.GetComponent<TMP_InputField>().text;
-        
+
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         ZoomInComputer();
+        
+        LightsOutStatus();
+
+        if (LightControl.LightsOut) return;
 
         if (!ScenesInGame.Instance.GetIsFlashback()) return;
 
@@ -99,6 +110,19 @@ public class Computer : MonoBehaviour, IPointerClickHandler, IDataPersistence
                 TextBox.Instance.ShowText("I don't need to.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
             else if (LanguageManager.Instance.Language == "es")
                 TextBox.Instance.ShowText("No necesito hacer eso.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+        }
+    }
+
+    void LightsOutStatus()
+    {        
+        if (!LightControl.LightsOut) return;
+
+        if (ButtonsGrid.Instance.GetCurrentAction() == "Turn On" || ButtonsGrid.Instance.GetCurrentAction() == "Encender" || ButtonsGrid.Instance.GetCurrentAction() == "Turn Off" || ButtonsGrid.Instance.GetCurrentAction() == "Apagar")
+        {
+            if (LanguageManager.Instance.Language == "en")
+                TextBox.Instance.ShowText("Power has been cut off.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
+            else if (LanguageManager.Instance.Language == "es")
+                TextBox.Instance.ShowText("No hay electricidad.", GetComponent<ClickableObject>().InventoryObject, GetComponent<ClickableObject>());
         }
     }
 

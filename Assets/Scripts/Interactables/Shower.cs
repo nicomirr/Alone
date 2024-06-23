@@ -195,7 +195,7 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     void ZoomInBath()
     {
-        if (!_roomLightStatus.GetRoomHasLight()) return;
+        if (!_roomLightStatus.GetRoomHasLight() && !PlayerInventory.Instance.IsUsingFlashlight) return;
         if (_waterFilled) { return; }
 
         _notClickable = MouseBehaviour.Instance.NotClickable;
@@ -256,8 +256,7 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
     {
         if(ScenesInGame.Instance.GetIsFlashback())
             _animator.SetBool("bathtubFilled", false);
-
-        
+                
     }
 
     public void BackButton()

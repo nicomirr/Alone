@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MustHideCounter : MonoBehaviour, IDataPersistence
-{
+{    
     public static float timer;
-    int _time = 10;
+    int _time = 180;
     AudioSource _audioSourceHorror;
     bool _horrorAudioEnabled;
     bool _corroutineStarted;
@@ -33,6 +33,7 @@ public class MustHideCounter : MonoBehaviour, IDataPersistence
     private void Update()
     {        
         if (Pause.Instance.IsPaused) return;
+        if (ScenesInGame.Instance.GetSecondDinningroomScenePlayed()) return;
         if (!ScenesInGame.Instance.GetFirstLivingroomScenePlayed()) return;
         if (ScenesInGame.Instance.GetIsFlashback()) return;
         if (ScenesInGame.Instance.GetSceneIsPlaying()) return;

@@ -28,9 +28,10 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        Language();
-    }
+        Language();      
 
+    }
+        
     public void Continue()
     {
         isPaused = false;

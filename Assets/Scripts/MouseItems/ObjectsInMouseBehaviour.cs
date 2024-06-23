@@ -70,8 +70,8 @@ public class ObjectsInMouseBehaviour : MonoBehaviour, IPointerClickHandler, IDat
         }
 
         if (_notClickable) return;
-               
-        bool roomHasLight = _roomLightStatus.GetRoomHasLight();
+
+        bool roomHasLight = _roomLightStatus.GetRoomHasLight() || PlayerInventory.Instance.IsUsingFlashlight;
 
         if (PlayerInventory.Instance.IsUsingItemMouse)
         {          
@@ -129,6 +129,10 @@ public class ObjectsInMouseBehaviour : MonoBehaviour, IPointerClickHandler, IDat
                 return;
             }
             else if(PlayerInventory.Instance.IsUsingUmbrella && obj.GetComponent<AtticDoor>())
+            {
+                return;
+            }
+            else if(PlayerInventory.Instance.IsUsingFirePoker && obj.GetComponent<AtticDoor>())
             {
                 return;
             }

@@ -51,7 +51,16 @@ EditorBuildSettings:
     path: Assets/Scenes/SecondFloor/ParentsRoomFlashback.unity
     guid: ffac603945955cf4c9f6aba017e85c30
   - enabled: 1
-    path: Assets/Scenes/SecondFloor/SisterRoomFlashback.unity
+    path: Assets/Scenes/SecondFloor/SisterRoom.unity
     guid: e35e6366952bc414595dee6cadd23ebc
+  - enabled: 1
+    path: Assets/Scenes/FirstFloor/Basement.unity
+    guid: 1216b9311a836f34999aeb36099644ab
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/Attic.unity
+    guid: 04a30e6ea31413d4c8fdeee2579420bd
+  - enabled: 1
+    path: Assets/Scenes/SecondFloor/SisterRoomFlashback.unity
+    guid: 1d53d1a679fce5447923241d277ba189
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: eea0bf13ee66a2442966bd0c0302d20c, type: 2}

@@ -83,10 +83,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
     [SerializeField] bool _canBeRead;
     [SerializeField] bool _hiddingSpot;
 
-
     [Header("Object")]
     [SerializeField] bool _hasObject;
     [SerializeField] GameObject _item;
+    [SerializeField] AudioClip _pickupSound;
 
     [Header("InitialStatus")]
     [SerializeField] bool _canBeSearchedInitialStatus;
@@ -267,6 +267,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
     public string OpenTextSpanish { get => _openTextSpanish; set => _openTextSpanish = value; }
     public string CloseTextSpanish { get => _closeTextSpanish; set => _closeTextSpanish = value; }
     public string UseTextSpanish { get => _useTextSpanish; set => _useTextSpanish = value; }
+    public bool CanBeRead { get => _canBeRead; set => _canBeRead = value; }
 
     private void Update()
     {
@@ -440,7 +441,9 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
                 else
                 {
                     if(LanguageManager.Instance.Language == "en")
+                    {
                         TextBox.Instance.ShowText(_noLightText, _isInventoryObject, GetComponent<ClickableObject>());
+                    }
                     else if (LanguageManager.Instance.Language == "es")
                         TextBox.Instance.ShowText(_noLightTextSpanish, _isInventoryObject, GetComponent<ClickableObject>());
                 }
@@ -479,6 +482,9 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
             {
                 if (_canBePickedUp && (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight))
                 {
+                    if(_pickupSound != null)
+                        AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position);
+
                     PlayerInventory.Instance.AddItem(_item);
                     _hasBeenPickedUp = true;
                     this.gameObject.SetActive(false);
@@ -503,6 +509,9 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
                 {
                     if (_hasObject)
                     {
+                        if(_pickupSound != null) 
+                            AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position);
+
                         TextBox.Instance.ShowText(_hasObjectText, _isInventoryObject, GetComponent<ClickableObject>());
                         PlayerInventory.Instance.AddItem(_item);
                         _hasObject = false;
@@ -520,7 +529,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
             }
             else if(_currentAction == "Read" || _currentAction == "Leer")
             {
-                if (_canBeRead && (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight)) return;
+                if (CanBeRead && (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight)) return;
                                 
                 if (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight || _isInventoryObject)
                     TextBox.Instance.ShowText(_readText, _isInventoryObject, GetComponent<ClickableObject>());

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
+using UnityEngine.Rendering.Universal;
 
 public class ScenesInGame : MonoBehaviour, IDataPersistence
 {
@@ -34,6 +35,7 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     bool _firstEntranceScenePlayed;
 
     bool _firstLivingroomScenePlayed;
+    bool _firstLivingroomSceneIsPlaying;
 
     bool _firstPlayersRoomFlashbackScene;
     bool _firstPlayersRoomFlashbackScenePlayed;
@@ -45,6 +47,12 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     bool _firstLivingRoomFlashbackScenePlayed;
 
     bool _firstEntranceFlashbackScenePlayed;
+
+    bool _firstStairs2ndFloorScene;
+    bool _firstStairs2ndFloorScenePlayed;
+
+    bool _secondDinningRoomScene;
+    bool _secondDinningRoomScenePlayed;
 
     bool _sceneIsPlaying;
 
@@ -120,9 +128,16 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] Sprite _playerAwake;
     [SerializeField] Sprite _normalBed;
     [SerializeField] GameObject _blackScreenImageAwake;
+    [SerializeField] GameObject _bedroomLight; 
 
     [Header("LivingRoomFirstFlashbackScene")]
     [SerializeField] AudioClip _doorBell;
+
+    [Header("EntranceFirstFlashbackScene")]
+    [SerializeField] GameObject _peephole;
+
+    [Header("Stairs2ndFloorScene")]
+    [SerializeField] GameObject _stairs2ndFloorBlackImage;
 
     GameObject _generalTextBackground;
 
@@ -130,7 +145,6 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     [SerializeField] AudioClip _endingScreenSound;
     [SerializeField] GameObject _endingScreen;
     [SerializeField] GameObject _thanksForPlayingText;
-
 
     private void Awake()
     {
@@ -169,6 +183,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         data.firstKitchenFlashbackScenePlayed = _firstKitchenFlashbackScenePlayed;
         data.firstLivingRoomFlashbackScenePlayed = _firstLivingRoomFlashbackScenePlayed;
         data.firstEntranceFlashbackScenePlayed = _firstEntranceFlashbackScenePlayed;
+        data.firstStairs2ndFloorScene = _firstStairs2ndFloorScene;
+        data.firstStairs2ndFloorScenePlayed = _firstStairs2ndFloorScenePlayed;
+        data.secondDinningRoomScenePlayed = _secondDinningRoomScenePlayed;
     }
 
     public void LoadData(GameData data)
@@ -191,6 +208,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _firstKitchenFlashbackScenePlayed = data.firstKitchenFlashbackScenePlayed;
         _firstLivingRoomFlashbackScenePlayed = data.firstLivingRoomFlashbackScenePlayed;
         _firstEntranceFlashbackScenePlayed = data.firstEntranceFlashbackScenePlayed;
+        _firstStairs2ndFloorScene = data.firstStairs2ndFloorScene;
+        _firstStairs2ndFloorScenePlayed = data.firstStairs2ndFloorScenePlayed;
+        _secondDinningRoomScenePlayed = data.secondDinningRoomScenePlayed;
     }
 
     public bool GetIsFlashback() { return _isFlashback; }
@@ -204,13 +224,15 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
     public void SetFirstKitchenScene(bool value) { _firstKitchenScene = value; }
     public bool GetFirstParentsRoomScene() { return _firstParentsRoomScene; }
     public void SetFirstParentsRoomScene(bool value) { _firstParentsRoomScene = value; }
-    public bool GetSecondParentsRoomScene() { return _secondParentsRoomScenePlayed; }
+    public bool GetSecondParentsRoomScenePlayed() { return _secondParentsRoomScenePlayed; }    
     public void SetSecondParentsRoomScene(bool value) { _secondParentsRoomScenePlayed = value; }   
     public bool GetFirstPlayersRoomFlashbackScene() { return _firstPlayersRoomFlashbackScene; }
     public void SetFirstPlayersRoomFlashbackScene(bool value) { _firstPlayersRoomFlashbackScene = value; }
-
     public bool GetFirstEntranceFlashbackScenePlayed() { return _firstEntranceFlashbackScenePlayed; }
     public bool GetFirstLivingroomScenePlayed() { return _firstLivingroomScenePlayed; }
+    public void SetFirstStairs2ndFloorScene(bool value) { _firstStairs2ndFloorScene = value; }
+    public bool GetFirstLivingRoomSceneIsPlaying() { return  _firstLivingroomSceneIsPlaying; }
+    public bool GetSecondDinningroomScenePlayed() { return _secondDinningRoomScenePlayed; }
 
 
     private void Update()
@@ -368,6 +390,20 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
             StartCoroutine(FirstEntranceSceneFlashback());
             _firstEntranceFlashbackScenePlayed = true;
 
+        }
+
+        if(!_firstStairs2ndFloorScenePlayed && _firstStairs2ndFloorScene && SceneManager.GetActiveScene().name == "Stairs2ndFloor")
+        {
+            _sceneIsPlaying = true;
+            StartCoroutine(FirstStairs2ndFloorScene());
+            _firstStairs2ndFloorScenePlayed = true;
+        }
+
+        if(!_secondDinningRoomScenePlayed && SceneManager.GetActiveScene().name == "DinningRoom" && PlayerInventory.Instance.HasPickedUpFirePoker)
+        {
+            _sceneIsPlaying = true;
+            StartCoroutine(SecondDinningRoomScene());
+            _secondDinningRoomScenePlayed = true;
         }
 
     }
@@ -1136,6 +1172,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstLivingroomScene()
     {
+        _firstLivingroomSceneIsPlaying = true;
+
         PlayerController.Instance.transform.position = new Vector3(15.1f, -1.27f);
         yield return new WaitForSeconds(0.2f);
 
@@ -1383,6 +1421,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstPlayersRoomFlashbackScene()
     {
+        _bedroomLight.GetComponent<LightControl>().IsOn = false;
+        _sceneLight.GetComponent<Light2D>().enabled = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         yield return new WaitForSeconds(0.2f);
 
@@ -1696,9 +1737,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.SetWalkingSpeedMod(2.7f);
 
         StartCoroutine(PlayerController.Instance.MoveOnScene(1, 1, 49));
-        yield return new WaitForSeconds(11f);
+        yield return new WaitForSeconds(10.3f);
 
-        //MIRA POR MIRILLA IMAGEN
+        _peephole.SetActive(true);
+        yield return new WaitForSeconds(5.5f);
+
+        _peephole.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
 
         if (LanguageManager.Instance.Language == "en")
             _playerText.text = "That's weird.";
@@ -1727,6 +1772,105 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _playerText.text = "";
         yield return new WaitForSeconds(1.5f);
 
+        _sceneIsPlaying = false;
+    }
+
+    IEnumerator FirstStairs2ndFloorScene()
+    {
+        _isFlashback = false;
+        MustHideCounter.timer = 0;
+        _stairs2ndFloorBlackImage.SetActive(true);
+
+        PlayerController.Instance.transform.position = new Vector2(12.431f, PlayerController.Instance.transform.position.y);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingFront", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingBack", false);
+        PlayerController.Instance.transform.localScale = Vector3.one;
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isDizzy", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isFalling", true);        
+        yield return new WaitForSeconds(8f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isFallenAwake", true);
+        yield return new WaitForSeconds(4f);
+
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isFallenAwake", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isFalling", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("isDizzy", false);
+
+        yield return new WaitForSeconds(6f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "What happened?";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "¿Qué pasó?";
+        yield return new WaitForSeconds(2.5f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1.5f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "My head is spinning.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "Mi cabeza da vueltas.";
+        yield return new WaitForSeconds(3f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1.5f);
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "I must get out of here.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "Debo salir de aquí.";
+        yield return new WaitForSeconds(3f);
+
+        _playerText.text = "";
+        yield return new WaitForSeconds(1.5f);
+
+        _sceneIsPlaying = false;
+        _firstLivingroomSceneIsPlaying = false;
+    }
+
+    IEnumerator SecondDinningRoomScene()
+    {
+        PlayerController.Instance.GetComponent<AudioSource>().Stop();
+        yield return new WaitForSeconds(0.2f);
+
+        PlayerController.Instance.GetComponent<AudioSource>().Play();
+        GameObject.Find("AudioSourceHorror").GetComponent<AudioSource>().Stop();
+        AudioSourceHorror.Instance.IsPlaying = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+
+        _sceneLight.SetActive(true);
+        yield return new WaitForSeconds(0.35f);
+
+        _sceneLight.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+                
+        yield return new WaitForSeconds(2f);
+
+
+        if (LanguageManager.Instance.Language == "en")
+            _playerText.text = "The light went out.";
+        else if (LanguageManager.Instance.Language == "es")
+            _playerText.text = "La luz dejó de funcionar.";
+        yield return new WaitForSeconds(2.5f);
+
+        _playerText.text = "";
         _sceneIsPlaying = false;
     }
 
