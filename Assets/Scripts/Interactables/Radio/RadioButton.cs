@@ -58,15 +58,13 @@ public class RadioButton : MonoBehaviour, IDataPersistence
         _dial1.transform.eulerAngles = _dial1Rotation;
         _dial2.transform.eulerAngles = _dial2Rotation;
         _dial3.transform.eulerAngles = _dial3Rotation;
-
-        if (ScenesInGame.Instance.GetIsFlashback())
-            GetComponent<ClickableObject>().CanBeUsed = false;
-        else
-            GetComponent<ClickableObject>().CanBeUsed = true;
+                
     }
 
     private void Update()
     {
+        if (_dial1 == null) return;
+
         DialValues();
     }
 
@@ -197,6 +195,8 @@ public class RadioButton : MonoBehaviour, IDataPersistence
         }
         else if(_dial1Value == _dial1CorrectValue && _dial2Value == _dial2CorrectValue && _dial3Value == _dial3CorrectValue)
         {
+            UnityEngine.Cursor.visible = false;
+
             AudioSource.PlayClipAtPoint(_pianoMusic, PlayerController.Instance.transform.position, 0.28f);
             _backButton.enabled = false;
             _dial1Button.enabled = false;
@@ -238,6 +238,8 @@ public class RadioButton : MonoBehaviour, IDataPersistence
             _dial1Button.enabled = true;
             _dial3Button.enabled = true;
             _buttonPressed = false;
+
+            UnityEngine.Cursor.visible = true;
         }
                
     }

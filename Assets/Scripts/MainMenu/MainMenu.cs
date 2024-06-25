@@ -47,7 +47,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void OnNewGameClicked()
-    {     
+    {
+        UnityEngine.Cursor.visible = false;
         DisableMenuButtons();
         StartCoroutine(Tutorial());
 

@@ -98,6 +98,8 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     IEnumerator UsingFirePoker()
     {
+        UnityEngine.Cursor.visible = false;
+
         AudioSourceHorror.Instance.GetComponent<AudioSource>().Stop();
         AudioSourceHorror.Instance.IsPlaying = false;
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
@@ -120,11 +122,15 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _atticAccess.SetActive(true);
         _pokerBlackScreen.SetActive(false);
         ScenesInGame.Instance.SetSceneIsPlaying(false);
+
+        UnityEngine.Cursor.visible = true;
     }
 
 
     IEnumerator UsingUmbrella()
     {
+        UnityEngine.Cursor.visible = false;
+
         AudioSourceHorror.Instance.GetComponent<AudioSource>().Stop();
         AudioSourceHorror.Instance.IsPlaying = false;
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
@@ -240,6 +246,8 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
         yield return new WaitForSeconds(5.0f);
 
         SceneManager.LoadScene("PlayersRoom");
+
+        UnityEngine.Cursor.visible = true;
 
     }
 

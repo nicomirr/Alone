@@ -124,6 +124,8 @@ public class Piano : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     IEnumerator PianoSongPlayed()
     {
+        UnityEngine.Cursor.visible = false;
+
         ScenesInGame.Instance.SetSceneIsPlaying(true);
         PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingBack", true);
 
@@ -217,7 +219,7 @@ public class Piano : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
         ScenesInGame.Instance.SetSceneIsPlaying(false);
 
-
+        UnityEngine.Cursor.visible = true;
     }
     
 }

@@ -75,6 +75,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         _playerBodyCollider = GetComponent<BoxCollider2D>();
     }
 
+    private void Start()
+    {
+        WearingPajamas();
+    }
+
     public void LoadData(GameData data)
     {
         Instance.transform.position = data.playerPos;
@@ -100,6 +105,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
+        WearingPajamas();
         StopPlayer();
         if (Pause.Instance.IsPaused) return;
         if (_onLockedDoor) return;
@@ -212,6 +218,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             Pause.Instance.Continue();
         }
+    }
+
+    void WearingPajamas()
+    {
+        if (ScenesInGame.Instance.GetIsFlashback())
+            _playerAnimator.SetBool("isWearingPajamas", true);
+        else
+            _playerAnimator.SetBool("isWearingPajamas", false);
     }
 
     void Move()

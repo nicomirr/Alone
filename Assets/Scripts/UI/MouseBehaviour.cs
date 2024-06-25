@@ -146,11 +146,11 @@ public class MouseBehaviour : MonoBehaviour, IDataPersistence
         else
             UnityEngine.Cursor.SetCursor(_blackPointer, new Vector2(_blackPointer.width / 2, _blackPointer.height / 2), CursorMode.Auto);
     }
-
+        
     void MouseDistanceMath(GameObject objt)
     {
         float objAndPlayerDistance = PlayerController.Instance.transform.position.x - objt.transform.position.x;
         _notClickable = objAndPlayerDistance > _playerMinClickableDistance || objAndPlayerDistance < -_playerMinClickableDistance;
     }
-      
+       
 }

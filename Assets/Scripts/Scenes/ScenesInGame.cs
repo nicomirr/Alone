@@ -410,6 +410,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstPlayerRoomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         CinemachineTransposer transposer = FindObjectOfType<CinemachineTransposer>();
         transposer.m_XDamping = 0;
 
@@ -506,11 +508,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _sceneIsPlaying = false;
 
         GameObject.Find("TV").GetComponentInChildren<Animator>().SetBool("playing", false);
-        
+
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstDinningRoomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         PlayerController.Instance.transform.position = new Vector2(15.13f, PlayerController.Instance.transform.position.y);
         yield return new WaitForSeconds(0.5f);
@@ -581,10 +586,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         AudioSource.PlayClipAtPoint(_doorCloseSound, PlayerController.Instance.transform.position, 0.7f);
         yield return new WaitForSecondsRealtime(0.3f);
         SceneManager.LoadScene("Kitchen");
+               
     }
 
     IEnumerator FirstKitchenScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         yield return new WaitForSeconds(2);
 
         if(LanguageManager.Instance.Language == "en")
@@ -760,10 +768,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _sceneIsPlaying = false;
 
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstParentsRoomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         yield return new WaitForSeconds(0.2f);
 
@@ -860,10 +871,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.SetMustHide(true);
         _sceneIsPlaying = false;
 
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator SecondParentsRoomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.transform.localScale = Vector3.one;
 
         yield return new WaitForSeconds(1.5f);
@@ -1010,10 +1024,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.transform.position = new Vector2(1.520912f, PlayerController.Instance.transform.position.y);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator SecondParentsRoomSceneFix()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.SetMustEscape(true);
 
         yield return new WaitForSeconds(2f);
@@ -1027,12 +1045,14 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _playerText.text = "";
 
-
         _sceneIsPlaying = false;
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstEntranceScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         yield return new WaitForSeconds(0.2f);
 
@@ -1172,6 +1192,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstLivingroomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         _firstLivingroomSceneIsPlaying = true;
 
         PlayerController.Instance.transform.position = new Vector3(15.1f, -1.27f);
@@ -1380,7 +1402,9 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.6f);
 
         _playerText.text = "";
-        
+
+        UnityEngine.Cursor.visible = true;
+
 
         if (Screen.width <= 1280)
         {
@@ -1421,6 +1445,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstPlayersRoomFlashbackScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         _bedroomLight.GetComponent<LightControl>().IsOn = false;
         _sceneLight.GetComponent<Light2D>().enabled = false;
 
@@ -1469,11 +1495,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1f);
 
         _sceneIsPlaying = false;
-
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstDinningRoomFlashbackScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         PlayerController.Instance.transform.position = new Vector2(15.13f, PlayerController.Instance.transform.position.y);
         yield return new WaitForSeconds(0.5f);
@@ -1528,6 +1556,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
     IEnumerator FirstKitchenSceneFlashback()
     {
+        UnityEngine.Cursor.visible = false;
+
         _kettleAudioSource.volume = 0.8f;
         _kettleAudioSource.volume = 0.4f;
         _kettleAudioSource.Play();
@@ -1587,10 +1617,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         _playerText.text = "";
         
         _sceneIsPlaying = false;
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstLivingRoomSceneFlashback()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         PlayerController.Instance.transform.position = new Vector2(-7.91f, PlayerController.Instance.transform.position.y);
         yield return new WaitForSeconds(0.5f);
@@ -1607,46 +1640,46 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         PlayerController.Instance.GetComponent<Animator>().SetBool("isLookingBack", true);
         yield return new WaitForSeconds(1.5f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephonePickedup", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phonePickUpPajama", true);
         AudioSource.PlayClipAtPoint(_phonePickup, PlayerController.Instance.transform.position, 0.7f);
         yield return new WaitForSeconds(0.2f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", true);
         AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.7f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", false);
         yield return new WaitForSeconds(1f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", true);
         AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.7f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", false);
         yield return new WaitForSeconds(1f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", true);
         AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.7f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", false);
         yield return new WaitForSeconds(1f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", true);
         AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.7f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", false);
         yield return new WaitForSeconds(1f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", true);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", true);
         AudioSource.PlayClipAtPoint(_phoneDial, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(0.7f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephoneDialing", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phoneDialPajama", false);
         yield return new WaitForSeconds(3.5f);
 
-        PlayerController.Instance.GetComponent<Animator>().SetBool("telephonePickedup", false);
+        PlayerController.Instance.GetComponent<Animator>().SetBool("phonePickUpPajama", false);
         AudioSource.PlayClipAtPoint(_phoneHangUp, PlayerController.Instance.transform.position);
 
         if (LanguageManager.Instance.Language == "en")
@@ -1723,11 +1756,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1.5f);
 
         _sceneIsPlaying = false;
-
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstEntranceSceneFlashback()
-    {        
+    {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.transform.position = new Vector2(-6.1f, PlayerController.Instance.transform.position.y);
         yield return new WaitForSeconds(0.3f);
 
@@ -1773,10 +1808,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(1.5f);
 
         _sceneIsPlaying = false;
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator FirstStairs2ndFloorScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         _isFlashback = false;
         MustHideCounter.timer = 0;
         _stairs2ndFloorBlackImage.SetActive(true);
@@ -1827,10 +1865,13 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _sceneIsPlaying = false;
         _firstLivingroomSceneIsPlaying = false;
+        UnityEngine.Cursor.visible = true;
     }
 
     IEnumerator SecondDinningRoomScene()
     {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.GetComponent<AudioSource>().Stop();
         yield return new WaitForSeconds(0.2f);
 
@@ -1872,6 +1913,8 @@ public class ScenesInGame : MonoBehaviour, IDataPersistence
 
         _playerText.text = "";
         _sceneIsPlaying = false;
+
+        UnityEngine.Cursor.visible = true;
     }
 
     public void OnOkHideTutorialButtonPressed()

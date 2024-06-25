@@ -15,8 +15,18 @@ public class Radio : MonoBehaviour, IPointerClickHandler
         _roomLightStatus = FindObjectOfType<RoomLightStatus>();
     }
 
+    private void Start()
+    {
+        if (ScenesInGame.Instance.GetIsFlashback())        
+            GetComponent<ClickableObject>().CanBeUsed = false;        
+        else        
+            GetComponent<ClickableObject>().CanBeUsed = true;        
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (ScenesInGame.Instance.GetIsFlashback()) return;
+
         if (ButtonsGrid.Instance.GetCurrentAction() == "Use" || ButtonsGrid.Instance.GetCurrentAction() == "Usar")
         {
             if (Pause.Instance.IsPaused) return;

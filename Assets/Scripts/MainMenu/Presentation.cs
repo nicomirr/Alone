@@ -19,4 +19,14 @@ public class Presentation : MonoBehaviour
         AudioSource.SetActive(true);
     }
 
+    public void EnableCursor()
+    {
+        UnityEngine.Cursor.visible = true;
+    }
+
+    public void DisableCursor()
+    {
+        UnityEngine.Cursor.visible = false;
+    }
+
 }

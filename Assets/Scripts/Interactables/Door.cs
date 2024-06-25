@@ -347,7 +347,9 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
     }
        
     IEnumerator ChangeRoom()
-    {      
+    {
+        UnityEngine.Cursor.visible = false;
+
         PlayerController.Instance.SetPlayerHasSideMovement(false);
         _fadeAnimator.SetTrigger("StartTransition");
         if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 0.9f); }
@@ -370,6 +372,8 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
             PlayerInventory.Instance.AfterFlashbackStatus();
             PlayerController.Instance.SetSceneToLoad(_newSceneName);
         }
+
+        UnityEngine.Cursor.visible = true;
 
         yield return new WaitForSecondsRealtime(0.3f);                
         SceneManager.LoadScene(_newSceneName);

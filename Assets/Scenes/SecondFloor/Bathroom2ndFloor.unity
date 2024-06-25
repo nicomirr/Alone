@@ -5761,6 +5761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bathtub: {fileID: 236213243}
   _drainStopperOnDrain: {fileID: 21300000, guid: 9c30673da766aa1409dd7174aeee05d0, type: 3}
+  _drainStopperSound: {fileID: 8300000, guid: ef1865b4d36152e49883bfc90c0baf60, type: 3}
 --- !u!114 &1536073625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6938934521977295475, guid: 520773cb7ba87674fa507b30ccac8ca9, type: 3}

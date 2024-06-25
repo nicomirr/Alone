@@ -7,6 +7,7 @@ public class DrainStopper : MonoBehaviour, IPointerClickHandler
 {    
     [SerializeField] GameObject _bathtub;
     [SerializeField] Sprite _drainStopperOnDrain;
+    [SerializeField] AudioClip _drainStopperSound;
 
     public void Update()
     {        
@@ -27,6 +28,7 @@ public class DrainStopper : MonoBehaviour, IPointerClickHandler
         if(PlayerInventory.Instance.IsUsingBathroomDrainStopper)
         {
             _bathtub.GetComponent<Shower>().HasDrainStopper = true;
+            AudioSource.PlayClipAtPoint(_drainStopperSound, PlayerController.Instance.transform.position);
             PlayerInventory.Instance.DestroyCurrentItem();
         }
     }    

@@ -27,12 +27,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip _doorSlam;
     [SerializeField] AudioClip _doorSlamOpen;
 
+    SpriteRenderer _spriteRenderer;
+
+    [SerializeField] Sprite _idle;
+    [SerializeField] Sprite _walk1;
+    [SerializeField] Sprite _walk2;
+
     [SerializeField] GameObject _gameOver;
 
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public IEnumerator EnemyMovement()
@@ -69,18 +76,34 @@ public class Enemy : MonoBehaviour
 
         float time;
 
-        while(PlayerController.Instance.GetIsHidding())
-        {
-            time = Random.Range(0.8f, 2f);
+        int pos = 0;
+
+        while (PlayerController.Instance.GetIsHidding())
+        {            
+            time = Random.Range(0.6f, 2f);
+
+            if(pos == 0)
+                _spriteRenderer.sprite = _walk1;
+            else if(pos == 1)
+                _spriteRenderer.sprite = _walk2;
 
             transform.position = new Vector2(this.transform.position.x + _direction, this.transform.position.y);
             _audioSource.PlayOneShot(_footstep);
-                        
+
+            yield return new WaitForSeconds(0.23f);
+            _spriteRenderer.sprite = _idle;
+
+            if (pos == 0)
+                pos = 1;
+            else if (pos == 1)
+                pos = 0;
+
             yield return new WaitForSeconds(time);
         }
 
         _respiration.SetActive(false);
         _gameOver.SetActive(false);
+        UnityEngine.Cursor.visible = false;
 
         yield return new WaitForSeconds(2);
 
@@ -123,6 +146,9 @@ public class Enemy : MonoBehaviour
         PlayerController.Instance.GetComponent<SpriteRenderer>().color = color;
         _playerHidding.SetActive(false);
         ScenesInGame.Instance.SetSceneIsPlaying(false);
+
+        UnityEngine.Cursor.visible = true;
+
         yield return new WaitForSeconds(2f);
 
         this.transform.position = initialPos;
@@ -141,6 +167,7 @@ public class Enemy : MonoBehaviour
         if (collision.name == "EnemyRotate")
         {
             _direction *= -1;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y);
         }
     }
 
