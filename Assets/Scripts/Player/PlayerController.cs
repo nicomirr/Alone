@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
@@ -58,6 +56,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     bool _gameOver;
 
+    bool _hasEthansBox;
+
+    bool _songPlayed;
 
     public void Awake()
     {         
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
+        EndingState();
         WearingPajamas();
     }
 
@@ -89,6 +91,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         Instance._sideMove = data.sideMove;
         Instance._mustHide = data.mustHide;
         Instance._mustEscape = data.mustEscape;
+        Instance._hasEthansBox = data.hasEthansBox;
+        Instance._songPlayed = data.songPlayed;
     }
 
     public void SaveData(ref GameData data)
@@ -100,11 +104,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         data.sideMove = Instance._sideMove;     
         data.mustHide = Instance._mustHide;
         data.mustEscape = Instance._mustEscape;
+        data.hasEthansBox = Instance._hasEthansBox;
+        data.songPlayed = Instance._songPlayed;
     }
    
 
     private void Update()
     {
+        EndingState();
         WearingPajamas();
         StopPlayer();
         if (Pause.Instance.IsPaused) return;
@@ -121,7 +128,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         _onScene = ScenesInGame.Instance.GetSceneIsPlaying();
         if (_onScene)
         {
-            PlayerInventory.Instance.IsUsingFlashlight = false;
+            if(!ScenesInGame.Instance.GetFirstAtticTruthEndingScenePlaying())
+                PlayerInventory.Instance.IsUsingFlashlight = false;
             return;
         }
 
@@ -162,6 +170,34 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void SetPlayerHasSideMovement(bool value) { _playerHasSideMovement = value; }               
     public void SetIsTalking(bool value) { _isTalking = value; }
     public void SetWalkingSpeedMod(float num) { _walkSpeedMod = num; }
+    public void SetHasEthansBox(bool value) { _hasEthansBox = value; }
+    public bool GetHasEthansBox() { return _hasEthansBox; }
+    public void SetSongPlayed(bool value) { _songPlayed = value; }
+    public bool GetSongPlayed() { return _songPlayed; }
+    public void SetSideMove(bool value) { _sideMove = value; }
+
+        
+    void EndingState()
+    {
+        if (!ScenesInGame.Instance.GetIsEnding()) return;
+        if (!ScenesInGame.Instance.GetLoopEnding()) return;
+
+        _playerAnimator.SetBool("isFather", true);
+        GetComponent<CapsuleCollider2D>().offset = new Vector2(GetComponent<CapsuleCollider2D>().offset.x, -0.163671f);
+        GetComponent<CapsuleCollider2D>().size = new Vector2(GetComponent<CapsuleCollider2D>().size.x, 3.851632f);
+
+        if(_hasEthansBox)
+        _playerAnimator.SetBool("hasBox", true);
+
+        if(ScenesInGame.Instance.GetFirstPlayerRoomLoopEndingScenePlaying())
+        {
+            _playerAnimator.SetBool("hasBox", false); 
+            _playerAnimator.SetBool("isFather", false);
+            GetComponent<CapsuleCollider2D>().offset = new Vector2(GetComponent<CapsuleCollider2D>().offset.x, -0.007855058f);
+            GetComponent<CapsuleCollider2D>().size = new Vector2(GetComponent<CapsuleCollider2D>().size.x, 3.54f);
+        }
+
+    }
 
     void OnMove(InputValue value)
     {
@@ -276,7 +312,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void StopPlayer()
     {
-        if(_isTalking || Pause.Instance.IsPaused || _onLockedDoor || _isInteractingWithEnviroment || _isHidding)
+        if(_isTalking || Pause.Instance.IsPaused || _onLockedDoor || _isInteractingWithEnviroment || _isHidding || _isReading)
         {
             _playerHasSideMovement = false;
             _playerRb.velocity = new Vector2(0, _playerRb.velocity.y);
@@ -300,7 +336,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     void Flashlight()
     {
         if (PlayerInventory.Instance.IsUsingFlashlight)
-        {
+        {            
             _playerAnimator.SetBool("hasFlashlight", true);
 
             if (_sideMove)

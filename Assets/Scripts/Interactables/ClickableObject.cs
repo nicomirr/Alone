@@ -103,6 +103,8 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
            
     RoomLightStatus _roomLightStatus;
 
+    [SerializeField] GameObject _boxBlackScreen;
+
       
     private void Awake()
     {      
@@ -279,6 +281,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
         UpdateAction();
         FirstHasObjectStatus();
         FirstCanBeSearchedStatus();
+                
     }   
 
     void TextSetup()
@@ -399,6 +402,12 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
         if (_notClickable && !_isInventoryObject) return;
 
         bool roomHasLight = _roomLightStatus.GetRoomHasLight();
+
+        if (gameObject.name == "EthansBox")
+        {            
+            StartCoroutine(PickUpBox());
+            return;
+        }
 
 
         if (PlayerController.Instance.GetMustHide())
@@ -589,4 +598,13 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
         
     }
         
+    IEnumerator PickUpBox()
+    {
+        _boxBlackScreen.SetActive(true);
+        yield return new WaitForSeconds(2);
+
+        PlayerController.Instance.SetHasEthansBox(true);
+        _hasBeenPickedUp = true;
+        this.gameObject.SetActive(false);
+    }
 }

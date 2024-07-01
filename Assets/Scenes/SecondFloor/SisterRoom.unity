@@ -2163,55 +2163,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5711440751787746284, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
   m_PrefabInstance: {fileID: 530451125}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &551701834
+--- !u!1 &551701834 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8342732452380471573, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+  m_PrefabInstance: {fileID: 1896115903229924529}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 551701836}
-  - component: {fileID: 551701835}
-  m_Layer: 0
-  m_Name: Glitch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &551701835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551701834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 56a0eb7ca0c1d8143bd6eba71feaf381, type: 2}
---- !u!4 &551701836
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 551701834}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2030623, y: 0.34066486, z: -0.054070916}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561619877
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,6 +8966,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1896115903229924529
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2030623
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.34066486
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.054070916
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328580810771269583, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342732452380471573, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
+      propertyPath: m_Name
+      value: Glitch
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f8ff78c53e86d6469dd512a1379d010, type: 3}
 --- !u!1001 &2462527088513078613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9620,5 +9633,5 @@ SceneRoots:
   - {fileID: 1216742429}
   - {fileID: 6547239635247687882}
   - {fileID: 830643154}
-  - {fileID: 551701836}
+  - {fileID: 1896115903229924529}
   - {fileID: 231516855}

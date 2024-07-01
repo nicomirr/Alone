@@ -809,6 +809,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &44127149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4513854951037942212, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+  m_PrefabInstance: {fileID: 44127146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &44845820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4385,6 +4390,10 @@ PrefabInstance:
       propertyPath: _fadeAnimator
       value: 
       objectReference: {fileID: 1276615590}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _kitchenLight
+      value: 
+      objectReference: {fileID: 44127149}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _jumpScareSound
       value: 

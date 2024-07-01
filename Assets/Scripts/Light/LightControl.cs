@@ -99,7 +99,7 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
     private void Update()
     {
-        if(LightsOut)
+        if(_lightsOut)
         {
             _notWorking = true;
             IsOn = false;

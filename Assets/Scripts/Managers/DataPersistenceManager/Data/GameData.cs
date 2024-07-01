@@ -18,6 +18,8 @@ public class GameData
     public bool sideMove;
     public bool mustHide;
     public bool mustEscape;
+    public bool hasEthansBox;
+    public bool songPlayed;
 
     //Lights
     public SerializableDictionary<string, bool> lightsOn;
@@ -75,7 +77,6 @@ public class GameData
     public SerializableDictionary<string, bool> canBeUsed;
     public SerializableDictionary<string, bool> firstCanBeSearchedStatusCheck;
 
-
     //CanBeOpenObjects
     public SerializableDictionary<string, bool> isOpen;
 
@@ -108,6 +109,14 @@ public class GameData
     public bool firstStairs2ndFloorScene;
     public bool firstStairs2ndFloorScenePlayed;
     public bool secondDinningRoomScenePlayed;
+    public bool firstEntranceLoopEndingScenePlayed;
+    public bool secondEntranceLoopEndingScenePlayed;
+    public bool firstStairs2ndFloorLoopEndingScenePlayed;
+    public bool firstHallway2ndFloorLoopEndingScenePlayed;
+    public bool firstPlayersRoomLoopEndingScenePlayed;
+    public bool isEnding;
+    public bool loopEnding;
+    public bool truthEnding;
 
     //MouseAppearance
     public SerializableDictionary<string, bool> appearanceChanged;
@@ -179,9 +188,11 @@ public class GameData
     public Vector3 dial2Rotation;
     public Vector3 dial3Rotation;
 
-    //Piano
-    public bool songPlayed;
-    
+    //LibraryPuzzle
+    public bool photoAlbumShown;
+
+    //BoxEthan
+    public bool boxHasBeenPickedUp;
 
     public GameData() 
     {
@@ -242,6 +253,7 @@ public class GameData
         firstDinningRoomScenePlayed = false;
         firstKitchenScenePlayed = false;
         firstKitchenScene = false;
+        isEnding = false;
 
         //MouseAppearance
         appearanceChanged = new SerializableDictionary<string, bool>();

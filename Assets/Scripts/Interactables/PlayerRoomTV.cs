@@ -49,20 +49,23 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        Debug.Log(_timesToStatic);
+
         if (LightControl.LightsOut) return;
 
-        if (_timesToStatic > 0) return;
-
-        Debug.Log("Entra");
-
-        StaticTimerStart();
         PlayStatic();
         StaticTimerWhilePlaying();
         StopStatic();
         StopStaticIfMustHide();
+
+        if (_timesToStatic > 0) return;
+
+        StaticTimerStart();
+     
+
     }
 
-    
+
 
     void StaticTimerStart()
     {
@@ -70,12 +73,13 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
         {
             if (!_timeSetToStatic)
             {
-                _timeToStatic = Random.Range(15, 31);
+                _timeToStatic = Random.Range(2, 4);
                 _timeSetToStatic = true;
+                Debug.Log(_timeToStatic);
+
             }
 
-            _timerToStatic += Time.deltaTime;
-                        
+            _timerToStatic += Time.deltaTime;           
         }
     }
 
@@ -94,6 +98,8 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
                 _timerToStatic = 0;
 
+                _timesToStatic = Random.Range(2, 5);
+
                 SetTextWhilePlaying();
             }                    
         }
@@ -101,9 +107,11 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
     void StaticTimerWhilePlaying()
     {
+        if (!_staticPlaying) return;
+
         if (!_staticTimeSet)
         {
-            _staticTime = Random.Range(10, 15);
+            _staticTime = Random.Range(4, 8);
             _staticTimeSet = true;
         }
 
@@ -112,6 +120,8 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
     void StopStatic()
     {
+        if (!_staticPlaying) return;
+
         if (_staticTimer >= _staticTime)
         {
             if (_audioSource.isPlaying)
@@ -119,9 +129,7 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
             _animator.SetBool("static", false);
             _staticPlaying = false;
-
-            _timesToStatic = Random.Range(2, 5);
-
+                        
             SetTextWhileNotPlaying();
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static TMPro.Examples.ObjectSpin;
 
@@ -38,6 +39,12 @@ public class ButtonsGrid : MonoBehaviour
 
     void Update()
     {
+        if(ScenesInGame.Instance.GetIsEnding())
+        {
+            EndingStatus();
+            return;
+        }
+
         SetCurrentButton();
         DisableButtons();
         MustHideOrScapeStatus();
@@ -57,6 +64,26 @@ public class ButtonsGrid : MonoBehaviour
     }
 
     public string GetCurrentAction() { return _currentAction; }
+
+    void EndingStatus()
+    {
+        if (ScenesInGame.Instance.GetLoopEnding())
+        {
+            for (int i = 0; i < _buttons.Count; ++i)
+            {
+                _buttons[i].gameObject.SetActive(false);
+            }
+        }
+        else if (ScenesInGame.Instance.GetTruthEnding() && SceneManager.GetActiveScene().name != "Attic")
+        {
+            for (int i = 0; i < _buttons.Count; ++i)
+            {
+                _buttons[i].gameObject.SetActive(false);
+            }
+        }
+
+
+    }
 
     void SetCurrentButton()
     {

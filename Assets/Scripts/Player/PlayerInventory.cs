@@ -10,6 +10,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     public static PlayerInventory Instance;
 
     GameObject _itemHold;
+    GameObject _itemHolder;
 
     List<GameObject> _items = new List<GameObject>();
            
@@ -60,6 +61,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     bool _isUsingFirePoker;
     bool _isUsingKeyEntrance;
 
+    [SerializeField] AudioClip _paperSound;
+
     bool _glassFilled;
     [SerializeField] Sprite _glassEmpty;
     [SerializeField] Sprite _glassWithWater;
@@ -80,6 +83,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         DontDestroyOnLoad(this.gameObject);
 
         _itemHold = GameObject.Find("ItemHold");
+        _itemHolder = GameObject.Find("ItemHolder");
     }
 
     public void SaveData(ref GameData data) 
@@ -117,6 +121,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         data.hasUmbrellaHandle = Instance._hasUmbrellaHandle;
         data.hasKeySister = Instance._hasKeySister;
         data.hasFirePoker = Instance._hasFirePoker;
+        data.hasKeyEntrance = Instance._hasKeyEntrance;
         data.hasMusicSheet = Instance.HasMusicSheet;
     }
     public void LoadData(GameData data)     
@@ -154,6 +159,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         Instance._hasUmbrellaHandle = data.hasUmbrellaHandle;
         Instance._hasKeySister = data.hasKeySister;
         Instance._hasFirePoker = data.hasFirePoker;
+        Instance._hasKeyEntrance = data.hasKeyEntrance;
         Instance.HasMusicSheet = data.hasMusicSheet;
     }
 
@@ -223,6 +229,12 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
     private void Update()
     {
+        if(ScenesInGame.Instance.GetIsEnding())
+        {
+            EndingStatus();
+            return;
+        }
+
         CurrentItemFix();
         FlashbackStatus();
         ClampItems();
@@ -254,7 +266,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     public GameObject GetCurrentItem() { return _items[_itemSelected];}
 
     public int GetItemListLenght() { return _items.Count; }
-        
+       
     public void AddItem(GameObject item) 
     { 
         _items.Add(item);
@@ -423,7 +435,15 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
                 _items.Remove(_keySister);
         }
     }
-    
+
+    void EndingStatus()
+    {
+        if(ScenesInGame.Instance.GetLoopEnding())
+            _itemHolder.SetActive(false);
+        else if(ScenesInGame.Instance.GetTruthEnding() && SceneManager.GetActiveScene().name != "Attic")
+            _itemHolder.SetActive(false);
+    }
+
     public void AfterFlashbackStatus()
     {
         _items.Add(_umbrellaHandle);
@@ -666,6 +686,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
                         
             if (ButtonsGrid.Instance.GetCurrentAction() == "Read" || ButtonsGrid.Instance.GetCurrentAction() == "Leer")
             {
+                AudioSource.PlayClipAtPoint(_paperSound, PlayerController.Instance.transform.position);
+
                 PlayerController.Instance.SetIsReading(true);                                          
                 GameObject.Find("DadsNote").transform.GetChild(0).gameObject.SetActive(true);                              
             }
@@ -741,6 +763,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
             if (ButtonsGrid.Instance.GetCurrentAction() == "Read" || ButtonsGrid.Instance.GetCurrentAction() == "Leer")
             {
+                AudioSource.PlayClipAtPoint(_paperSound, PlayerController.Instance.transform.position);
+
                 PlayerController.Instance.SetIsReading(true);
                 GameObject.Find("MusicSheet").transform.GetChild(0).gameObject.SetActive(true);
             }

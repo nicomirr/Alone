@@ -5541,6 +5541,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1350365812883554167, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
   m_PrefabInstance: {fileID: 1490795501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1490795505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4513854951037942212, guid: 6bf317237b84bdf4da817d230be07313, type: 3}
+  m_PrefabInstance: {fileID: 1490795501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1496423875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6107,6 +6112,10 @@ PrefabInstance:
       propertyPath: _fadeAnimator
       value: 
       objectReference: {fileID: 1276615591}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _dinningRoomLight
+      value: 
+      objectReference: {fileID: 1490795505}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _kettleAudioSource
       value: 

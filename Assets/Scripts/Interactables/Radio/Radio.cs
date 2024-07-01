@@ -5,10 +5,13 @@ using UnityEngine.EventSystems;
 
 public class Radio : MonoBehaviour, IPointerClickHandler
 {
+    static bool _isUsingRadio;
+
     bool _notClickable;
     RoomLightStatus _roomLightStatus;
 
     [SerializeField] GameObject _radio;
+
 
     private void Awake()
     {
@@ -22,6 +25,7 @@ public class Radio : MonoBehaviour, IPointerClickHandler
         else        
             GetComponent<ClickableObject>().CanBeUsed = true;        
     }
+    public static bool IsUsingRadio { get => _isUsingRadio; set => _isUsingRadio = value; }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -42,6 +46,7 @@ public class Radio : MonoBehaviour, IPointerClickHandler
         if (_notClickable) return;
 
         PlayerController.Instance.SetIsInteractingWithEnviroment(true);
+        _isUsingRadio = true;
 
         _radio.SetActive(true);
 
@@ -50,6 +55,7 @@ public class Radio : MonoBehaviour, IPointerClickHandler
     public void BackButton()
     {
         PlayerController.Instance.SetIsInteractingWithEnviroment(false);
+        _isUsingRadio = false;
 
         _radio.SetActive(false);
     }

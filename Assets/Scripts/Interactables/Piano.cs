@@ -5,10 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Piano : MonoBehaviour, IPointerClickHandler, IDataPersistence
-{
-    static bool _songPlayed;
-
+public class Piano : MonoBehaviour, IPointerClickHandler
+{    
     bool _notClickable;
     RoomLightStatus _roomLightStatus;
 
@@ -42,25 +40,15 @@ public class Piano : MonoBehaviour, IPointerClickHandler, IDataPersistence
     {
         _roomLightStatus = FindObjectOfType<RoomLightStatus>();
         _playerText = GameObject.Find("PlayerText").GetComponent<TextMeshPro>();
-    }
-
-    public void LoadData(GameData data)
-    {
-        _songPlayed = data.songPlayed;
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.songPlayed = _songPlayed;
-    }
+    }    
 
     public int GetCorrectNotesPlayed() { return _correctNotesPlayed; }
 
     private void Update()
     {
-        if(_correctNotesPlayed == _neededCorrectNotes && !_songPlayed)
+        if(_correctNotesPlayed == _neededCorrectNotes && !PlayerController.Instance.GetSongPlayed())
         {
-            _songPlayed = true;
+            PlayerController.Instance.SetSongPlayed(true);
             StartCoroutine(PianoSongPlayed());
         }
     }

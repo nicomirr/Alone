@@ -375,7 +375,18 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
         UnityEngine.Cursor.visible = true;
 
-        yield return new WaitForSecondsRealtime(0.3f);                
+        yield return new WaitForSecondsRealtime(0.3f);   
+        
+        if(gameObject.name == "EntranceToExitHouse")
+        {
+            ScenesInGame.Instance.SetIsEnding(true);
+            ScenesInGame.Instance.SetLoopEnding(true);
+            PlayerInventory.Instance.IsUsingFlashlight = false;
+            PlayerInventory.Instance.IsUsingGlass = false;
+            PlayerInventory.Instance.IsUsingItemMouse = false;
+            yield return new WaitForSecondsRealtime(3f);
+        }
+
         SceneManager.LoadScene(_newSceneName);
     }
 
