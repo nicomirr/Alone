@@ -35,8 +35,6 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
     [SerializeField] bool _isRooflight;
     [SerializeField] bool _isFrontSwitch;
 
-    [SerializeField] float _volume;
-
     [SerializeField] AudioClip _turnOnAudio;
     [SerializeField] AudioClip _turnOffAudio;
     AudioSource _audioSource;
@@ -208,12 +206,12 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
         if (IsOn)
         {
-            _audioSource.PlayOneShot(_turnOnAudio, _volume);
+            _audioSource.PlayOneShot(_turnOnAudio, 1);
             _soundPlayed = true;
         }
         else if (!IsOn)
         {
-            _audioSource.PlayOneShot(_turnOffAudio, _volume);
+            _audioSource.PlayOneShot(_turnOffAudio, 1);
             _soundPlayed = true;
         }
     }

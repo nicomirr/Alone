@@ -114,6 +114,10 @@ public class GameData
     public bool firstStairs2ndFloorLoopEndingScenePlayed;
     public bool firstHallway2ndFloorLoopEndingScenePlayed;
     public bool firstPlayersRoomLoopEndingScenePlayed;
+    public bool firstAtticTruthEndingScenePlayed;
+    public bool firstPlayersRoomTruthEndingScenePlayed;
+    public bool firstParentsRoomTruthEndingScenePlayed;
+    public bool secondParentsRoomTruthEndingScenePlayed;
     public bool isEnding;
     public bool loopEnding;
     public bool truthEnding;

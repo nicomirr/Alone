@@ -1488,6 +1488,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InstructionsBack
       objectReference: {fileID: 0}
+    - target: {fileID: 5842887369892609162, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 667241881}
+    - target: {fileID: 5842887369892609162, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInstructionBackArrowClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 7281846602581027545, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1495,6 +1503,14 @@ PrefabInstance:
     - target: {fileID: 7425893182372762247, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586997328377446959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 667241881}
+    - target: {fileID: 8586997328377446959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInstructionNextArrowClicked
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 541224967144892019, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
@@ -1515,6 +1531,26 @@ GameObject:
 --- !u!1 &75688124 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7281846602581027545, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 75688121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &75688125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9028826054233542877, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 75688121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &75688126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 291589845526907275, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 75688121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &75688127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8059766690767706297, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 75688121}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &75688128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8961874763425961959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
   m_PrefabInstance: {fileID: 75688121}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &78543621
@@ -4610,6 +4646,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 75688122}
     - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions1
+      value: 
+      objectReference: {fileID: 75688128}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2
+      value: 
+      objectReference: {fileID: 75688127}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: _instructionsEnglishText
       value: 
       objectReference: {fileID: 75688124}
@@ -4617,6 +4661,14 @@ PrefabInstance:
       propertyPath: _instructionsSpanishText
       value: 
       objectReference: {fileID: 75688123}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2EnglishText
+      value: 
+      objectReference: {fileID: 75688126}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2SpanishText
+      value: 
+      objectReference: {fileID: 75688125}
     - target: {fileID: 6590809430383836761, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9002,6 +9054,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 1
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!61 &1421117225
 BoxCollider2D:
   m_ObjectHideFlags: 0

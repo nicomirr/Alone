@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IDataPersistence
 {
@@ -258,7 +259,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void WearingPajamas()
     {
-        if (ScenesInGame.Instance.GetIsFlashback())
+        if (ScenesInGame.Instance.GetIsFlashback() || ScenesInGame.Instance.GetTruthEnding() && SceneManager.GetActiveScene().name != "Attic")
             _playerAnimator.SetBool("isWearingPajamas", true);
         else
             _playerAnimator.SetBool("isWearingPajamas", false);

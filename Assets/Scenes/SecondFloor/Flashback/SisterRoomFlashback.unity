@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: e872345725a5afd43ac7b8644f9f1874, type: 3}
 --- !u!212 &121349118
 SpriteRenderer:
@@ -712,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: eec76749938e10b44b49b75f9dfad386, type: 3}
 --- !u!212 &138886579
 SpriteRenderer:
@@ -1223,6 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 0ada899157ee1a84a8463d7b586bafbe, type: 3}
 --- !u!212 &340549734
 SpriteRenderer:
@@ -1678,6 +1681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 2f737dcb539be704e910c5c9835f11f7, type: 3}
 --- !u!212 &593334600
 SpriteRenderer:
@@ -2013,6 +2017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 8af897b77022e89459c5882070561f61, type: 3}
 --- !u!212 &985161367
 SpriteRenderer:
@@ -2433,6 +2438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 3a9fd4fafb65fdf4d93bb92ed7a1a3f5, type: 3}
 --- !u!212 &1122376764
 SpriteRenderer:
@@ -2634,6 +2640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: dd18040de9ef4f640a047e0ccde1e242, type: 3}
 --- !u!212 &1210306019
 SpriteRenderer:
@@ -4981,6 +4988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 820060c23073b3c49a7ec366b9e5fe19, type: 3}
 --- !u!212 &1424342213
 SpriteRenderer:
@@ -5263,6 +5271,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2040843474}
     - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions1
+      value: 
+      objectReference: {fileID: 2040843478}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2
+      value: 
+      objectReference: {fileID: 2040843477}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: _instructionsEnglishText
       value: 
       objectReference: {fileID: 2040843476}
@@ -5270,6 +5286,14 @@ PrefabInstance:
       propertyPath: _instructionsSpanishText
       value: 
       objectReference: {fileID: 2040843475}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2EnglishText
+      value: 
+      objectReference: {fileID: 2040843480}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2SpanishText
+      value: 
+      objectReference: {fileID: 2040843479}
     - target: {fileID: 6590809430383836761, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6328,6 +6352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: cc66746b591782541bbff639cf66f710, type: 3}
 --- !u!212 &1886870190
 SpriteRenderer:
@@ -6472,6 +6497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 0fc624c85411a3740a8dec11d29d4e0d, type: 3}
 --- !u!212 &1891800000
 SpriteRenderer:
@@ -6796,6 +6822,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InstructionsBack
       objectReference: {fileID: 0}
+    - target: {fileID: 5842887369892609162, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1601369847}
+    - target: {fileID: 5842887369892609162, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInstructionBackArrowClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586997328377446959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1601369847}
+    - target: {fileID: 8586997328377446959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInstructionNextArrowClicked
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 541224967144892019, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
     m_RemovedGameObjects: []
@@ -6815,6 +6857,26 @@ GameObject:
 --- !u!1 &2040843476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7281846602581027545, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 2040843473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040843477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8059766690767706297, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 2040843473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040843478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8961874763425961959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 2040843473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040843479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9028826054233542877, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 2040843473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040843480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 291589845526907275, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
   m_PrefabInstance: {fileID: 2040843473}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2042151913
@@ -6863,6 +6925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 87a1e6a8c7a1e74448ba1390d6847d44, type: 3}
 --- !u!212 &2042151916
 SpriteRenderer:
@@ -7152,6 +7215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee07c602bbe40a468f343547632ffe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _piano: {fileID: 0}
   _pianoNote: {fileID: 8300000, guid: 8c802b0246cedda44b96bd1cdb548047, type: 3}
 --- !u!212 &2126582608
 SpriteRenderer:

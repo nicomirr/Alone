@@ -352,10 +352,10 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
         PlayerController.Instance.SetPlayerHasSideMovement(false);
         _fadeAnimator.SetTrigger("StartTransition");
-        if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 0.9f); }
+        if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 1f); }
         else { _audioSource.PlayOneShot(_stairsSound, 0.55f); }
         yield return new WaitForSecondsRealtime(1.6f);
-        if (!_isStairs) { _audioSource.PlayOneShot(_doorCloseSound, 0.9f); }
+        if (!_isStairs) { _audioSource.PlayOneShot(_doorCloseSound, 1f); }
 
         PlayerController.Instance.transform.position = _playerPosition;
         PlayerController.Instance.transform.localScale = new Vector3(_playerScale, PlayerController.Instance.transform.localScale.y);

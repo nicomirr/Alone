@@ -191,10 +191,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Intructions
       objectReference: {fileID: 0}
-    - target: {fileID: 1863308572957032528, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 2391589851250586766, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -283,11 +279,39 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7331925020237791632}
+    - target: {fileID: 5842887369892609162, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7331925020237791632}
+    - target: {fileID: 8586997328377446959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7331925020237791632}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+--- !u!1 &105464197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9028826054233542877, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 105464196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &105464198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 291589845526907275, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 105464196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &105464199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8961874763425961959, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 105464196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &105464200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8059766690767706297, guid: 05e7e5725ff468347a0e1851584756d1, type: 3}
+  m_PrefabInstance: {fileID: 105464196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &116239412
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +881,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!61 &286439791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2525,6 +2550,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1007852331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3822,6 +3848,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1309742601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6105,6 +6132,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1431827012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6327,6 +6355,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1475681445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6598,7 +6627,6 @@ MonoBehaviour:
   _isOn: 0
   _isRooflight: 0
   _isFrontSwitch: 0
-  _volume: 0.5
   _turnOnAudio: {fileID: 8300000, guid: 7258cce136d54f4419b5317ae6ccc156, type: 3}
   _turnOffAudio: {fileID: 8300000, guid: df9cba3a1cb14a845a1e052d3696ed2a, type: 3}
   _isFan: 0
@@ -6674,6 +6702,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1516035193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7992,6 +8021,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1887455639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8366,6 +8396,7 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}
 --- !u!114 &1967631978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9349,6 +9380,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 477778753}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _laser
+      value: 
+      objectReference: {fileID: 8300000, guid: ae080cb25e812d741b26a0027331c071, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _explosion
+      value: 
+      objectReference: {fileID: 8300000, guid: 907dd9171711d524d9d55e5e9079b7d9, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _normalBed
       value: 
       objectReference: {fileID: 21300000, guid: 74953e7789382594ebcb02bd15c3bda1, type: 3}
@@ -9465,6 +9504,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1533753482}
     - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions1
+      value: 
+      objectReference: {fileID: 105464199}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2
+      value: 
+      objectReference: {fileID: 105464200}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: _instructionsEnglishText
       value: 
       objectReference: {fileID: 439333327}
@@ -9472,6 +9519,14 @@ PrefabInstance:
       propertyPath: _instructionsSpanishText
       value: 
       objectReference: {fileID: 1365009794}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2EnglishText
+      value: 
+      objectReference: {fileID: 105464198}
+    - target: {fileID: 4929999471327365744, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
+      propertyPath: _instructions2SpanishText
+      value: 
+      objectReference: {fileID: 105464197}
     - target: {fileID: 6590809430383836761, guid: cb6c3ec95d7c28a44b2f8d23b994b2a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0

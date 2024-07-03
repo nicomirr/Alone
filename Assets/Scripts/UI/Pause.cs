@@ -17,7 +17,12 @@ public class Pause : MonoBehaviour
 
     [SerializeField] GameObject _instructions;
     [SerializeField] GameObject _instructionsEnglishText;
+    [SerializeField] GameObject _instructions2EnglishText;
     [SerializeField] GameObject _instructionsSpanishText;
+    [SerializeField] GameObject _instructions2SpanishText;
+
+    [SerializeField] GameObject _instructions1;
+    [SerializeField] GameObject _instructions2;
 
     private void Awake()
     {           
@@ -45,13 +50,29 @@ public class Pause : MonoBehaviour
         if (LanguageManager.Instance.Language == "en")
         {
             _instructionsEnglishText.SetActive(true);
+            _instructions2EnglishText.SetActive(true);
             _instructionsSpanishText.SetActive(false);
+            _instructions2SpanishText.SetActive(false);
         }
         else if (LanguageManager.Instance.Language == "es")
         {
             _instructionsEnglishText.SetActive(false);
+            _instructions2EnglishText.SetActive(false);
             _instructionsSpanishText.SetActive(true);
+            _instructions2SpanishText.SetActive(true);
         }
+    }
+
+    public void OnInstructionNextArrowClicked()
+    {
+        _instructions1.SetActive(false);
+        _instructions2.SetActive(true);
+    }
+
+    public void OnInstructionBackArrowClicked()
+    {
+        _instructions1.SetActive(true);
+        _instructions2.SetActive(false);
     }
 
     public void InstructionsBack()
