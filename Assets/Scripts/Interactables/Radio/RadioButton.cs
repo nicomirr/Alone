@@ -176,14 +176,14 @@ public class RadioButton : MonoBehaviour, IDataPersistence
 
         if (_dial1Value != _dial1CorrectValue || _dial2Value != _dial2CorrectValue || _dial3Value != _dial3CorrectValue)
         {
-            AudioSource.PlayClipAtPoint(_staticNoise, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_staticNoise, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             _backButton.enabled = false;
             _dial1Button.enabled = false;           
             _dial3Button.enabled = false;
             yield return new WaitForSeconds(2f);
             
             _redButton.sprite = _redButtonUnpressed;
-            AudioSource.PlayClipAtPoint(_buttonPress, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_buttonPress, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             yield return new WaitForSeconds(0.2f);
 
             _backButton.enabled = true;
@@ -197,7 +197,9 @@ public class RadioButton : MonoBehaviour, IDataPersistence
         {
             UnityEngine.Cursor.visible = false;
 
-            AudioSource.PlayClipAtPoint(_pianoMusic, PlayerController.Instance.transform.position, 0.28f);
+            ScenesInGame.Instance.SetSceneIsPlaying(true);
+
+            AudioSource.PlayClipAtPoint(_pianoMusic, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             _backButton.enabled = false;
             _dial1Button.enabled = false;
             _dial3Button.enabled = false;
@@ -239,6 +241,7 @@ public class RadioButton : MonoBehaviour, IDataPersistence
             _dial3Button.enabled = true;
             _buttonPressed = false;
 
+            ScenesInGame.Instance.SetSceneIsPlaying(false);
             UnityEngine.Cursor.visible = true;
         }
                

@@ -315,6 +315,11 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     }
 
+    void Volume()
+    {
+        _audioSource.volume = 1f * GameVolume.Instance.CurrentVolume();
+    }
+
     void Language()
     {
         if (_backButton == null) return;

@@ -492,7 +492,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
                 if (_canBePickedUp && (roomHasLight || PlayerInventory.Instance.IsUsingFlashlight))
                 {
                     if(_pickupSound != null)
-                        AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position);
+                        AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
                     PlayerInventory.Instance.AddItem(_item);
                     _hasBeenPickedUp = true;
@@ -519,7 +519,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IDataPersist
                     if (_hasObject)
                     {
                         if(_pickupSound != null) 
-                            AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position);
+                            AudioSource.PlayClipAtPoint(_pickupSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
                         TextBox.Instance.ShowText(_hasObjectText, _isInventoryObject, GetComponent<ClickableObject>());
                         PlayerInventory.Instance.AddItem(_item);

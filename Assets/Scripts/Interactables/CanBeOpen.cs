@@ -18,7 +18,6 @@ public class CanBeOpen : MonoBehaviour, IPointerClickHandler, IDataPersistence
     [SerializeField] Sprite _closeSprite;
     [SerializeField] AudioClip _openSound;
     [SerializeField] AudioClip _closeSound;
-    [SerializeField] float _volume;
     [SerializeField] bool _isOpen;
     bool _notClickable;    
     [SerializeField] GameObject _appearence;
@@ -70,7 +69,7 @@ public class CanBeOpen : MonoBehaviour, IPointerClickHandler, IDataPersistence
             if(!_isOpen)
             {
                 _appearence.GetComponent<SpriteRenderer>().sprite = _openSprite;
-                AudioSource.PlayClipAtPoint(_openSound, PlayerController.Instance.transform.position, _volume);
+                AudioSource.PlayClipAtPoint(_openSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
                 _isOpen = true;
             }
             else
@@ -87,7 +86,7 @@ public class CanBeOpen : MonoBehaviour, IPointerClickHandler, IDataPersistence
             if(_isOpen)
             {
                 _appearence.GetComponent<SpriteRenderer>().sprite = _closeSprite;
-                AudioSource.PlayClipAtPoint(_closeSound, PlayerController.Instance.transform.position, _volume);
+                AudioSource.PlayClipAtPoint(_closeSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
                 _isOpen = false;
             }
             else

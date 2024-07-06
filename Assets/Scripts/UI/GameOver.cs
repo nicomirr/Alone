@@ -62,22 +62,22 @@ public class GameOver : MonoBehaviour
         color.a = 1;
         _gameOverScreen.color = color;
 
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.4f);
 
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.4f);
 
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.4f);
 
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.4f);
 
-        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_footstep, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(1f);
                
-        AudioSource.PlayClipAtPoint(_jumpScareSound, PlayerController.Instance.transform.position, 0.4f);        
+        AudioSource.PlayClipAtPoint(_jumpScareSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());        
         _scaryImage.SetActive(true);
         yield return new WaitForSeconds(0.4f);
 
@@ -104,13 +104,13 @@ public class GameOver : MonoBehaviour
 
         yield return new WaitForSeconds(1.8f);
 
-        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 0.65f);
+        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 0.65f);
+        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_doorSlamOpen, PlayerController.Instance.transform.position, 0.65f);
+        AudioSource.PlayClipAtPoint(_doorSlamOpen, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(1.8f);
 
         _gameOverText.SetActive(true);

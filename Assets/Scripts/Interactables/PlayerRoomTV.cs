@@ -49,8 +49,8 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        Debug.Log(_timesToStatic);
-
+        if(Pause.Instance.IsPaused) return;
+        if (ScenesInGame.Instance.GetIsFlashback()) return;
         if (LightControl.LightsOut) return;
 
         PlayStatic();
@@ -90,7 +90,10 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
             if (_timerToStatic >= _timeToStatic)
             {
                 if (!_audioSource.isPlaying)
+                {
+                    _audioSource.volume = 1f * GameVolume.Instance.CurrentVolume();
                     _audioSource.Play();
+                }
 
                 _animator.SetBool("static", true);
                 _staticPlayed = true;

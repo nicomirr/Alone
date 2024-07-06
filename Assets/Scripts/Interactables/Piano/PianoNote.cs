@@ -13,7 +13,7 @@ public class PianoNote : MonoBehaviour, IPointerClickHandler
         string name = gameObject.name;
 
         if(Pause.Instance.IsPaused) return;
-        AudioSource.PlayClipAtPoint(_pianoNote, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_pianoNote, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         StartCoroutine(KeyPressed());
         
     }

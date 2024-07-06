@@ -62,6 +62,7 @@ public class MustHideCounter : MonoBehaviour, IDataPersistence
     {        
         if(!_horrorAudioEnabled) 
         {
+            _audioSourceHorror.volume = 1f * GameVolume.Instance.CurrentVolume();
             _audioSourceHorror.Play();
             AudioSourceHorror.Instance.IsPlaying = true;
             _horrorAudioEnabled = true;

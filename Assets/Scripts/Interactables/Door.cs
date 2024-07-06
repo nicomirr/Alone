@@ -331,7 +331,7 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
         if(_isLocked && PlayerInventory.Instance.CurrentItemName() == _doorKeyName && PlayerInventory.Instance.IsUsingItemMouse)
         {
-            _audioSource.PlayOneShot(_doorUnlocked, 0.7f);
+            _audioSource.PlayOneShot(_doorUnlocked, 1f * GameVolume.Instance.CurrentVolume());
             _isLocked = false;
 
             if(LanguageManager.Instance.Language == "en")
@@ -352,10 +352,10 @@ public class Door : MonoBehaviour, IDataPersistence, IPointerClickHandler
 
         PlayerController.Instance.SetPlayerHasSideMovement(false);
         _fadeAnimator.SetTrigger("StartTransition");
-        if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 1f); }
-        else { _audioSource.PlayOneShot(_stairsSound, 0.55f); }
+        if (!_isStairs) { _audioSource.PlayOneShot(_doorOpenSound, 1f * GameVolume.Instance.CurrentVolume()); }
+        else { _audioSource.PlayOneShot(_stairsSound, 1f * GameVolume.Instance.CurrentVolume()); }
         yield return new WaitForSecondsRealtime(1.6f);
-        if (!_isStairs) { _audioSource.PlayOneShot(_doorCloseSound, 1f); }
+        if (!_isStairs) { _audioSource.PlayOneShot(_doorCloseSound, 1f * GameVolume.Instance.CurrentVolume()); }
 
         PlayerController.Instance.transform.position = _playerPosition;
         PlayerController.Instance.transform.localScale = new Vector3(_playerScale, PlayerController.Instance.transform.localScale.y);

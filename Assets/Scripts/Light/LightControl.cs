@@ -206,12 +206,12 @@ public class LightControl : MonoBehaviour, IPointerClickHandler, IDataPersistenc
 
         if (IsOn)
         {
-            _audioSource.PlayOneShot(_turnOnAudio, 1);
+            _audioSource.PlayOneShot(_turnOnAudio, 1f * GameVolume.Instance.CurrentVolume());
             _soundPlayed = true;
         }
         else if (!IsOn)
         {
-            _audioSource.PlayOneShot(_turnOffAudio, 1);
+            _audioSource.PlayOneShot(_turnOffAudio, 1 * GameVolume.Instance.CurrentVolume());
             _soundPlayed = true;
         }
     }

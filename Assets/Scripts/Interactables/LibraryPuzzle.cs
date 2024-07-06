@@ -97,6 +97,8 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
     {
         if (LanguageManager.Instance.Language == "en")
         {
+            if (_newspaperBackButton == null) return;
+
             _title.text = "WHAT SHOULD I READ?";
             _newspaper.text = "NEWSPAPER ARTICLE";
             _symbols.text = "SYMBOLS AND THEIR MEANINGS";
@@ -109,6 +111,8 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
         }
         else if(LanguageManager.Instance.Language == "es")
         {
+            if (_newspaperBackButton == null) return;
+
             _title.text = "¿QUE DEBERIA LEER?";
             _newspaper.text = "ARTICULO PERIODISTICO";
             _symbols.text = "SIMBOLOS Y SUS SIGNIFICADOS";
@@ -124,7 +128,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
 
     public void OnNewspaperButtonPressed()
     {
-        AudioSource.PlayClipAtPoint(_pickUpText, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_pickUpText, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
         if (LanguageManager.Instance.Language == "es")
         {
@@ -154,7 +158,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
        
     public void OnSymbologyBookButtonPressed()
     {
-        AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
         if (LanguageManager.Instance.Language == "es")
         {
@@ -184,7 +188,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
 
     public void OnRomeTextButtonPressed()
     {
-        AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
         if (LanguageManager.Instance.Language == "es")
         {
@@ -215,7 +219,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
     public void OnFamilyPhotoButtonPressed()
     {
         if(_photoAlbumShown)
-            AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_openBook, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
         _familyPhotoAlbum.SetActive(true);
         _familyPhotoAlbumBackButton.SetActive(true);
@@ -247,7 +251,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
         
         Image familyPhotoAlbumImage = _familyPhotoAlbum.GetComponent<Image>();
 
-        AudioSource.PlayClipAtPoint(_glitchSound, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_glitchSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
         familyPhotoAlbumImage.sprite = _familyPhoto1;
         yield return new WaitForSeconds(0.04f);

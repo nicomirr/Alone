@@ -28,7 +28,7 @@ public class DrainStopper : MonoBehaviour, IPointerClickHandler
         if(PlayerInventory.Instance.IsUsingBathroomDrainStopper)
         {
             _bathtub.GetComponent<Shower>().HasDrainStopper = true;
-            AudioSource.PlayClipAtPoint(_drainStopperSound, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_drainStopperSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             PlayerInventory.Instance.DestroyCurrentItem();
         }
     }    

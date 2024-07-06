@@ -59,4 +59,9 @@ public class AudioSourceHorror : MonoBehaviour, IDataPersistence
             _soundStarted = false;
         }
     }
+
+    void Volume()
+    {
+        this.GetComponent<AudioSource>().volume = 1f * GameVolume.Instance.CurrentVolume();
+    }
 }

@@ -168,7 +168,7 @@ public class Piano : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(1.5f);
 
         _glitchEffect.SetActive(true);
-        AudioSource.PlayClipAtPoint(_glitchSound, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_glitchSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.4f);
 
         _glitchEffect.SetActive(false);

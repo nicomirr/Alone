@@ -156,3 +156,4 @@ MonoBehaviour:
   _pickupSound: {fileID: 0}
   _canBeSearchedInitialStatus: 0
   _hasObjectInitialStatus: 0
+  _boxBlackScreen: {fileID: 0}

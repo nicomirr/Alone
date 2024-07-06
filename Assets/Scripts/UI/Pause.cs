@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class Pause : MonoBehaviour
     [SerializeField] GameObject _continueButton;
     [SerializeField] GameObject _instructionsButton;
     [SerializeField] GameObject _exitButton;
+
+    [SerializeField] Image _optionsBackground;
+    [SerializeField] Image _volumeImage;
+    [SerializeField] GameObject _plus;
+    [SerializeField] GameObject _minus;
+    [SerializeField] GameObject _optionsEnglish;
+    [SerializeField] GameObject _optionsSpanish;
 
     [SerializeField] GameObject _instructions;
     [SerializeField] GameObject _instructionsEnglishText;
@@ -34,7 +42,6 @@ public class Pause : MonoBehaviour
     private void Update()
     {
         Language();      
-
     }
         
     public void Continue()
@@ -43,6 +50,25 @@ public class Pause : MonoBehaviour
         GameObject.Find("PauseScreen").transform.position = new Vector3(this.transform.position.x, _yPos);
     }
     
+    public void Options()
+    {
+        _optionsBackground.enabled = true;
+        _volumeImage.enabled = true;
+        _plus.SetActive(true);
+        _minus.SetActive(true);
+
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _optionsEnglish.SetActive(true);
+            _optionsSpanish.SetActive(false);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _optionsEnglish.SetActive(false);
+            _optionsSpanish.SetActive(true);
+        }
+    }   
+
     public void Instructions()
     {
         _instructions.SetActive(true);

@@ -26,6 +26,8 @@ public class FlashingLights : MonoBehaviour
 
     void MustHideState()
     {
+        _searchingSound.volume = 1f * GameVolume.Instance.CurrentVolume();
+
         if (!ScenesInGame.Instance.GetSecondParentsRoomScenePlayed()) return;
 
         if (PlayerController.Instance.GetMustHide() && !ScenesInGame.Instance.GetSceneIsPlaying())

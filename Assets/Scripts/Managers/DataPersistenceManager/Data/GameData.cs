@@ -198,6 +198,9 @@ public class GameData
     //BoxEthan
     public bool boxHasBeenPickedUp;
 
+    //GameVolume
+    public int volume;
+
     public GameData() 
     {
         //LanguageManager
@@ -279,9 +282,13 @@ public class GameData
         //Mouse
         notClickable = false;
         hasJustusedObject = false;
+
+        //GameVolume
+        volume = 10;
                 
         //StartingScene
         sceneToLoad = "PlayersRoom";
+
 
     }
 

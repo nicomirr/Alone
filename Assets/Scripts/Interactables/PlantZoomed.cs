@@ -101,7 +101,7 @@ public class PlantZoomed : MonoBehaviour, IPointerClickHandler, IDataPersistence
         {
             if (_firstImageUpdated) return; 
 
-            AudioSource.PlayClipAtPoint(_removeGround, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_removeGround, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             GetComponent<SpriteRenderer>().sprite = _groundRemovedOne;      
             
             _firstImageUpdated = true;
@@ -110,7 +110,7 @@ public class PlantZoomed : MonoBehaviour, IPointerClickHandler, IDataPersistence
         {
             if(_secondImageUpdated) return;
 
-            AudioSource.PlayClipAtPoint(_removeGround, PlayerController.Instance.transform.position);
+            AudioSource.PlayClipAtPoint(_removeGround, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
             GetComponent<SpriteRenderer>().sprite = _groundRemovedTwo;
 
             if (_key != null && _hasKey)

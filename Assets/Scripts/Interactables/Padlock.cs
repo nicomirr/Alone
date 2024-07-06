@@ -61,7 +61,7 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
 
     public void InputNumber(string num)
     {
-        AudioSource.PlayClipAtPoint(_inputSound, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_inputSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         _passwordInput = _passwordInput + num;
 
         if(_passwordInput == _password)
@@ -80,7 +80,7 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
     IEnumerator PadlockUnlock()
     {
         _padlockImage.sprite = _padlockOpen;
-        AudioSource.PlayClipAtPoint(_padlockUnlockSound, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_padlockUnlockSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         DisablePadlockButtons();                
         yield return new WaitForSeconds(1.3f);
               

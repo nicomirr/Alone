@@ -71,7 +71,9 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
     void ChangeAtticDoorAppearance()
     {
         if(_atticDoorOpen)
-        {           
+        {
+            if (_atticAccess == null) return;
+
             _imageToChange.sprite = _atticOpen;
             _atticAccess.SetActive(true);
             ChangeText();           
@@ -113,7 +115,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
         PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingFirePoker", true);
         yield return new WaitForSeconds(3f);
 
-        AudioSource.PlayClipAtPoint(_atticOpened, PlayerController.Instance.transform.position, 0.4f);
+        AudioSource.PlayClipAtPoint(_atticOpened, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingFirePoker", false);
         PlayerInventory.Instance.DestroyCurrentItem();
         _atticDoorOpen = true;
@@ -162,7 +164,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _playerText.text = "";
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_umbrellaBroken, PlayerController.Instance.transform.position, 0.4f);
+        AudioSource.PlayClipAtPoint(_umbrellaBroken, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         PlayerController.Instance.GetComponent<Animator>().SetBool("isUsingUmbrella", false);
         PlayerInventory.Instance.DestroyCurrentItem();
         PlayerInventory.Instance.AddItem(_umbrellaHandle);
@@ -195,6 +197,7 @@ public class AtticDoor : MonoBehaviour, IPointerClickHandler, IDataPersistence
         _playerText.text = "";
         yield return new WaitForSeconds(1.6f);
 
+        _kettleSound.volume = 1 * GameVolume.Instance.CurrentVolume();
         _kettleSound.Play();
 
         yield return new WaitForSeconds(1.6f);

@@ -59,13 +59,13 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 0.65f);                
+        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());                
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 0.65f);        
+        AudioSource.PlayClipAtPoint(_doorSlam, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());        
         yield return new WaitForSeconds(1.5f);
 
-        AudioSource.PlayClipAtPoint(_doorSlamOpen, PlayerController.Instance.transform.position, 0.65f);
+        AudioSource.PlayClipAtPoint(_doorSlamOpen, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(0.5f);
                             
         ScenesInGame.Instance.SetSceneIsPlaying(true);      
@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
                 _spriteRenderer.sprite = _walk2;
 
             transform.position = new Vector2(this.transform.position.x + _direction, this.transform.position.y);
-            _audioSource.PlayOneShot(_footstep);
+            _audioSource.PlayOneShot(_footstep, 1f * GameVolume.Instance.CurrentVolume());
 
             yield return new WaitForSeconds(0.23f);
             _spriteRenderer.sprite = _idle;
@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        AudioSource.PlayClipAtPoint(_doorClosed, PlayerController.Instance.transform.position, 0.7f);
+        AudioSource.PlayClipAtPoint(_doorClosed, PlayerController.Instance.transform.position);
         yield return new WaitForSeconds(2);
 
         colorEnemy = this.gameObject.GetComponent<SpriteRenderer>().color;

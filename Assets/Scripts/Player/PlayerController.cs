@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
+        FootstepsVolume();
         EndingState();
         WearingPajamas();
         StopPlayer();
@@ -329,9 +330,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         AudioSource audioSource = Camera.main.GetComponent<AudioSource>();
 
         if (PlayerInventory.Instance.IsUsingFlashlight)
-            audioSource.PlayOneShot(_flashlightOn, 0.75f);
+            audioSource.PlayOneShot(_flashlightOn, 1f * GameVolume.Instance.CurrentVolume());
         else
-            audioSource.PlayOneShot(_flashlightOff, 0.75f);
+            audioSource.PlayOneShot(_flashlightOff, 1f * GameVolume.Instance.CurrentVolume());
     }
 
     void Flashlight()
@@ -383,6 +384,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         if (_lookingFront || _lookingBack)
             transform.localScale = new Vector2(1, transform.localScale.y);
+    }
+
+    void FootstepsVolume()
+    {
+        this.GetComponent<AudioSource>().volume = 1f * GameVolume.Instance.CurrentVolume();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

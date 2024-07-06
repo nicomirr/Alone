@@ -87,6 +87,11 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     private void Update()
     {
+        if(ScenesInGame.Instance.GetIsFlashback())
+            GetComponent<ClickableObject>().CanBeSearched = false;
+        else if(!ScenesInGame.Instance.GetIsFlashback() && ScenesInGame.Instance.GetSecondParentsRoomScenePlayed())
+            GetComponent<ClickableObject>().CanBeSearched = true;
+
         Language();
         CanBeSearchedUpdate();
     }
@@ -102,7 +107,7 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     public void PlayWateringSound()
     {
-        AudioSource.PlayClipAtPoint(_plantWateringSound, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_plantWateringSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
     }
 
     public void OnPointerClick(PointerEventData eventData)

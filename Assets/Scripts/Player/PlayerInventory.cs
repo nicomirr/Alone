@@ -538,7 +538,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
                     if(!_fillSoundPlayed)
                     {
-                        AudioSource.PlayClipAtPoint(_glassFill, PlayerController.Instance.transform.position, 0.7f);
+                        AudioSource.PlayClipAtPoint(_glassFill, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
                         _fillSoundPlayed = true;
                     }                    
                 }
@@ -686,7 +686,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
                         
             if (ButtonsGrid.Instance.GetCurrentAction() == "Read" || ButtonsGrid.Instance.GetCurrentAction() == "Leer")
             {
-                AudioSource.PlayClipAtPoint(_paperSound, PlayerController.Instance.transform.position);
+                AudioSource.PlayClipAtPoint(_paperSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
                 PlayerController.Instance.SetIsReading(true);                                          
                 GameObject.Find("DadsNote").transform.GetChild(0).gameObject.SetActive(true);                              

@@ -13,14 +13,14 @@ public class RadioDial : MonoBehaviour
     {        
         this.transform.rotation *= Quaternion.Inverse(Quaternion.Euler(0, 0, 36));
         _dial2.transform.rotation *= Quaternion.Inverse(Quaternion.Euler(0, 0, 36));
-        AudioSource.PlayClipAtPoint(_dialSound, PlayerController.Instance.transform.position, 0.25f);        
+        AudioSource.PlayClipAtPoint(_dialSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());        
     }
     
     public void RotateDial3()
     {
         this.transform.rotation *= Quaternion.Inverse(Quaternion.Euler(0, 0, 36));       
         _dial1.transform.rotation *= Quaternion.Inverse(Quaternion.Euler(0, 0, 72));        
-        AudioSource.PlayClipAtPoint(_dialSound, PlayerController.Instance.transform.position, 0.25f);
+        AudioSource.PlayClipAtPoint(_dialSound, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
 
        
     }

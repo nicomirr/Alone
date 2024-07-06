@@ -11,14 +11,21 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] Button _newGameButton;
     [SerializeField] Button _continueGameButton;
-    //[SerializeField] Button _optionsButton;
+    [SerializeField] Button _optionsButton;
     [SerializeField] Button _exitButton;
     [SerializeField] Button _instructionsButton;
     [SerializeField] Button _languageButton;
 
     [SerializeField] GameObject _gameTitle;       
     [SerializeField] AudioSource _audioSource;
-        
+
+    [SerializeField] Image _optionsBackground;
+    [SerializeField] Image _volumeImage;
+    [SerializeField] GameObject _plus;
+    [SerializeField] GameObject _minus;
+    [SerializeField] GameObject _optionsSpanish;
+    [SerializeField] GameObject _optionsEnglish;
+
     [SerializeField] GameObject _instructions;
     [SerializeField] GameObject _instructionsEnglishText;
     [SerializeField] GameObject _instructionsSpanishText;
@@ -52,6 +59,7 @@ public class MainMenu : MonoBehaviour
     private void Update()
     {
         Language();
+        Volume();
     }
 
     public void OnNewGameClicked()
@@ -66,6 +74,35 @@ public class MainMenu : MonoBehaviour
     {
         DisableMenuButtons();
         SceneManager.LoadScene(SceneControl.Instance.SceneToLoad);
+    }
+
+    public void OnOptionsClicked()
+    {
+        _optionsBackground.enabled = true;
+        _volumeImage.enabled = true;
+        _plus.SetActive(true);
+        _minus.SetActive(true);
+
+        if(LanguageManager.Instance.Language == "en")
+        {
+            _optionsEnglish.SetActive(true);
+            _optionsSpanish.SetActive(false);
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _optionsEnglish.SetActive(false);
+            _optionsSpanish.SetActive(true);
+        }
+    }
+
+    public void OnOptionsBackButtonPressed()
+    {
+        _optionsBackground.enabled = false;
+        _volumeImage.enabled = false;
+        _plus.SetActive(false);
+        _minus.SetActive(false);
+        _optionsEnglish.SetActive(false);
+        _optionsSpanish.SetActive(false);
     }
 
     public void OnInstructionsClicked()
@@ -114,7 +151,7 @@ public class MainMenu : MonoBehaviour
     {
         _newGameButton.gameObject.SetActive(false);
         _continueGameButton.gameObject.SetActive(false);
-        //_optionsButton.interactable = false;
+        _optionsButton.gameObject.SetActive(false);
         _exitButton.gameObject.SetActive(false);
         _languageButton.gameObject.SetActive(false);
         _instructionsButton.gameObject.SetActive(false);
@@ -124,11 +161,16 @@ public class MainMenu : MonoBehaviour
     {
         _newGameButton.gameObject.SetActive(true);
         _continueGameButton.gameObject.SetActive(true);
-        //_optionsButton.interactable = false;
+        _optionsButton.gameObject.SetActive(true);
         _exitButton.gameObject.SetActive(true);
         _languageButton.gameObject.SetActive(true);
     }
 
+    void Volume()
+    {
+        if(_audioSource != null)
+            _audioSource.volume = 1f * GameVolume.Instance.CurrentVolume();
+    }
 
     void Language()
     {
@@ -136,6 +178,7 @@ public class MainMenu : MonoBehaviour
         {
             _newGameButton.GetComponentInChildren<TextMeshProUGUI>().text = "NEW GAME";
             _continueGameButton.GetComponentInChildren<TextMeshProUGUI>().text = "CONTINUE";
+            _optionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "OPTIONS";
             _instructionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "INSTRUCTIONS";
             _exitButton.GetComponentInChildren<TextMeshProUGUI>().text = "EXIT";
         }
@@ -143,6 +186,7 @@ public class MainMenu : MonoBehaviour
         {
             _newGameButton.GetComponentInChildren<TextMeshProUGUI>().text = "NUEVA PARTIDA";
             _continueGameButton.GetComponentInChildren<TextMeshProUGUI>().text = "CONTINUAR";
+            _optionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "OPCIONES";
             _instructionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "INSTRUCCIONES";
             _exitButton.GetComponentInChildren<TextMeshProUGUI>().text = "SALIR";
         }
