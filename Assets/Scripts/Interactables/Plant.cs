@@ -20,7 +20,7 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     bool _notClickable;
 
-    bool _hasBeenWatered;
+    [SerializeField] bool _hasBeenWatered;
     [SerializeField] AudioClip _plantWateringSound;
 
     bool _firstCanBeSearchedStatusCheck;
@@ -91,6 +91,8 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
             GetComponent<ClickableObject>().CanBeSearched = false;
         else if(!ScenesInGame.Instance.GetIsFlashback() && ScenesInGame.Instance.GetSecondParentsRoomScenePlayed())
             GetComponent<ClickableObject>().CanBeSearched = true;
+
+        HasBeenWateredStatus();
 
         Language();
         CanBeSearchedUpdate();
@@ -188,6 +190,7 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     void ZoomInPlant()
     {
+        if (ScenesInGame.Instance.GetIsFlashback()) return;
         if (!_roomLightStatus.GetRoomHasLight() && !PlayerInventory.Instance.IsUsingFlashlight) return;
 
         _notClickable = MouseBehaviour.Instance.NotClickable;
@@ -242,6 +245,38 @@ public class Plant : MonoBehaviour, IPointerClickHandler, IDataPersistence
         MouseBehaviour.Instance.PlayerMinClickableDistance = 3;
         Cursor.SetCursor(_blackPointer, new Vector2(_blackPointer.width / 2, _blackPointer.height / 2), CursorMode.Auto);
 
+    }
+
+    void HasBeenWateredStatus()
+    {
+        if(_hasBeenWatered)
+        {
+            if (LanguageManager.Instance.Language == "en")
+            {
+                GetComponent<ClickableObject>().LookAtText = "It's a plant. The earth is moist.";
+                GetComponent<ClickableObject>().SearchText = "Nothing. The earth is moist."; 
+            }
+            else if (LanguageManager.Instance.Language == "es")
+            {
+                GetComponent<ClickableObject>().LookAtText = "Es una planta. La tierra está húmeda.";
+                GetComponent<ClickableObject>().SearchText = "Nada. La tierra está húmeda.";
+            }
+
+            if(ScenesInGame.Instance.GetIsFlashback())
+            {
+                if (LanguageManager.Instance.Language == "en")
+                {
+                    GetComponent<ClickableObject>().LookAtText = "It's a plant.";
+                    GetComponent<ClickableObject>().SearchText = "Nothing.";
+                }
+                else if (LanguageManager.Instance.Language == "es")
+                {
+                    GetComponent<ClickableObject>().LookAtText = "Es una planta.";
+                    GetComponent<ClickableObject>().SearchText = "Nada.";
+                }
+            }
+
+        }
     }
 
     IEnumerator WaitBackButton()

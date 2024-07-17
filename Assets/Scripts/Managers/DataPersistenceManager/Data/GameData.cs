@@ -44,6 +44,7 @@ public class GameData
     public bool hasPickedUpFlashlight;
     public bool hasPickedUpFirePoker;
     public bool hasPickedUpSistersKey;
+    public bool hasPickedUpMusicSheet;
     public bool hasUsedSistersKey;
     public bool hasFlashlight;
     public bool hasGlass;
@@ -200,6 +201,9 @@ public class GameData
 
     //GameVolume
     public int volume;
+
+    //UmbrellaHolder
+    public bool hasBlueUmbrella;
 
     public GameData() 
     {

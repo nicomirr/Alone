@@ -5744,7 +5744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstSearchTextSpanish
-      value: Nada. La tierra se ve dura y seca-
+      value: Nada. La tierra se ve dura y seca.
       objectReference: {fileID: 0}
     - target: {fileID: 3581326992498476016, guid: eddf218c6bc1f5c4fa4fbb7b0f6e19fb, type: 3}
       propertyPath: _firstTurnOnTextSpanish
@@ -5845,6 +5845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 73d47163-cecc-42be-a118-282381d0ce30
+  _hasBeenWatered: 0
   _plantWateringSound: {fileID: 8300000, guid: 82c7966849c99d548a041840db7a43e7, type: 3}
   _canBeSearchedInitialStatus: 0
   _canBeSearched: 0

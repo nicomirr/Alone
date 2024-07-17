@@ -254,6 +254,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
         else
         {
+            Pause.Instance.InstructionsBack();
+            OptionsBackButton.Instance.OptionsBack();
             Pause.Instance.Continue();
         }
     }

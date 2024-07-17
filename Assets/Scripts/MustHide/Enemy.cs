@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        AudioSource.PlayClipAtPoint(_doorClosed, PlayerController.Instance.transform.position);
+        AudioSource.PlayClipAtPoint(_doorClosed, PlayerController.Instance.transform.position, 1f * GameVolume.Instance.CurrentVolume());
         yield return new WaitForSeconds(2);
 
         colorEnemy = this.gameObject.GetComponent<SpriteRenderer>().color;

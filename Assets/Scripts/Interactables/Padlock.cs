@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
     [SerializeField] GameObject _padlock;
     [SerializeField] GameObject _backButton;
 
+    [SerializeField] TextMeshProUGUI _backButtonText;
+
     string _password = "436";  //ORIGINAL: 364
     string _passwordInput;
     int _passwordTotalNumbers = 3;
@@ -33,11 +36,16 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
 
         if (Pause.Instance.IsPaused) return;
         if (!PlayerInventory.Instance.IsUsingFlashlight) return;
-        if (ButtonsGrid.Instance.GetCurrentAction() != "Search" && ButtonsGrid.Instance.GetCurrentAction() != "Busar") return;
+        if (ButtonsGrid.Instance.GetCurrentAction() != "Search" && ButtonsGrid.Instance.GetCurrentAction() != "Buscar") return;
         _notClickable = MouseBehaviour.Instance.NotClickable;
         if (_notClickable) return;
-
+        
         EnablePadlock();
+    }
+
+    private void Update()
+    {
+        Language();
     }
 
     void EnablePadlock()
@@ -46,9 +54,7 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
 
         _padlock.SetActive(true);
         _backButton.SetActive(true);    
-    }
-
-    
+    }    
 
     public void BackButton()
     {
@@ -114,4 +120,15 @@ public class Padlock : MonoBehaviour, IPointerClickHandler
         _backButton.GetComponentInChildren<Button>().enabled = false;
     }
 
+    void Language()
+    {
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _backButtonText.text = "Back";
+        }
+        else if(LanguageManager.Instance.Language == "es")
+        {
+            _backButtonText.text = "Atrás";
+        }
+    }
 }

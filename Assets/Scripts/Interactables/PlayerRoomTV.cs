@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 {
@@ -49,6 +50,8 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        Volume();
+
         if(Pause.Instance.IsPaused) return;
         if (ScenesInGame.Instance.GetIsFlashback()) return;
         if (LightControl.LightsOut) return;
@@ -60,8 +63,7 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
 
         if (_timesToStatic > 0) return;
 
-        StaticTimerStart();
-     
+        StaticTimerStart();     
 
     }
 
@@ -179,5 +181,10 @@ public class PlayerRoomTV : MonoBehaviour, IDataPersistence
             GetComponent<ClickableObject>().TurnOnText = "It's already on.";
             GetComponent<ClickableObject>().TurnOffText = "I can't turn it off.";
         }
+    }
+
+    void Volume()
+    {
+        _audioSource.volume = 1f * GameVolume.Instance.CurrentVolume();
     }
 }

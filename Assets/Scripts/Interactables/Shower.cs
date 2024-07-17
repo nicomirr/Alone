@@ -83,7 +83,8 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
     }
 
     private void Update()
-    {               
+    {
+        Volume();
         Flashback();
         Language();
         CanBeTurnedOnOffState();
@@ -298,6 +299,15 @@ public class Shower : MonoBehaviour, IPointerClickHandler, IDataPersistence
         yield return new WaitForSeconds(2.3f);
 
         _waterFilled = true;
+
+        _animator.SetBool("opened", false);
+        _animator.SetBool("running", false);
+        _audioSource.Stop();
+        showerCoroutineRunning = false;
+        _animator.SetBool("bathtubFilled", true);
+
+        GetComponent<ClickableObject>().CanBeSearched = false;
+        GetComponent<ClickableObject>().HasObject = true;
 
         yield return new WaitForSeconds(1.5f);
 

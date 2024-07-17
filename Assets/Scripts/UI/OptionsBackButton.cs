@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class OptionsBackButton : MonoBehaviour
 {
+    public static OptionsBackButton Instance;
+
     [SerializeField] Image _optionsBackground;
     [SerializeField] Image _volumeImage;
     [SerializeField] GameObject _plus;
     [SerializeField] GameObject _minus;
     [SerializeField] GameObject _optionsEnglish;
     [SerializeField] GameObject _optionsSpanish;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void OptionsBack()
     {

@@ -34,6 +34,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
     bool _hasPickedUpSistersKey;
     bool _hasUsedSistersKey;
+
+    bool _hasPickedUpMusicSheet;
+
     bool _hasPickedUpFirePoker;
 
     bool _hasFlashlight;
@@ -106,6 +109,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
         data.hasPickedUpFlashlight = Instance._hasPickedUpFlashlight;
 
+        data.hasPickedUpMusicSheet = Instance._hasPickedUpMusicSheet;
+
         data.hasPickedUpFirePoker = Instance._hasPickedUpFirePoker;
 
         data.hasPickedUpSistersKey = Instance._hasPickedUpSistersKey;
@@ -143,6 +148,8 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         Instance._inventoryItem = data.inventoryItem;
 
         Instance._hasPickedUpFlashlight = data.hasPickedUpFlashlight;
+
+        Instance._hasPickedUpMusicSheet = data.hasPickedUpMusicSheet;
 
         Instance._hasPickedUpFirePoker = data.hasPickedUpFirePoker;
 
@@ -228,15 +235,15 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
     }
 
     private void Update()
-    {
+    {       
         if(ScenesInGame.Instance.GetIsEnding())
         {
             EndingStatus();
             return;
         }
 
-        CurrentItemFix();
         FlashbackStatus();
+        CurrentItemFix();
         ClampItems();
         UpdateItems();
         Opacity();
@@ -325,6 +332,7 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
         else if(item.name == "MusicSheetInventory")
         {
             _hasMusicSheet = true;
+            _hasPickedUpMusicSheet = true;
         }
     }
 
@@ -433,6 +441,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
             if (_hasPickedUpSistersKey && !_hasUsedSistersKey)
                 _items.Remove(_keySister);
+
+            if(_hasPickedUpMusicSheet)
+                _items.Remove(_musicSheet);
         }
     }
 
@@ -455,6 +466,9 @@ public class PlayerInventory : MonoBehaviour,IDataPersistence
 
         if (_hasPickedUpSistersKey && !_hasUsedSistersKey)
             _items.Add(_keySister);
+
+        if (_hasPickedUpMusicSheet)
+            _items.Add(_musicSheet);
     }
 
     public void DestroyCurrentItem()

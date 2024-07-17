@@ -13,6 +13,7 @@ public class Pause : MonoBehaviour
     [Header("Pause Y Pos")]
     [SerializeField] float _yPos;
     [SerializeField] GameObject _continueButton;
+    [SerializeField] GameObject _optionsButton;
     [SerializeField] GameObject _instructionsButton;
     [SerializeField] GameObject _exitButton;
 
@@ -118,12 +119,14 @@ public class Pause : MonoBehaviour
         if(LanguageManager.Instance.Language == "en")
         {
             _continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Continue";
+            _optionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Options";           
             _instructionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Instructions";
             _exitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Exit";
         }
         else if (LanguageManager.Instance.Language == "es")
         {
             _continueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Continuar";
+            _optionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Opciones";
             _instructionsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Instrucciones";
             _exitButton.GetComponentInChildren<TextMeshProUGUI>().text = "Salir";
         }

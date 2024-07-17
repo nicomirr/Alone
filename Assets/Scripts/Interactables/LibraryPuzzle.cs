@@ -107,6 +107,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
             _panelBackButton.text = "BACK";
             _newspaperBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
             _symbologyBookBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
+            _romeBookBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
             _familyPhotoAlbumBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
         }
         else if(LanguageManager.Instance.Language == "es")
@@ -121,6 +122,7 @@ public class LibraryPuzzle : MonoBehaviour, IPointerClickHandler, IDataPersisten
             _panelBackButton.text = "ATRAS";
             _newspaperBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
             _symbologyBookBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
+            _romeBookBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
             _familyPhotoAlbumBackButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
         }
         //CAMBIAR LENGUAJE BOTONES DE ATRAS

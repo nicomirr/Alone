@@ -46,6 +46,8 @@ public class Piano : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
+        Language();
+
         if(_correctNotesPlayed == _neededCorrectNotes && !PlayerController.Instance.GetSongPlayed())
         {
             PlayerController.Instance.SetSongPlayed(true);
@@ -209,5 +211,18 @@ public class Piano : MonoBehaviour, IPointerClickHandler
 
         UnityEngine.Cursor.visible = true;
     }
-    
+
+    void Language()
+    {
+        if (_backButton == null) return;
+
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
+        }
+    }
 }

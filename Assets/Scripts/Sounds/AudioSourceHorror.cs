@@ -46,6 +46,8 @@ public class AudioSourceHorror : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
+        Volume();
+
         if(_isPlaying && !_soundStarted)
         {
             GetComponent<AudioSource>().Play();

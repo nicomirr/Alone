@@ -21,6 +21,9 @@ public class FlashingLights : MonoBehaviour
         
     void Update()
     {
+        if (ScenesInGame.Instance.GetIsEnding()) return;
+        if (ScenesInGame.Instance.GetIsFlashback()) return;
+
         MustHideState();
     }
 
@@ -55,6 +58,9 @@ public class FlashingLights : MonoBehaviour
 
         while (PlayerController.Instance.GetMustHide())
         {
+            if (!AudioSourceHorror.Instance.GetComponent<AudioSource>().isPlaying)
+                AudioSourceHorror.Instance.GetComponent<AudioSource>().Play();
+
             if (ScenesInGame.Instance.GetSceneIsPlaying() && PlayerController.Instance.GetMustHide() && !ScenesInGame.Instance.GetFirstLivingRoomSceneIsPlaying())
             {
                 if(_sceneLight != null)

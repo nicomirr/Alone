@@ -63,6 +63,8 @@ public class RadioButton : MonoBehaviour, IDataPersistence
 
     private void Update()
     {
+        Language();
+
         if (_dial1 == null) return;
 
         DialValues();
@@ -246,5 +248,17 @@ public class RadioButton : MonoBehaviour, IDataPersistence
         }
                
     }
-    
+
+    void Language()
+    {
+        if (LanguageManager.Instance.Language == "en")
+        {
+            _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Back";
+        }
+        else if (LanguageManager.Instance.Language == "es")
+        {
+            _backButton.GetComponentInChildren<TextMeshProUGUI>().text = "Atrás";
+        }
+    }
+
 }

@@ -39,6 +39,7 @@ public class MustHideCounter : MonoBehaviour, IDataPersistence
         if (ScenesInGame.Instance.GetSceneIsPlaying()) return;
         if (PlayerController.Instance.GetMustHide()) return;
         if (PlayerController.Instance.GetIsHidding()) return;
+        if (ScenesInGame.Instance.GetIsEnding()) return;
 
         Timer();
                
