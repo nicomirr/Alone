@@ -17353,6 +17353,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phone
+      value: 
+      objectReference: {fileID: 674412081}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _doorBell
       value: 
       objectReference: {fileID: 8300000, guid: c774bf00508d277449a5a9896b0029e2, type: 3}
@@ -17373,6 +17377,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: de4d256d77a8180409cd96ca6d7151ac, type: 3}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phoneNormal
+      value: 
+      objectReference: {fileID: -1199663528, guid: e689dfb10e1f07d429a5459271113e0f, type: 3}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _phonePickup
       value: 
       objectReference: {fileID: 8300000, guid: 5584b72a04af48d418a21e239f1e5ef4, type: 3}
@@ -17380,6 +17388,10 @@ PrefabInstance:
       propertyPath: _fadeAnimator
       value: 
       objectReference: {fileID: 1469701893}
+    - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
+      propertyPath: _phoneDialing
+      value: 
+      objectReference: {fileID: 21300000, guid: f8f6ceff26f25d04ab8296ec869d967b, type: 3}
     - target: {fileID: 7860614921336471321, guid: d8fa6a9c1aff0284799606b74be4e7c3, type: 3}
       propertyPath: _searchingSound
       value: 
