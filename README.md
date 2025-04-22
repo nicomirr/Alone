@@ -14,6 +14,10 @@ Find your way through different puzzles. Face the fear and be sure to stay alive
 - **Lara Reynoso** - *Art*
 - **Freesound community** - *Audio*
 
+## Technologies used
+- SFML
+- C#
+
 ## Links
 
 Download it from itch.io: https://nicomironoff.itch.io/alone
