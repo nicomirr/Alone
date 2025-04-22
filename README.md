@@ -15,7 +15,7 @@ Find your way through different puzzles. Face the fear and be sure to stay alive
 - **Freesound community** - *Audio*
 
 ## Technologies used
-- SFML
+- Unity
 - C#
 
 ## Links
