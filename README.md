@@ -21,7 +21,7 @@ Find your way through different puzzles. Face the fear and be sure to stay alive
 ## Programming Features
 - Custom-built Saving system
 - Custom-built Inventory system
-- Custom-built Enemy AI with Spawning and Chasing behaviour
+- Custom-built enemy AI with Spawning and Chasing behaviour
 - Point-and-click Interaction system using raycasting
 
 ## Links
