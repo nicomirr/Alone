@@ -18,6 +18,12 @@ Find your way through different puzzles. Face the fear and be sure to stay alive
 - Unity
 - C#
 
+## Programming Features
+- Custom-built Saving system
+- Custom-built Inventory system
+- Enemy AI with Spawning and Chasing behaviour
+- Point-and-click Interaction system using raycasting
+
 ## Links
 
 Download it from itch.io: https://nicomironoff.itch.io/alone
